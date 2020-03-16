@@ -46,11 +46,14 @@
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.3.17",
+    "@storybook/addon-backgrounds": "5.3.17",
     "@storybook/addon-docs": "5.3.17",
     "@storybook/addon-links": "^5.3.17",
+    "@storybook/addon-viewport": "5.3.17",
     "@storybook/addons": "^5.3.17",
     "@storybook/preset-create-react-app": "^2.0.0",
     "@storybook/react": "^5.3.17",
+    "@storybook/theming": "5.3.17",
     "babel-loader": "8.0.6",
     "node-sass": "4.13.1",
     "react-is": "16.13.0"
