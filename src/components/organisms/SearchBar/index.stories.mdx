@@ -1,0 +1,42 @@
+import { useState } from 'react';
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import SearchBar from '../SearchBar';
+
+<Meta
+  title="Organisms/SearchBar"
+  parameters={{
+    component: SearchBar,
+  }}
+/>
+
+# SearchBar
+
+<Source code={`
+    import SearchBar from '@mtg-maple/web-components/organisms/SearchBar';
+     
+    export default = (props) => {
+      const [query, setQuery] = useState('');
+      const [tags, setTags] = useState([{ label: 'Apple' }, { label: 'Banana' }, { label: 'Calforina' }, { label: 'Deck' }, { label: 'Effect' }]);
+      const placeholder = 'デッキの名前、説明';
+      const props = { query, setQuery, tags, setTags, placeholder };
+      return <SearchBar  {...props}/>;
+    };
+`} />
+
+<Props of={SearchBar} />
+
+## Appearance
+
+<Preview withSource="open">
+  <Story name="default" >
+    {() => {
+      const [query, setQuery] = useState('');
+      const [tags, setTags] = useState([{ label: 'Apple' }, { label: 'Banana' }, { label: 'Calforina' }, { label: 'Deck' }, { label: 'Effect' }]);
+      const placeholder = 'デッキの名前、説明';
+      const props = { query, setQuery, tags, setTags, placeholder };
+      return <SearchBar {...props}/>;
+    }}
+  </Story>
+</Preview>
