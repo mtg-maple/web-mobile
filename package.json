@@ -8,6 +8,7 @@
     "@fortawesome/free-regular-svg-icons": "5.12.1",
     "@fortawesome/free-solid-svg-icons": "5.12.1",
     "@fortawesome/react-fontawesome": "0.1.9",
+    "@mtg-maple/web-components": "0.2.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -45,9 +46,13 @@
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.3.17",
+    "@storybook/addon-docs": "5.3.17",
     "@storybook/addon-links": "^5.3.17",
     "@storybook/addons": "^5.3.17",
     "@storybook/preset-create-react-app": "^2.0.0",
-    "@storybook/react": "^5.3.17"
+    "@storybook/react": "^5.3.17",
+    "babel-loader": "8.0.6",
+    "node-sass": "4.13.1",
+    "react-is": "16.13.0"
   }
 }
