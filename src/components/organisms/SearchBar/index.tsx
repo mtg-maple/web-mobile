@@ -2,27 +2,33 @@ import React, { FC } from 'react';
 import { faSlidersH, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { IconButton, Input, Tags, Tag } from '@mtg-maple/web-components';
 
-import styles from './style.scss';
+import styles from './style.module.scss';
 
 export type SearchBarProps = {
   query: string;
   setQuery: (newQuery: string) => void;
-  queryPlaceholder?: string;
+  placeholder?: string;
   tags: Tag[];
   setTags: (newTags: any[]) => void;
+  onClick: (e: React.MouseEvent) => void;
 };
 
-const SearchBar: FC<SearchBarProps> = ({ query, setQuery, queryPlaceholder = '', tags, setTags }) => {
+const SearchBar: FC<SearchBarProps> = ({ query, setQuery, placeholder = '', tags, setTags, onClick }) => {
   return (
     <div className={styles.searchBarWrap}>
       <div className={styles.searchBar}>
         <Input
           value={query}
           setValue={setQuery}
-          placeholder={queryPlaceholder}
+          placeholder={placeholder}
           icon={faSearch}
         />
-        <IconButton icon={faSlidersH}/>
+        <IconButton 
+          className={styles.settingButton}
+          icon={faSlidersH}
+          color={tags.length > 0 ? 'primary' : 'muteText'}
+          onClick={onClick}
+        />
       </div>
       {
         tags.length > 0 &&

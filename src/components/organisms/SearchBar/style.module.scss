@@ -1,0 +1,34 @@
+.searchBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.settingButton {
+  margin-left: .5rem;
+}
+
+.searchBarWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.tags {
+  width: 100vw;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 1rem 0;
+}
+
+.tags::-webkit-scrollbar {
+  display: none;
+	width: 0px;
+	background: transparent;
+}
+
+/*
+.tags li {
+  display: inline-block;
+}
+*/
