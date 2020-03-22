@@ -1,0 +1,55 @@
+import { useState } from 'react';
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
+
+import { faHome, faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
+
+
+import NavigationBar from '../NavigationBar';
+
+<Meta
+  title="Organisms/NavigationBar"
+  parameters={{
+    component: NavigationBar,
+  }}
+/>
+
+# NavigationBar
+
+<Source code={`
+    import NavigationBar from '@mtg-maple/web-components/organisms/NavigationBar';
+     
+    export default = (props) => {
+      return <NavigationBar buttons={[
+        { icon: faHome },
+        { icon: faSearch },
+        { icon: faUser },
+      ]}/>;
+    };
+`} />
+
+<Props of={NavigationBar} />
+
+## Appearance
+
+<Preview withSource="open">
+  <Story name="default" >
+    <Router>
+      <Switch>
+        <Route path='/home'><p>HOME</p></Route>
+        <Route path='/search'><p>SEARCH</p></Route>
+        <Route path='/mypage'><p>MYPAGE</p></Route>
+      </Switch>
+      <NavigationBar links={[
+        { icon: faHome, link: '/home' },
+        { icon: faSearch, link: '/search' },
+        { icon: faUser, link: '/mypage' },
+      ]}/>
+    </Router>
+  </Story>
+</Preview>

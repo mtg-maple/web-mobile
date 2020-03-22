@@ -1,0 +1,31 @@
+@import "~@mtg-maple/web-components/src/properties.scss";
+
+.navigationBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-inline-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  list-style: none;
+  width:100%;
+  padding: $space 0;
+  background-color: $color-base-aft;
+}
+
+.navigationBarItem {
+  width:100%;
+}
+
+.navigationBarLink {
+  width: 100%;
+  font-size: $font-size-l;
+  color: $color-text-mute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigationBarLink.active {
+  color: $color-primary;
+}
