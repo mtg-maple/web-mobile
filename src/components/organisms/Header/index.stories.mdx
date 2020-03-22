@@ -1,0 +1,48 @@
+import { useState } from 'react';
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import { faCog } from '@fortawesome/free-solid-svg-icons'
+
+
+import Header from '../Header';
+
+<Meta
+  title="Organisms/Header"
+  parameters={{
+    component: Header,
+  }}
+/>
+
+# Header
+
+<Source code={`
+    import Header from '@mtg-maple/web-components/organisms/Header';
+     
+    export default = (props) => {
+      return <Header headingText="自分のデッキ"/>;
+    };
+`} />
+
+<Props of={Header} />
+
+## Appearance
+
+<Preview withSource="open">
+  <Story name="default" >
+    <Header headingText="自分のデッキ"/>
+  </Story>
+  <Story name="select" >
+    <Header headingText="自分のデッキ" funcProps={{
+      options: [
+          { label: 'スタンダード', value: 'standard'},
+          { label: 'パイオニア', value: 'pioneer'},
+          { label: 'モダン', value: 'modern'},
+          { label: 'レガシー', value: 'legacy'},
+      ]
+    }}/>
+  </Story>
+  <Story name="iconButton" >
+    <Header headingText="マイページ" funcProps={{ icon: faCog, color: 'text' }}/>
+  </Story>
+</Preview>
