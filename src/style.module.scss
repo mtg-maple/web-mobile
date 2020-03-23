@@ -1,0 +1,10 @@
+@import "~@mtg-maple/web-components/src/properties.scss";
+
+body {
+  background-color: $color-base;
+}
+
+.navigationBar {
+  position: fixed;
+  bottom: 0;
+}

@@ -1,0 +1,9 @@
+@import "~@mtg-maple/web-components/src/properties.scss";
+
+.root {
+  padding: calc(#{$space} * 2);
+}
+
+.searchBar {
+  margin-top: calc(#{$space} * 2);
+}

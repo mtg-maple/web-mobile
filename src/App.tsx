@@ -1,24 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
+import { faHome, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
+
+import NavigationBar from './components/organisms/NavigationBar';
+import HomePage from './components/pages/HomePage';
+import SearchPage from './components/pages/SearchPage';
+import UserPage from './components/pages/UserPage';
+
+import styles from './style.module.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.app}>
+      <Router>
+        <Switch>
+          <Route path="/home">
+            <HomePage/>
+          </Route>
+          <Route path="/search">
+            <SearchPage/>
+          </Route>
+          <Route path="/user">
+            <UserPage/>
+          </Route>
+          <Redirect from='/' to='/home'/>
+        </Switch>
+        <NavigationBar className={styles.navigationBar} links={[
+          { icon: faHome, link: '/home' },
+          { icon: faSearch, link: '/search' },
+          { icon: faUser, link: '/user' },
+        ]}/>
+      </Router>
     </div>
   );
 }
