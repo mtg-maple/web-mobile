@@ -32,10 +32,10 @@ import SearchBar from '../SearchBar';
 <Preview withSource="open">
   <Story name="default" >
     {() => {
-      const [query, setQuery] = useState('');
-      const [tags, setTags] = useState([{ label: 'Apple' }, { label: 'Banana' }, { label: 'Calforina' }, { label: 'Deck' }, { label: 'Effect' }]);
+      const queryState = useState('');
+      const tagsState = useState([{ label: 'Apple' }, { label: 'Banana' }, { label: 'Calforina' }, { label: 'Deck' }, { label: 'Effect' }]);
       const placeholder = 'デッキの名前、説明';
-      const props = { query, setQuery, tags, setTags, placeholder };
+      const props = { queryState, tagsState, placeholder };
       return <SearchBar {...props}/>;
     }}
   </Story>
