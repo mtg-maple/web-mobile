@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import { faHome, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 
-import NavigationBar from './components/organisms/NavigationBar';
+import TabBar from './components/organisms/TabBar';
 import HomePage from './components/pages/HomePage';
 import SearchPage from './components/pages/SearchPage';
 import UserPage from './components/pages/UserPage';
@@ -30,7 +30,7 @@ function App() {
           </Route>
           <Redirect from='/' to='/home'/>
         </Switch>
-        <NavigationBar className={styles.navigationBar} links={[
+        <TabBar className={styles.tabBar} links={[
           { icon: faHome, link: '/home' },
           { icon: faSearch, link: '/search' },
           { icon: faUser, link: '/user' },

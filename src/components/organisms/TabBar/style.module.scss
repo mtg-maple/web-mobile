@@ -1,6 +1,6 @@
 @import "~@mtg-maple/web-components/src/properties.scss";
 
-.navigationBar {
+.tabBar {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -13,11 +13,11 @@
   background-color: $color-base-aft;
 }
 
-.navigationBarItem {
+.tabBarItem {
   width:100%;
 }
 
-.navigationBarLink {
+.tabBarLink {
   width: 100%;
   font-size: $font-size-l;
   color: $color-text-mute;
@@ -26,6 +26,6 @@
   justify-content: center;
 }
 
-.navigationBarLink.active {
+.tabBarLink.active {
   color: $color-primary;
 }

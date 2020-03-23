@@ -10,22 +10,22 @@ import {
 import { faHome, faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
 
 
-import NavigationBar from '../NavigationBar';
+import TabBar from '../TabBar';
 
 <Meta
-  title="Organisms/NavigationBar"
+  title="Organisms/TabBar"
   parameters={{
-    component: NavigationBar,
+    component: TabBar,
   }}
 />
 
-# NavigationBar
+# TabBar
 
 <Source code={`
-    import NavigationBar from '@mtg-maple/web-components/organisms/NavigationBar';
+    import TabBar from '@mtg-maple/web-components/organisms/TabBar';
      
     export default = (props) => {
-      return <NavigationBar buttons={[
+      return <TabBar buttons={[
         { icon: faHome },
         { icon: faSearch },
         { icon: faUser },
@@ -33,7 +33,7 @@ import NavigationBar from '../NavigationBar';
     };
 `} />
 
-<Props of={NavigationBar} />
+<Props of={TabBar} />
 
 ## Appearance
 
@@ -45,7 +45,7 @@ import NavigationBar from '../NavigationBar';
         <Route path='/search'><p>SEARCH</p></Route>
         <Route path='/mypage'><p>MYPAGE</p></Route>
       </Switch>
-      <NavigationBar links={[
+      <TabBar links={[
         { icon: faHome, link: '/home' },
         { icon: faSearch, link: '/search' },
         { icon: faUser, link: '/mypage' },

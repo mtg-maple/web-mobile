@@ -7,7 +7,7 @@ import {
 
 import styles from './style.module.scss';
 
-export type NavigationBarProps = {
+export type TabBarProps = {
   links: NavigationLink[];
   className?: string;
 }
@@ -17,13 +17,13 @@ export type NavigationLink = {
   link: string;
 }
 
-const NavigationBar: FC<NavigationBarProps> = ({ links, className }) => {
+const TabBar: FC<TabBarProps> = ({ links, className }) => {
   return (
-    <ul className={[styles.navigationBar, className].join(' ')}>
+    <ul className={[styles.tabBar, className].join(' ')}>
       {
         links.map((props: NavigationLink) => (
-          <li className={styles.navigationBarItem}>
-            <NavLink to={props.link} className={styles.navigationBarLink} activeClassName={styles.active}>
+          <li className={styles.tabBarItem}>
+            <NavLink to={props.link} className={styles.tabBarLink} activeClassName={styles.active}>
               <FontAwesomeIcon icon={props.icon}/>
             </NavLink>
           </li>
@@ -33,4 +33,4 @@ const NavigationBar: FC<NavigationBarProps> = ({ links, className }) => {
   );
 }
 
-export default NavigationBar;
+export default TabBar;
