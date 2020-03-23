@@ -23,7 +23,7 @@ const NavigationBar: FC<NavigationBarProps> = ({ links, className }) => {
       {
         links.map((props: NavigationLink) => (
           <li className={styles.navigationBarItem}>
-            <NavLink to={props.link} className={styles.navigationBarLink} activeStyle={{ color: 'red' }}>
+            <NavLink to={props.link} className={styles.navigationBarLink} activeClassName={styles.active}>
               <FontAwesomeIcon icon={props.icon}/>
             </NavLink>
           </li>
