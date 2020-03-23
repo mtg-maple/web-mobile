@@ -10,7 +10,7 @@ export type HeaderProps = {
 
 const Header: FC<HeaderProps> = ({ headingText, funcProps }) => {
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <Heading level='1'>{headingText}</Heading>
       {
         funcProps &&
@@ -20,7 +20,7 @@ const Header: FC<HeaderProps> = ({ headingText, funcProps }) => {
           ''
         )
       }
-    </div>
+    </header>
   );
 };
 
