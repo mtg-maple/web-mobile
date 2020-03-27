@@ -12,22 +12,23 @@ import styles from './style.module.scss';
 export type DeckListItemProps = {
   thumbnailImageUrl: string;
   id: string;
-  title: string;
+  name: string;
   description: string;
   colors: ManaColor[];
   onClick?: (e: React.MouseEvent) => void;
   showMoreIcon?: boolean;
+  className?: string;
 }
 
-const DeckListItem: FC<DeckListItemProps> = ({ thumbnailImageUrl, title, description, colors, onClick, showMoreIcon }) => {
+const DeckListItem: FC<DeckListItemProps> = ({ thumbnailImageUrl, name, description, colors, onClick, showMoreIcon, className }) => {
   const cardImageProps = {
     src: thumbnailImageUrl,
-    alt: `${title} thumbnail`,
+    alt: `${name} thumbnail`,
     size: 'deckThumbnail' as 'deckThumbnail',
   };
   const info = (
     <>
-      <Label className={styles.infoItem} text={title} weight='bold'/>
+      <Label className={styles.infoItem} text={name} weight='bold'/>
       {
         description &&
         <Description className={styles.infoItem} size='small' color='muteText'>{ description }</Description>
@@ -36,7 +37,7 @@ const DeckListItem: FC<DeckListItemProps> = ({ thumbnailImageUrl, title, descrip
     </>
   );
   return (
-    <CardListItemLayout { ...{ cardImageProps, info, onClick, showMoreIcon } }/>
+    <CardListItemLayout { ...{ cardImageProps, info, onClick, showMoreIcon, className } }/>
   );
 };
 
