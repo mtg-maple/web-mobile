@@ -1,0 +1,5 @@
+@import "~@mtg-maple/web-components/scss/properties.scss";
+
+.infoItem:nth-child(n+2) {
+  margin-top: $space;
+}
