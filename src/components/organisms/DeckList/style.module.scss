@@ -1,0 +1,14 @@
+@import "~@mtg-maple/web-components/scss/properties.scss";
+
+.deckList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
+  padding: $space;
+}
+
+.deckListItem:nth-child(n+2) {
+  margin-top: calc(#{$space} * 2);
+}
