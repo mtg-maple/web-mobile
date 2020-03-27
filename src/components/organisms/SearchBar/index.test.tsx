@@ -9,16 +9,16 @@ type WrapperProps = {
   onClick: (e: React.MouseEvent) => void;
 }
 const Wrapper: FC<WrapperProps> = ({ onClick }) => {
-  const [query, setQuery] = useState('');
-  const [tags, setTags] = useState([
+  const queryState = useState('');
+  const tagsState = useState([
     { label: 'Apple', value: 'APL' },
     { label: 'Banana', value: 'BNN' },
     { label: 'Calforina', value: 'CAR' },
   ]);
   return (
     <div>
-      <span>{tags.map((tag: Tag) => tag.label).join(',')}</span>
-    <SearchBar query={query} setQuery={setQuery} tags={tags} setTags={setTags} onClick={onClick}/>
+      <span>{tagsState[0].map((tag: Tag) => tag.label).join(',')}</span>
+    <SearchBar queryState={queryState} tagsState={tagsState} onClick={onClick}/>
     </div>
   );
 }

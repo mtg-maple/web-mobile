@@ -22,7 +22,7 @@ const TabBar: FC<TabBarProps> = ({ links, className }) => {
     <ul className={[styles.tabBar, className].join(' ')}>
       {
         links.map((props: NavigationLink) => (
-          <li className={styles.tabBarItem}>
+          <li className={styles.tabBarItem} key={props.link}>
             <NavLink to={props.link} className={styles.tabBarLink} activeClassName={styles.active}>
               <FontAwesomeIcon icon={props.icon}/>
             </NavLink>
