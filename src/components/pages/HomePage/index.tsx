@@ -18,7 +18,7 @@ const HomePage: FC = () => {
         setDecks(res.result.data);
       }
     });
-  });
+  }, [decks]);
   
   const props = { searchBar, decks };
   return (
