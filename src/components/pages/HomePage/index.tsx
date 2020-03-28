@@ -1,16 +1,25 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, Dispatch, SetStateAction } from 'react';
 
 import { Tag } from '../../molecules/Tags';
 import HomeTemplate from '../../templates/HomeTemplate';
-import { Deck, getDecks, IResponse, DecksPage } from '../../../mock';
+import { Deck } from '../../../mock';
+// import { Deck, getDecks, IResponse, DecksPage } from '../../../mock';
 
-const HomePage: FC = () => {
+export type HomePageProps = {
+  queryState: [string, Dispatch<SetStateAction<string>>];
+  tagsState: [Tag[], Dispatch<SetStateAction<Tag[]>>];
+  decksState: [Deck[], Dispatch<SetStateAction<Deck[]>>];
+}
+
+const HomePage: FC<HomePageProps> = ({ queryState, tagsState, decksState }) => {
   const searchBar = {
-    queryState: useState(''),
-    tagsState: useState<Tag[]>([]),
+    queryState,
+    tagsState,
     onClick: () => alert('clicked'),
   }
+  const decks = decksState[0];
   
+  /*
   const [decks, setDecks] = useState<Deck[]>([]);
   useEffect(() => {
     getDecks('').then((res: IResponse<DecksPage>) => {
@@ -19,11 +28,12 @@ const HomePage: FC = () => {
       }
     });
   }, []);
+  */
   
   const props = { searchBar, decks };
   return (
     <HomeTemplate { ...props }/>
-  )
+  );
 };
 
 export default HomePage;
