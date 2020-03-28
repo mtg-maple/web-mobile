@@ -32,7 +32,8 @@
   cursor: pointer;
 }
 
-.cardListItem .cardListItemButton:not(:disabled):focus {
+.cardListItem .cardListItemButton:not(:disabled):focus,
+.cardListItem .cardListItemButton:not(:disabled):active {
   background-color: $color-base-aft;
   transition: all $hover-animation-timing $hover-animation-duration;
 }
