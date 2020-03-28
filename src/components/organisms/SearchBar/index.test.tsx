@@ -2,6 +2,7 @@ import React, { useState, FC } from 'react';
 import { mount } from 'enzyme';
 
 import SearchBar from '../SearchBar';
+import { ISearchTag } from '../../../store';
 
 type WrapperProps = {
   onClick: (e: React.MouseEvent) => void;
@@ -15,7 +16,7 @@ const Wrapper: FC<WrapperProps> = ({ onClick }) => {
   ]);
   return (
     <div>
-      <span>{tagsState[0].map((tag: Tag) => tag.label).join(',')}</span>
+      <span>{tagsState[0].map((tag: ISearchTag) => tag.label).join(',')}</span>
     <SearchBar query={queryState[0]} setQuery={queryState[1]} tags={tagsState[0]} setTags={tagsState[1]} onClick={onClick}/>
     </div>
   );
