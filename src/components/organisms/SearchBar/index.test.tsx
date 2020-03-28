@@ -1,8 +1,6 @@
 import React, { useState, FC } from 'react';
 import { mount } from 'enzyme';
 
-import { Tag } from '../../molecules/Tags';
-
 import SearchBar from '../SearchBar';
 
 type WrapperProps = {
