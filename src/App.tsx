@@ -14,6 +14,7 @@ import UserPage from './components/pages/UserPage';
 import DeckPage from './components/pages/DeckPage';
 import { Tag } from './components/molecules/Tags';
 import RestoredScroll from './hooks/RestoredScroll';
+import { setSearchBarQuery } from './store';
 import { Deck, getDecks, IResponse, DecksPage } from './mock';
 import useStore from './store';
 
@@ -22,10 +23,11 @@ import styles from './style.module.scss';
 
 const App: FC = () => {
   const [store, dispatch] = useStore();
-  
+
   const decksState = useState<Deck[]>([]);
   const homePageProps = {
-    queryState: useState<string>(''),
+    query: store.tabs.home.searchBar.query, 
+    setQuery: (query: string) => dispatch(setSearchBarQuery('home', query)),
     tagsState: useState<Tag[]>([]),
     decksState,
   };

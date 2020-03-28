@@ -11,7 +11,8 @@ import styles from './style.module.scss';
 
 export type HomeTemplateProps = {
   searchBar: {
-    queryState: [string, (newQuery: string) => void];
+    query: string;
+    setQuery: (newQuery: string) => void;
     tagsState: [Tag[], (newTags: any[]) => void];
     onClick: (e: React.MouseEvent) => void;
   }

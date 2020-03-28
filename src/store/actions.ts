@@ -5,4 +5,6 @@ export interface IAction {
 
 export enum ActionType {
   SetScrollPosition = 'SET_SCROLL_POSITION',
+  SetSearchBarQuery = 'SET_SEARCH_BAR_QUERY',
+  SetSearchBarTags = 'SET_SEARCH_BAR_TAGS',
 }

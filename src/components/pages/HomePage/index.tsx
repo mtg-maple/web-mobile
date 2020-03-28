@@ -6,29 +6,20 @@ import { Deck } from '../../../mock';
 // import { Deck, getDecks, IResponse, DecksPage } from '../../../mock';
 
 export type HomePageProps = {
-  queryState: [string, Dispatch<SetStateAction<string>>];
+  query: string;
+  setQuery: (query: string) => void;
   tagsState: [Tag[], Dispatch<SetStateAction<Tag[]>>];
   decksState: [Deck[], Dispatch<SetStateAction<Deck[]>>];
 }
 
-const HomePage: FC<HomePageProps> = ({ queryState, tagsState, decksState }) => {
+const HomePage: FC<HomePageProps> = ({ query, setQuery, tagsState, decksState }) => {
   const searchBar = {
-    queryState,
+    query,
+    setQuery,
     tagsState,
     onClick: () => alert('clicked'),
   }
   const decks = decksState[0];
-  
-  /*
-  const [decks, setDecks] = useState<Deck[]>([]);
-  useEffect(() => {
-    getDecks('').then((res: IResponse<DecksPage>) => {
-      if (res.status === 200) {
-        setDecks(res.result.data);
-      }
-    });
-  }, []);
-  */
   
   const props = { searchBar, decks };
   return (

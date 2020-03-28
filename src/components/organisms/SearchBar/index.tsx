@@ -8,20 +8,21 @@ import Tags, { Tag } from '../../molecules/Tags';
 import styles from './style.module.scss';
 
 export type SearchBarProps = {
-  queryState: [string, (newQuery: string) => void];
+  query: string;
+  setQuery: (newQuery: string) => void;
   tagsState: [Tag[], (newTags: any[]) => void];
   placeholder?: string;
   onClick: (e: React.MouseEvent) => void;
   className?: string;
 };
 
-const SearchBar: FC<SearchBarProps> = ({ queryState, placeholder = '', tagsState, onClick, className }) => {
+const SearchBar: FC<SearchBarProps> = ({ query, setQuery, placeholder = '', tagsState, onClick, className }) => {
   return (
     <div className={[styles.searchBarWrap, className].join(' ')}>
       <div className={styles.searchBar}>
         <Input
-          value={queryState[0]}
-          setValue={queryState[1]}
+          value={query}
+          setValue={setQuery}
           placeholder={placeholder}
           icon={faSearch}
         />
