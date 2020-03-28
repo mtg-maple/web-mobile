@@ -1,19 +1,26 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 
 import { Tag } from '@mtg-maple/web-components';
 import HomeTemplate from '../../templates/HomeTemplate';
+import { Deck, getDecks, IResponse, DecksPage } from '../../../mock';
 
-export type HomePageProps = {
-
-}
-
-const HomePage: FC<HomePageProps> = ({}) => {
+const HomePage: FC = () => {
   const searchBar = {
     queryState: useState(''),
     tagsState: useState<Tag[]>([]),
     onClick: () => alert('clicked'),
   }
-  const props = { searchBar }
+  
+  const [decks, setDecks] = useState<Deck[]>([]);
+  useEffect(() => {
+    getDecks('').then((res: IResponse<DecksPage>) => {
+      if (res.status === 200) {
+        setDecks(res.result.data);
+      }
+    });
+  });
+  
+  const props = { searchBar, decks };
   return (
     <HomeTemplate { ...props }/>
   )

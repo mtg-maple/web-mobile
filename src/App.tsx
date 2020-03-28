@@ -18,18 +18,20 @@ function App() {
   return (
     <div className={styles.app}>
       <Router>
-        <Switch>
-          <Route path="/home">
-            <HomePage/>
-          </Route>
-          <Route path="/search">
-            <SearchPage/>
-          </Route>
-          <Route path="/user">
-            <UserPage/>
-          </Route>
-          <Redirect from='/' to='/home'/>
-        </Switch>
+        <section className={styles.appView}>
+          <Switch>
+            <Route path="/home">
+              <HomePage/>
+            </Route>
+            <Route path="/search">
+              <SearchPage/>
+            </Route>
+            <Route path="/user">
+              <UserPage/>
+            </Route>
+            <Redirect from='/' to='/home'/>
+          </Switch>
+        </section>
         <TabBar className={styles.tabBar} links={[
           { icon: faHome, link: '/home' },
           { icon: faSearch, link: '/search' },

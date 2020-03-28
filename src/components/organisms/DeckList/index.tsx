@@ -1,16 +1,17 @@
 import React, { FC } from 'react';
 
-import { Deck } from '../../../mockAPI';
+import { Deck } from '../../../mock';
 import DeckListItem from '../DeckListItem';
 import styles from './style.module.scss';
 
 export type DeckListProps = {
   decks: Deck[];
+  className?: string;
 };
 
-const DeckList: FC<DeckListProps> = ({ decks }) => {
+const DeckList: FC<DeckListProps> = ({ decks, className }) => {
   return (
-    <ul className={styles.deckList}>
+    <ul className={[styles.deckList, className].join(' ')}>
       {
         decks.map((deck: Deck) => (
           <DeckListItem
@@ -21,6 +22,8 @@ const DeckList: FC<DeckListProps> = ({ decks }) => {
             thumbnailImageUrl={deck.thumbnailUrl}
             colors={deck.colors}
             className={styles.deckListItem}
+            onClick={() => console.log('clicked')}
+            showMoreIcon
           />
         ))
       }

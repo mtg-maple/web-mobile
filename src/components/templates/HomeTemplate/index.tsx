@@ -4,6 +4,9 @@ import { Tag } from '@mtg-maple/web-components';
 
 import Header from '../../organisms/Header';
 import SearchBar from '../../organisms/SearchBar';
+import DeckList from '../../organisms/DeckList';
+import { Deck } from '../../../mock';
+
 import styles from './style.module.scss';
 
 export type HomeTemplateProps = {
@@ -12,9 +15,10 @@ export type HomeTemplateProps = {
     tagsState: [Tag[], (newTags: any[]) => void];
     onClick: (e: React.MouseEvent) => void;
   }
+  decks: Deck[];
 }
 
-const HomeTemplate: FC<HomeTemplateProps> = ({ searchBar }) => {
+const HomeTemplate: FC<HomeTemplateProps> = ({ searchBar, decks }) => {
   return (
     <div className={styles.root}>
       <Header headingText="自分のデッキ" funcProps={{
@@ -26,6 +30,7 @@ const HomeTemplate: FC<HomeTemplateProps> = ({ searchBar }) => {
         ]
       }}/>
       <SearchBar className={styles.searchBar} placeholder="デッキの名前、説明" {...searchBar}/>
+      <DeckList decks={decks} className={styles.deckList}/>
     </div>
   );
 }

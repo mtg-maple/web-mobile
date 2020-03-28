@@ -4,6 +4,10 @@ body {
   background-color: $color-base;
 }
 
+.appView {
+  padding-bottom: calc(#{$font-size-l} + #{$space} * 1.5 + #{$space} * 2); // TabBar height
+}
+
 .tabBar {
   position: fixed;
   bottom: 0;
