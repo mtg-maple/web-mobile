@@ -1,19 +1,19 @@
 import React, { FC } from 'react';
 
-import { Tag } from '../../molecules/Tags';
-
 import Header from '../../organisms/Header';
 import SearchBar from '../../organisms/SearchBar';
 import DeckList from '../../organisms/DeckList';
 import { Deck } from '../../../mock';
 
 import styles from './style.module.scss';
+import { ISearchTag } from '../../../store';
 
 export type HomeTemplateProps = {
   searchBar: {
     query: string;
     setQuery: (newQuery: string) => void;
-    tagsState: [Tag[], (newTags: any[]) => void];
+    tags: ISearchTag[];
+    setTags: (newTags: ISearchTag[]) => void;
     onClick: (e: React.MouseEvent) => void;
   }
   decks: Deck[];

@@ -18,7 +18,7 @@ const Wrapper: FC<WrapperProps> = ({ onClick }) => {
   return (
     <div>
       <span>{tagsState[0].map((tag: Tag) => tag.label).join(',')}</span>
-    <SearchBar queryState={queryState} tagsState={tagsState} onClick={onClick}/>
+    <SearchBar query={queryState[0]} setQuery={queryState[1]} tags={tagsState[0]} setTags={tagsState[1]} onClick={onClick}/>
     </div>
   );
 }
