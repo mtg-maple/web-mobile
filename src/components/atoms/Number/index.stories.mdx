@@ -1,0 +1,56 @@
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import Number from '../Number';
+
+<Meta
+  title="Atoms/Number"
+  parameters={{
+    component: Number,
+  }}
+/>
+
+# Number
+
+<Source code={`
+    import Number from '@mtg-maple/web-components/atoms/Number';
+     
+    export default = (props) => (
+        <Number num={4} size="large" color="muteText"/>
+    );
+`} />
+
+<Props of={Number} />
+
+## Default
+
+<Preview withSource="open">
+  <Story name="default" >
+    <Number num={1}/>
+  </Story>
+</Preview>
+
+## Size
+
+<Preview withSource="open">
+  <Story name="small" >
+    <Number num={1} size="small"/>
+  </Story>
+  <Story name="medium" >
+    <Number num={2} size="medium"/>
+  </Story>
+  <Story name="large" >
+    <Number num={3} size="large"/>
+  </Story>
+</Preview>
+
+## Color
+
+<Preview withSource="open">
+  <Story name="text" >
+    <Number num={1} color="text"/>
+  </Story>
+  <Story name="muteText" >
+    <Number num={2} color="muteText"/>
+  </Story>
+</Preview>

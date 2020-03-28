@@ -1,4 +1,4 @@
-import { ManaColor } from '@mtg-maple/web-components';
+import { ManaColor } from '../components/molecules/ManaColors';
 
 import { IResponse } from './response';
 

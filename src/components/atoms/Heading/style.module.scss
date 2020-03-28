@@ -1,0 +1,31 @@
+@import "../../../properties.scss";
+
+h1.heading, h2.heading, h3.heading {
+  font-family: $font-family-text;
+}
+
+h1.heading.text, h2.heading.text, h3.heading.text {
+  color: $color-text;
+}
+
+h1.heading.muteText, h2.heading.muteText, h3.heading.muteText {
+  color: $color-text-mute;
+}
+
+h1.heading {
+  font-size: $font-size-l;
+  line-height: $font-size-l;
+  font-weight: $font-weight-bold;
+}
+
+h2.heading {
+  font-size: $font-size-m;
+  line-height: $font-size-m;
+  font-weight: $font-weight-bold;
+}
+
+h3.heading {
+  font-size: $font-size-s;
+  line-height: $font-size-s;
+  font-weight: $font-weight-default;
+}

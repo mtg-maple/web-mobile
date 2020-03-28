@@ -1,0 +1,51 @@
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import TextButton from '../TextButton';
+
+<Meta
+  title="Atoms/TextButton"
+  parameters={{
+    component: TextButton,
+  }}
+/>
+
+# TextButton
+
+<Source code={`
+    import TextButton from '@mtg-maple/web-components/atoms/TextButton';
+     
+    export default = (props) => (
+        <TextButton label="Done" color="primary"/>
+    );
+`} />
+
+<Props of={TextButton} />
+
+## Appearance
+
+<Preview withSource="open">
+  <Story name="primary">
+    <TextButton label="Done"/>
+  </Story>
+  <Story name="primary-disabled">
+    <TextButton label="Done" disabled/>
+  </Story>
+  <Story name="secondary">
+    <TextButton label="Cancel" color="secondary"/>
+  </Story>
+  <Story name="secondary-disabled">
+    <TextButton label="Cancel" color="secondary" disabled/>
+  </Story>
+  <Story name="grow" >
+    <TextButton label="Done" grow/>
+  </Story>
+</Preview>
+
+## onClick
+
+<Preview withSource="open">
+  <Story name="alert" >
+    <TextButton label="Press me" onClick={() => window.alert('button is clicked')}/>
+  </Story>
+</Preview>

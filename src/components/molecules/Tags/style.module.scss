@@ -1,0 +1,28 @@
+@import "../../../properties.scss";
+
+$tag-item-padding-y: .5rem;
+$tag-item-height: calc(#{$font-size-s} + #{$tag-item-padding-y} * 2);
+
+.tagItemList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-inline-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.tagItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: $color-primary;
+  padding: $tag-item-padding-y .5rem $tag-item-padding-y 1rem;
+  height: $font-size-s;
+  line-height: $font-size-s;
+  border-radius: calc(#{$tag-item-height} / 2);
+}
+
+.tagItem:nth-child(n+2) {
+  margin-left: $space;
+}

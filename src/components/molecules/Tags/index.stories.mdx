@@ -1,0 +1,36 @@
+import { useState } from 'react';
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+
+import Tags from '../Tags';
+
+<Meta
+  title="Molecules/Tags"
+  parameters={{
+    component: Tags,
+  }}
+/>
+
+# Tags
+
+<Source code={`
+    import Tags from '@mtg-maple/web-components/molecules/Tags';
+     
+    export default = (props) => (
+        <Tags />
+    );
+`} />
+
+<Props of={Tags} />
+
+## Appearance
+
+<Preview withSource="open">
+  <Story name="default" >
+    {() => {
+      const [tags, setTags] = useState([{ label: 'Apple' }, { label: 'Banana' }, { label: 'Calforina' }, { label: 'Deck' }, { label: 'Effect' }]);
+      return <Tags tags={tags} setTags={setTags}/>;
+    }}
+  </Story>
+</Preview>

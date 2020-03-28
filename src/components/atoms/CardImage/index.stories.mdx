@@ -1,0 +1,51 @@
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import CardImage from '../CardImage';
+
+<Meta
+  title="Atoms/CardImage"
+  parameters={{
+    component: CardImage,
+  }}
+/>
+
+# CardImage
+
+<Source code={`
+    import CardImage from '@mtg-maple/web-components/atoms/CardImage';
+     
+    export default = (props) => (
+        <CardImage src="https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg" alt="brazen borrower"/>
+    );
+`} />
+
+<Props of={CardImage} />
+
+## Image Icon
+
+<Preview withSource="open">
+  <Story name="thumbnail">
+    <CardImage src="https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg" alt="brazen borrower"/>
+  </Story>
+  <Story name="deckThumbnail">
+    <CardImage size="deckThumbnail" src="https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg" alt="brazen borrower"/>
+  </Story>
+  <Story name="cover">
+    <CardImage size="cover" src="https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg" alt="brazen borrower"/>
+  </Story>
+  <Story name="preview">
+    <CardImage size="preview" src="https://img.scryfall.com/cards/large/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg" alt="brazen borrower"/>
+  </Story>
+</Preview>
+
+## Link
+
+<Preview withSource="open">
+  <Story name="withLink">
+    <CardImage 
+      src="https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg"
+      linkUrl="https://scryfall.com/card/eld/39/brazen-borrower-petty-theft"
+    />
+  </Story>
+</Preview>

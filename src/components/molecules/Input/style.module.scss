@@ -1,0 +1,70 @@
+@import "../../../properties.scss";
+@import "../../atoms/IconButton/style.module.scss";
+
+$icon-margin-x: calc(1rem - #{$line-width-wide});
+$input-padding-left: .75rem;
+$input-padding-left-with-icon: calc(#{$icon-margin-x} + #{$font-size-s} + .75rem - #{$line-width-wide});
+$input-padding-right: calc(#{$icon-margin-x} + #{$icon-button-size-s} + .75rem - #{$line-width-wide});
+$input-padding-y: .5rem;
+$input-height: calc(#{$font-size-m} + #{$input-padding-y * 2} + #{$line-width-wide * 2});
+
+.inputBox {
+  position: relative;
+  width: 100%;
+}
+
+@mixin placeholder($color) {
+  &::placeholder {
+    color: $color;
+  }
+
+  // IE
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+
+  // Edge
+  &::-ms-input-placeholder {
+    color: $color;
+  }
+}
+
+.input {
+  font-size: $font-size-m;
+  line-height: $font-size-m;
+  color: $color-text;
+  padding: $input-padding-y $input-padding-right $input-padding-y $input-padding-left;
+  background-color: transparent;
+  border: 0;
+  background-color: $color-base-aft;
+  border: $line-width-wide solid transparent;
+  border-radius: $radius;
+  width: calc(100% - #{$input-padding-left} - #{$input-padding-right} - #{$line-width-wide * 2});
+  height: $font-size-m;
+  @include placeholder($color-text-mute);
+}
+.input.withIcon {
+  padding-left: $input-padding-left-with-icon;
+  width: calc(100% - #{$input-padding-left-with-icon} - #{$input-padding-right} - #{$line-width-wide * 2});
+}
+
+.input:focus {
+  outline: 0;
+  border-color: $color-base-fore;
+}
+
+.icon {
+  position: absolute;
+  top: calc(#{$input-height} / 2 - #{$font-size-s} / 2);
+  left: $icon-margin-x;
+  color: $color-text-mute;
+  font-size: $font-size-s;
+  width: $font-size-s;
+  height: $font-size-s;
+}
+
+.clearButton {
+  position: absolute;
+  top: calc(#{$input-height} / 2 - #{$icon-button-size-s} / 2);
+  right: $icon-margin-x;
+}

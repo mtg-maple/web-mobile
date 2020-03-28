@@ -1,0 +1,32 @@
+@import "../../../properties.scss";
+
+.moreIcon.small {
+  font-size: $font-size-s;
+  line-height: $font-size-l;
+}
+
+.moreIcon.medium {
+  font-size: $font-size-m;
+  line-height: $font-size-m;
+}
+
+.moreIcon.large {
+  font-size: $font-size-l;
+  line-height: $font-size-l;
+}
+
+.moreIcon.primary {
+  color: $color-primary;
+}
+
+.secondary {
+  color: $color-secondary;
+}
+
+.moreIcon.text {
+  color: $color-text;
+}
+
+.moreIcon.muteText {
+  color: $color-text-mute;
+}

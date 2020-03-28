@@ -1,0 +1,181 @@
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import MagicSymbol from '../MagicSymbol';
+
+<Meta
+  title="Atoms/MagicSymbol"
+  parameters={{
+    component: MagicSymbol,
+  }}
+/>
+
+# MagicSymbol
+
+<Source code={`
+    import MagicSymbol from '@mtg-maple/web-components/atoms/MagicSymbol';
+     
+    export default = (props) => (
+        <MagicSymbol value="W"/>
+    );
+`} />
+
+<Props of={MagicSymbol} />
+
+## Size
+
+<Preview withSource="open">
+  <Story name="Small">
+    <MagicSymbol size="small" value="W"/>
+  </Story>
+  <Story name="Medium">
+    <MagicSymbol size="medium" value="W"/>
+  </Story>
+  <Story name="Large">
+    <MagicSymbol size="large" value="W"/>
+  </Story>
+</Preview>
+
+## Single Mana
+
+<Preview withSource="open">
+  <Story name="White">
+    <MagicSymbol value="W"/>
+  </Story>
+  <Story name="Black">
+    <MagicSymbol value="B"/>
+  </Story>
+  <Story name="Blue">
+    <MagicSymbol value="U"/>
+  </Story>
+  <Story name="Red">
+    <MagicSymbol value="R"/>
+  </Story>
+  <Story name="Green">
+    <MagicSymbol value="G"/>
+  </Story>
+</Preview>
+
+## Multi Mana
+
+<Preview withSource="open">
+  <Story name="White & Black">
+    <MagicSymbol value="W/B"/>
+  </Story>
+  <Story name="White & Blue">
+    <MagicSymbol value="W/U"/>
+  </Story>
+  <Story name="Black & Red">
+    <MagicSymbol value="B/R"/>
+  </Story>
+  <Story name="Black & Green">
+    <MagicSymbol value="B/G"/>
+  </Story>
+  <Story name="Blue & Black">
+    <MagicSymbol value="U/B"/>
+  </Story>
+  <Story name="Blue & Red">
+    <MagicSymbol value="U/R"/>
+  </Story>
+  <Story name="Red & White">
+    <MagicSymbol value="R/W"/>
+  </Story>
+  <Story name="Red & Green">
+    <MagicSymbol value="R/G"/>
+  </Story>
+  <Story name="Green & White">
+    <MagicSymbol value="G/W"/>
+  </Story>
+  <Story name="Green & Blue">
+    <MagicSymbol value="G/U"/>
+  </Story>
+</Preview>
+
+## Colorless Cost
+
+<Preview withSource="open">
+  <Story name="Cost 0">
+    <MagicSymbol value="0"/>
+  </Story>
+  <Story name="Cost 1">
+    <MagicSymbol value="1"/>
+  </Story>
+  <Story name="Cost 2">
+    <MagicSymbol value="2"/>
+  </Story>
+  <Story name="Cost 3">
+    <MagicSymbol value="3"/>
+  </Story>
+  <Story name="Cost 4">
+    <MagicSymbol value="4"/>
+  </Story>
+  <Story name="Cost X">
+    <MagicSymbol value="X"/>
+  </Story>
+</Preview>
+
+## Phyrexian Mana
+
+<Preview withSource="open">
+  <Story name="Phyrexian Mana">
+    <MagicSymbol value="P"/>
+  </Story>
+  <Story name="Phyrexian White">
+    <MagicSymbol value="W/P"/>
+  </Story>
+  <Story name="Phyrexian Black">
+    <MagicSymbol value="B/P"/>
+  </Story>
+  <Story name="Phyrexian Blue">
+    <MagicSymbol value="U/P"/>
+  </Story>
+  <Story name="Phyrexian Red">
+    <MagicSymbol value="R/P"/>
+  </Story>
+  <Story name="Phyrexian Green">
+    <MagicSymbol value="G/P"/>
+  </Story>
+</Preview>
+
+## Card Type Icon
+
+<Preview withSource="open">
+  <Story name="Artifact">
+    <MagicSymbol type="icon" value="Artifact"/>
+  </Story>
+  <Story name="Creature">
+    <MagicSymbol type="icon" value="Creature"/>
+  </Story>
+  <Story name="Enchantment">
+    <MagicSymbol type="icon" value="Enchantment"/>
+  </Story>
+  <Story name="Instant">
+    <MagicSymbol type="icon" value="Instant"/>
+  </Story>
+  <Story name="Land">
+    <MagicSymbol type="icon" value="Land"/>
+  </Story>
+  <Story name="Planeswalker">
+    <MagicSymbol type="icon" value="Planeswalker"/>
+  </Story>
+  <Story name="Sorcery">
+    <MagicSymbol type="icon" value="Sorcery"/>
+  </Story>
+</Preview>
+
+## Icon Colors
+
+<Preview withSource="open">
+  <Story name="Primary Color">
+    <MagicSymbol type="icon" color="primary" value="Land"/>
+  </Story>
+  <Story name="Secondary Color">
+    <MagicSymbol type="icon" color="secondary" value="Land"/>
+  </Story>
+  <Story name="Text Color">
+    <MagicSymbol type="icon" color="text" value="Land"/>
+  </Story>
+  <Story name="Mute Text Color">
+    <MagicSymbol type="icon" color="muteText" value="Land"/>
+  </Story>
+</Preview>

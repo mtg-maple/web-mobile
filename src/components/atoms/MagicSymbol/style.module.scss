@@ -1,0 +1,32 @@
+@import "../../../properties.scss";
+
+$ms-font-path: '~mana-font/fonts/';
+@import "~mana-font/sass/mana.scss";
+
+.mana.small {
+  font-size: $font-size-s;
+}
+
+.mana.medium {
+  font-size: $font-size-m;
+}
+
+.mana.large {
+  font-size: $font-size-l;
+}
+
+.mana.primary {
+  color: $color-primary;
+}
+
+.mana.secondary {
+  color: $color-secondary;
+}
+
+.mana.text {
+  color: $color-text;
+}
+
+.mana.muteText {
+  color: $color-text-mute;
+}

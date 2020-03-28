@@ -1,0 +1,51 @@
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import Select from '../Select';
+const options = [
+  { label: 'Dog', value: 'dog'},
+  { label: 'Cat', value: 'cat'},
+  { label: 'Hamster', value: 'hamster'},
+];
+
+<Meta
+  title="Atoms/Select"
+  parameters={{
+    component: Select,
+  }}
+/>
+
+# Select
+
+<Source code={`
+    import Select from '@mtg-maple/web-components/atoms/Select';
+     
+    export default = (props) => (
+        <Select options={[
+          { label: 'Dog', value: 'dog'},
+          { label: 'Cat', value: 'cat'},
+          { label: 'Hamster', value: 'hamster'},
+        ]}/>
+    );
+`} />
+
+<Props of={Select} />
+
+## Default
+
+
+
+<Preview withSource="open">
+  <Story name="default" >
+    <Select options={options}/>
+  </Story>
+  <Story name="rtl" >
+    <Select dir="rtl" options={options}/>
+  </Story>
+  <Story name="onChange" >
+    <Select onChange={(e) => alert(e.target.value)} options={options}/>
+  </Story>
+  <Story name="onClick" >
+    <Select onClick={(e) => alert('clicked')} options={options}/>
+  </Story>
+</Preview>

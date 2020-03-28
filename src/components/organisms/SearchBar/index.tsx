@@ -1,6 +1,9 @@
 import React, { FC } from 'react';
 import { faSlidersH, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { IconButton, Input, Tags, Tag } from '@mtg-maple/web-components';
+
+import IconButton from '../../atoms/IconButton';
+import Input from '../../molecules/Input';
+import Tags, { Tag } from '../../molecules/Tags';
 
 import styles from './style.module.scss';
 

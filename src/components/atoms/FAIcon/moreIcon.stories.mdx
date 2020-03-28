@@ -1,0 +1,54 @@
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import { MoreIcon } from '../FAIcon';
+
+<Meta
+  title="Atoms/FAIcon/MoreIcon"
+  parameters={{
+    component: MoreIcon,
+  }}
+/>
+
+# MoreIcon
+
+<Source code={`
+    import { MoreIcon } from '@mtg-maple/web-components';
+     
+    export default = () => (
+        <MoreIcon/>
+    );
+`} />
+
+<Props of={MoreIcon} />
+
+## Size
+
+<Preview withSource="open">
+  <Story name="Small">
+    <MoreIcon size="small"/>
+  </Story>
+  <Story name="Medium">
+    <MoreIcon size="medium"/>
+  </Story>
+  <Story name="Large">
+    <MoreIcon size="large"/>
+  </Story>
+</Preview>
+
+## Single Mana
+
+<Preview withSource="open">
+  <Story name="Primary Color">
+    <MoreIcon color="primary"/>
+  </Story>
+  <Story name="Secondary Color">
+    <MoreIcon color="secondary"/>
+  </Story>
+  <Story name="Text Color">
+    <MoreIcon color="text"/>
+  </Story>
+  <Story name="Mute Text Color">
+    <MoreIcon color="muteText"/>
+  </Story>
+</Preview>

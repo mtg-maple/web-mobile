@@ -1,0 +1,47 @@
+import { useState } from 'react';
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+
+import ManaColors from '../ManaColors';
+
+<Meta
+  title="Molecules/ManaColors"
+  parameters={{
+    component: ManaColors,
+  }}
+/>
+
+# ManaColors
+
+<Source code={`
+    import ManaColors from '@mtg-maple/web-components/molecules/ManaColors';
+     
+    export default = (props) => (
+        <ManaColors colors={['U', 'R']}/>
+    );
+`} />
+
+<Props of={ManaColors} />
+
+## Basic
+
+<Preview withSource="open">
+  <Story name="Basic" >
+    <ManaColors colors={['U', 'R']}/>
+  </Story>
+</Preview>
+
+## Size
+
+<Preview withSource="open">
+  <Story name="Small" >
+    <ManaColors colors={['U', 'R']} size="small"/>
+  </Story>
+  <Story name="Medium" >
+    <ManaColors colors={['U', 'R']} size="medium"/>
+  </Story>
+  <Story name="Large" >
+    <ManaColors colors={['U', 'R']} size="large"/>
+  </Story>
+</Preview>

@@ -1,0 +1,103 @@
+import { FC } from 'react';
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+
+import CardListItemLayout from '../CardListItemLayout';
+
+<Meta
+  title="Molecules/CardListItemLayout"
+  parameters={{
+    component: CardListItemLayout,
+  }}
+/>
+
+# CardListItemLayout
+
+<Source code={`
+    import CardListItemLayout from '@mtg-maple/web-components/molecules/CardListItemLayout';
+    
+    export default = (props) => {
+      const cardImageProps = {
+        src: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+        alt: 'brazen borrower',
+        size: 'deckThumbnail',
+      };
+      const info = () => (
+        <>
+          <span>Brazen Borrower</span>
+          <span>Description</span>
+        </>
+      );
+      return <CardListItemLayout { ...{cardImageProps, info } }/>;
+    };
+`} />
+
+<Props of={CardListItemLayout} />
+
+## Basic 1
+
+<Preview withSource="open">
+  <Story name="Basic 1" >
+    {() => {
+      const cardImageProps = {
+        src: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+        alt: 'brazen borrower',
+        size: 'thumbnail',
+      };
+      const info = (
+        <>
+          <span>Brazen Borrower</span>
+          <span>Description</span>
+        </>
+      );
+      const onClick = () => alert('clicked');
+      const showMoreIcon = true;
+      return <CardListItemLayout { ...{cardImageProps, info, onClick, showMoreIcon} }/>;
+    }}
+  </Story>
+</Preview>
+
+## Basic 2
+
+<Preview withSource="open">
+  <Story name="Basic 2" >
+    {() => {
+      const cardImageProps = {
+        src: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+        alt: 'brazen borrower',
+        size: 'deckThumbnail',
+      };
+      const info = (
+        <>
+          <span>Brazen Borrower</span>
+          <span>Description</span>
+        </>
+      );
+      return <CardListItemLayout { ...{cardImageProps, info } }/>;
+    }}
+  </Story>
+</Preview>
+
+
+## Image Click
+
+<Preview withSource="open">
+  <Story name="Image Click" >
+    {() => {
+      const cardImageProps = {
+        src: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+        alt: 'brazen borrower',
+        size: 'deckThumbnail',
+        onClick: () => alert('image clicked'),
+      };
+      const info = (
+        <>
+          <span>Brazen Borrower</span>
+          <span>Description</span>
+        </>
+      );
+      return <CardListItemLayout { ...{cardImageProps, info } }/>;
+    }}
+  </Story>
+</Preview>

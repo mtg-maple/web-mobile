@@ -1,0 +1,45 @@
+@import "../../../properties.scss";
+
+.label {
+  font-family: $font-family-text;
+  text-align: left;
+}
+
+.label.large {
+  font-size: $font-size-l;
+  line-height: $font-size-l;
+}
+
+.label.medium {
+  font-size: $font-size-m;
+  line-height: $font-size-m;
+}
+
+.label.small {
+  font-size: $font-size-s;
+  line-height: $font-size-s;
+}
+
+.label.primary {
+  color: $color-primary;
+}
+
+.label.secondary {
+  color: $color-secondary;
+}
+
+.label.text {
+  color: $color-text;
+}
+
+.label.muteText {
+  color: $color-text-mute;
+}
+
+.label.default {
+  font-weight: $font-weight-default;
+}
+
+.label.bold {
+  font-weight: $font-weight-bold;
+}

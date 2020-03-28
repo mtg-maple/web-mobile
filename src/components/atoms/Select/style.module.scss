@@ -1,0 +1,19 @@
+@import "../../../properties.scss";
+
+.select {
+  background-color: transparent;
+  color: $color-text;
+  font-size: $font-size-m;
+  line-height: $font-size-l;
+  border: 0;
+  border-radius: $radius;
+  -webkit-appearance: none;
+	-moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  padding: .5rem calc(#{$font-size-s} + 1rem) .5rem .5rem;
+  background-image: url(../../../assets/icons/chevron-down-solid.svg);
+  background-repeat: no-repeat;
+  background-size: $font-size-s $font-size-s;
+  background-position: right $font-size-s center;
+}

@@ -1,0 +1,55 @@
+import { useState } from 'react';
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+
+import ManaCost from '../ManaCost';
+
+<Meta
+  title="Molecules/ManaCost"
+  parameters={{
+    component: ManaCost,
+  }}
+/>
+
+# ManaCosts
+
+<Source code={`
+    import ManaCost from '@mtg-maple/web-components/molecules/ManaCost';
+     
+    export default = (props) => (
+        <ManaCost value="{3}{W}{W}"/>
+    );
+`} />
+
+<Props of={ManaCost} />
+
+## Basic
+
+<Preview withSource="open">
+  <Story name="Basic 1" >
+    <ManaCost value="{3}{W}{W}"/>
+  </Story>
+  <Story name="Basic 2" >
+    <ManaCost value="{X}{R}"/>
+  </Story>
+  <Story name="Basic 3" >
+    <ManaCost value="{3}{B/P}"/>
+  </Story>
+  <Story name="Basic 4" >
+    <ManaCost value="{U/R}{U/R}"/>
+  </Story>
+</Preview>
+
+## Size
+<Preview withSource="open">
+  <Story name="Small" >
+    <ManaCost value="{3}{W}{W}" size="small"/>
+  </Story>
+  <Story name="Medium" >
+    <ManaCost value="{X}{R}" size="medium"/>
+  </Story>
+  <Story name="Large" >
+    <ManaCost value="{3}{B/P}" size="large"/>
+  </Story>
+</Preview>

@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 
-import { Tag } from '@mtg-maple/web-components';
+import { Tag } from '../../molecules/Tags';
 import HomeTemplate from '../../templates/HomeTemplate';
 import { Deck, getDecks, IResponse, DecksPage } from '../../../mock';
 

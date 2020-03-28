@@ -1,5 +1,9 @@
 import React, { FC } from 'react';
-import { Heading, Select, SelectProps, isSelectProps, isIconButtonProps, IconButton, IconButtonProps } from '@mtg-maple/web-components';
+
+import Heading from '../../atoms/Heading';
+import Select, { SelectProps, isSelectProps } from '../../atoms/Select';
+import IconButton, { IconButtonProps, isIconButtonProps } from '../../atoms/IconButton';
+
 
 import styles from './style.module.scss';
 

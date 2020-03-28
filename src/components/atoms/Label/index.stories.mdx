@@ -1,0 +1,67 @@
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import Label from '../Label';
+
+<Meta
+  title="Atoms/Label"
+  parameters={{
+    component: Label,
+  }}
+/>
+
+# Label
+
+<Source code={`
+    import Label from '@mtg-maple/web-components/atoms/Label';
+     
+    export default = (props) => (
+        <Label text="Medium"/>
+    );
+`} />
+
+<Props of={Label} />
+
+## Default
+
+<Preview withSource="open">
+  <Story name="default" >
+    <Label text="Medium"/>
+  </Story>
+</Preview>
+
+## Size
+
+<Preview withSource="open">
+  <Story name="small" >
+    <Label text="Small" size="small"/>
+  </Story>
+  <Story name="medium" >
+    <Label text="Medium" size="medium"/>
+  </Story>
+  <Story name="large" >
+    <Label text="Large" size="large"/>
+  </Story>
+</Preview>
+
+## Color
+
+<Preview withSource="open">
+  <Story name="text" >
+    <Label text="Text" color="text"/>
+  </Story>
+  <Story name="muteText" >
+    <Label text="Mute Text" color="muteText"/>
+  </Story>
+</Preview>
+
+## Weight
+
+<Preview withSource="open">
+  <Story name="fontWeightDefault" >
+    <Label text="Default" weight="default"/>
+  </Story>
+  <Story name="fontWeightBold" >
+    <Label text="Bold" weight="bold"/>
+  </Story>
+</Preview>

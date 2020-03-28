@@ -1,0 +1,60 @@
+@import "../../../properties.scss";
+
+.cardListItem {
+  list-style: none;
+}
+
+
+.cardListItem .cardListItemLink {
+  width: 100%;
+  display: block;
+  border: 0;
+  background-color: transparent;
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  text-align: left;
+  font: inherit;
+}
+
+.cardListItem .cardListItemLink:focus {
+  outline: 0;
+}
+
+.cardListItem .cardListItemLink:hover {
+  cursor: pointer;
+}
+
+.cardListItem .cardListItemLink:not(:disabled):focus {
+  background-color: $color-base-aft;
+  transition: all $hover-animation-timing $hover-animation-duration;
+}
+
+.cardListItemContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cardImage {
+  flex-shrink: 0;
+}
+
+.info {
+  flex-grow: 1;
+  margin-left: calc(#{$space} * 2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: $color-text;
+  text-decoration: none;
+}
+
+.moreIcon {
+  flex-shrink: 0;
+  margin-left: calc(#{$space} * 2);
+  margin-right: $space;
+}

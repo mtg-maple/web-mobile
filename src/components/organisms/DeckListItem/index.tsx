@@ -1,12 +1,9 @@
 import React, { FC } from 'react';
-import { 
-  CardListItemLayout,
-  ManaColor,
-  ManaColors,
-  Label,
-  Description,
-} from '@mtg-maple/web-components';
 
+import CardListItemLayout from '../../molecules/CardListItemLayout';
+import ManaColors, { ManaColor } from '../../molecules/ManaColors';
+import Label from '../../atoms/Label';
+import Description from '../../atoms/Description';
 import styles from './style.module.scss';
 
 export type DeckListItemProps = {

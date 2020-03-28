@@ -7,7 +7,7 @@ describe('DeckListItem',() => {
   it('click event', () => {
     const handleClick = jest.fn();
     const wrapper = mount(<DeckListItem id="" name="" description="" thumbnailImageUrl="" colors={[]} onClick={handleClick}/>);
-    wrapper.find('a').simulate('click');
+    wrapper.find('button').simulate('click');
     expect(handleClick.mock.calls.length).toEqual(1);
   });
 });

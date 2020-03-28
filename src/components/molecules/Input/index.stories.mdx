@@ -1,0 +1,49 @@
+import { useState } from 'react';
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+
+import Input from '../Input';
+
+<Meta
+  title="Molecules/Input"
+  parameters={{
+    component: Input,
+  }}
+/>
+
+# Input
+
+<Source code={`
+    import Input from '@mtg-maple/web-components/molecules/Input';
+     
+    export default = (props) => (
+        <Input />
+    );
+`} />
+
+<Props of={Input} />
+
+## Appearance
+
+<Preview withSource="open">
+  <Story name="default" >
+    {() => {
+      const [value, setValue] = useState('');
+      return <Input value={value} setValue={setValue}/>;
+    }}
+  </Story>
+  <Story name="placeholder" >
+    {() => {
+      const [value, setValue] = useState('');
+      return <Input value={value} setValue={setValue} placeholder="Placeholder"/>;
+    }}
+  </Story>
+  <Story name="icon" >
+    {() => {
+      const [value, setValue] = useState('');
+      return <Input icon={faSearch} value={value} setValue={setValue}/>;
+    }}
+  </Story>
+</Preview>

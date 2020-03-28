@@ -1,0 +1,26 @@
+@import "../../../properties.scss";
+
+.manaColorItemList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-inline-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  list-style-type: none;
+}
+
+.manaColorItem {
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+}
+
+.manaColorItem.large:nth-child(n+2) {
+  margin-left: $space;
+}
+
+.manaColorItem.medium:nth-child(n+2),
+.manaColorItem.small:nth-child(n+2) {
+  margin-left: calc(#{$space} / 2);
+}

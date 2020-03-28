@@ -1,0 +1,54 @@
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
+import IconButton from '../IconButton';
+
+<Meta
+  title="Atoms/IconButton"
+  parameters={{
+    component: IconButton,
+  }}
+/>
+
+# IconButton
+
+<Source code={`
+    import IconButton from '@mtg-maple/web-components/atoms/IconButton';
+    import { faSearch } from '@fortawesome/free-solid-svg-icons';
+     
+    export default = (props) => (
+        <IconButton icon={faSearch} type="large" color="primary"/>
+    );
+`} />
+
+<Props of={IconButton} />
+
+## Appearance
+
+<Preview withSource="open">
+  <Story name="primary" >
+    <IconButton icon={faSearch} color="primary"/>
+  </Story>
+  <Story name="secondary" >
+    <IconButton icon={faSearch} color="secondary"/>
+  </Story>
+  <Story name="muteText" >
+    <IconButton icon={faSearch} color="muteText"/>
+  </Story>
+  <Story name="large" >
+    <IconButton icon={faSearch} size="large"/>
+  </Story>
+  <Story name="small" >
+    <IconButton icon={faSearch} size="small"/>
+  </Story>
+</Preview>
+
+## onClick
+
+<Preview withSource="open">
+  <Story name="alert" >
+    <IconButton icon={faSearch} onClick={() => window.alert('button is clicked')}/>
+  </Story>
+</Preview>

@@ -1,0 +1,37 @@
+@import "../../../properties.scss";
+
+.number {
+  font-family: $font-family-number;
+  text-align: center;
+}
+
+.number.large {
+  font-size: $font-size-l;
+  line-height: $font-size-l;
+}
+
+.number.medium {
+  font-size: $font-size-m;
+  line-height: $font-size-m;
+}
+
+.number.small {
+  font-size: $font-size-s;
+  line-height: $font-size-s;
+}
+
+.number.primary {
+  color: $color-primary;
+}
+
+.number.secondary {
+  color: $color-secondary;
+}
+
+.number.text {
+  color: $color-text;
+}
+
+.number.muteText {
+  color: $color-text-mute;
+}

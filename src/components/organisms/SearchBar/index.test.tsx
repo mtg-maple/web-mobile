@@ -1,7 +1,7 @@
-import React, { ReactElement, useState, FC } from 'react';
+import React, { useState, FC } from 'react';
 import { mount } from 'enzyme';
 
-import { Tag } from '@mtg-maple/web-components';
+import { Tag } from '../../molecules/Tags';
 
 import SearchBar from '../SearchBar';
 

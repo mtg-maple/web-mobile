@@ -1,0 +1,64 @@
+@import "../../../properties.scss";
+
+$user-icon-size-l: 4rem;
+$user-icon-size-m: 3rem;
+$user-icon-size-s: 2rem;
+
+a {
+  color: transparent;
+}
+
+.altIcon.large {
+  font-size: $user-icon-size-l;
+  width: $user-icon-size-l;
+  height: $user-icon-size-l;
+  border-radius: calc(#{$user-icon-size-l} / 2);
+}
+
+.altIcon.medium {
+  font-size: $user-icon-size-m;
+  width: $user-icon-size-m;
+  height: $user-icon-size-m;
+  border-radius: calc(#{$user-icon-size-m} / 2);
+}
+
+.altIcon.small {
+  font-size: $user-icon-size-s;
+  width: $user-icon-size-s;
+  height: $user-icon-size-s;
+  border-radius: calc(#{$user-icon-size-s} / 2);
+}
+
+.altIcon.primary {
+  color: $color-primary;
+}
+
+.altIcon.secondary {
+  color: $color-secondary;
+}
+
+.altIcon.text {
+  color: $color-text;
+}
+
+.altIcon.muteText {
+  color: $color-text-mute;
+}
+
+.iconImg.large {
+  width: $user-icon-size-l;
+  height: $user-icon-size-l;
+  border-radius: calc(#{$user-icon-size-l} / 2);
+}
+
+.iconImg.medium {
+  width: $user-icon-size-m;
+  height: $user-icon-size-m;
+  border-radius: calc(#{$user-icon-size-m} / 2);
+}
+
+.iconImg.small {
+  width: $user-icon-size-s;
+  height: $user-icon-size-s;
+  border-radius: calc(#{$user-icon-size-s} / 2);
+}

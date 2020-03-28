@@ -1,0 +1,38 @@
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import Heading from '../Heading';
+
+<Meta
+  title="Atoms/Heading"
+  parameters={{
+    component: Heading,
+  }}
+/>
+
+# Heading
+
+<Source code={`
+    import Heading from '@mtg-maple/web-components/atoms/Heading';
+     
+    export default = (props) => (
+        <Heading>H1</Heading>
+    );
+`} />
+
+<Props of={Heading} />
+
+<Preview withSource="open">
+  <Story name="h1">
+    <Heading>H1</Heading>
+  </Story>
+  <Story name="h2">
+    <Heading level="2">H2</Heading>
+  </Story>
+  <Story name="h3">
+    <Heading level="3">H3</Heading>
+  </Story>
+  <Story name="muteText">
+    <Heading color="muteText">H1</Heading>
+  </Story>
+</Preview>

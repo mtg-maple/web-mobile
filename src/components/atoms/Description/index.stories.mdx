@@ -1,0 +1,70 @@
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source } from "@storybook/addon-docs/blocks";
+
+import Description from '../Description';
+
+<Meta
+  title="Atoms/Description"
+  parameters={{
+    component: Description,
+  }}
+/>
+
+# Description
+
+<Source code={`
+import Description from '@mtg-maple/web-components/atoms/Description';
+	
+export default = (props) => (
+	<Description>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	</Description>
+);
+`} />
+
+<Props of={Description} />
+
+<Preview withSource="open">
+	<Story name="regular">
+		<Description>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+		</Description>
+  </Story>
+</Preview>
+
+<Preview withSource="open">
+  <Story name="small">
+		<Description size="small">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+		</Description>
+  </Story>
+</Preview>
+
+<Preview withSource="open">
+  <Story name="muteText">
+    <Description color="muteText">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </Description>
+  </Story>
+</Preview>
+
+<Preview withSource="open">
+  <Story name="maxLine1">
+    <section style={{ width: '400px' }}>
+			<Description maxLine={1}>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			</Description>
+		</section>
+  </Story>
+</Preview>
+
+<Preview withSource="open">
+  <Story name="maxLine3">
+    <section style={{ width: '400px' }}>
+			<Description maxLine={2}>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			</Description>
+		</section>
+  </Story>
+</Preview>
+

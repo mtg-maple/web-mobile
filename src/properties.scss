@@ -1,0 +1,93 @@
+/* ***** Value ***** */
+
+/* Color Hue */
+$color-white: #fff;
+$color-black: #1e1f20;
+$color-black-dk: #131514;
+$color-black-lt: #212929;
+$color-gray: #3c3c3c;
+$color-gray-dk: #2e2e2e; /* dk = dark */
+$color-gray-lt: #555555; /* lt = light */
+$color-gray-p: #b6b6b6; /* p = pale */
+$color-green: #51c300;
+$color-red: #b24403;
+$color-red-dk: #a02900;
+$color-red-lt: #bf5100;
+
+/* ***** Branding ***** */
+
+/* Color Meaning */
+$color-base: $color-black;
+$color-base-aft: $color-black-dk;
+$color-base-fore: $color-black-lt;
+$color-link: none;
+$color-link-visited: none;
+$color-link-hover: none;
+$color-link-active: none;
+$color-success: none;
+$color-danger: none;
+$color-warning: none;
+$color-info: none;
+$color-primary: $color-red;
+$color-primary-focus: $color-red-dk;
+$color-primary-disabled: $color-red-lt;
+$color-secondary: $color-gray;
+$color-secondary-focus: $color-gray-dk;
+$color-secondary-disabled: $color-gray-lt;
+$color-accent: none;
+$color-selected: none;
+
+/* ***** Media ***** */
+
+/* Color */
+$color-text: $color-white;
+$color-text-mute: $color-gray-p;
+$color-text-outlined: none;
+$color-tip: none;
+$color-line: none;
+$color-header: none;
+$color-card: none;
+$color-card-header: none;
+
+/* Font Size */
+$font-size-xxs: none;
+$font-size-xs: none;
+$font-size-s: .75rem;
+$font-size-m: 1rem;
+$font-size-l: 1.25rem;
+$font-size-xl: none;
+$font-size-xxl: none;
+$font-size-xxxl: none;
+$font-size-xxxxl: none;
+
+/* Font Family */
+$font-family-text: "Hiragino Kaku Gothic Pro", Helvetica, Arial, sans-serif;
+$font-family-number: Helvetica, Arial, sans-serif;
+
+/* Font Weight */
+$font-weight-default: 400;
+$font-weight-bold: 700;
+
+/* Space */
+$space: .5rem;
+
+/* Frame */
+$line-width: 1px;
+$line-width-wide: 3px;
+$line-style: solid;
+$radius: 8px;
+$border: $line-width $line-style $color-line;
+
+/* Feedback */
+$hover-feedback-opacity: .7;
+
+/* Annimation */
+$hover-animation-duration: 150ms;
+$hover-animation-timing: ease-out;
+$hover-animation: $hover-animation-duration $hover-animation-timing;
+$fade-animation-duration: .2s;
+$fade-animation-timing: linear;
+$fade-animation: $fade-animation-duration $fade-animation-timing;
+
+/* Z Index */
+$z-header: 10;

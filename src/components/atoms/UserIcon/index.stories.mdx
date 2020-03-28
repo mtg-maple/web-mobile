@@ -1,0 +1,86 @@
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import UserIcon from '../UserIcon';
+
+<Meta
+  title="Atoms/UserIcon"
+  parameters={{
+    component: UserIcon,
+  }}
+/>
+
+# UserIcon
+
+<Source code={`
+    import UserIcon from '@mtg-maple/web-components/atoms/UserIcon';
+     
+    export default = (props) => (
+        <UserIcon src="https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg" alt="user icon"/>
+    );
+`} />
+
+<Props of={UserIcon} />
+
+## Image Icon
+
+<Preview withSource="open">
+  <Story name="imageSmall">
+    <UserIcon size="small" src="https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg" alt="imageSmall"/>
+  </Story>
+  <Story name="imageMedium">
+    <UserIcon size="medium" src="https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg" alt="imageMedium"/>
+  </Story>
+  <Story name="imageLarge">
+    <UserIcon size="large" src="https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg" alt="imageLarge"/>
+  </Story>
+</Preview>
+
+## Alt Icon
+
+<Preview withSource="open">
+  <Story name="altSmall">
+    <UserIcon size="small" alt="altSmall"/>
+  </Story>
+  <Story name="altMedium">
+    <UserIcon size="medium" alt="altMedium"/>
+  </Story>
+  <Story name="altLarge">
+    <UserIcon size="large" alt="altLarge"/>
+  </Story>
+</Preview>
+
+## Alt Icon Color Variations
+
+<Preview withSource="open">
+  <Story name="altPrimary">
+    <UserIcon color="primary" alt="altPrimary"/>
+  </Story>
+  <Story name="altSecondary">
+    <UserIcon color="secondary" alt="altSecondary"/>
+  </Story>
+  <Story name="altText">
+    <UserIcon color="text" alt="altText"/>
+  </Story>
+  <Story name="altMuteText">
+    <UserIcon color="muteText" alt="altMuteText"/>
+  </Story>
+</Preview>
+
+## Link
+
+<Preview withSource="open">
+  <Story name="altIconWithLink">
+    <UserIcon 
+      linkUrl="https://github.com/mtg-maple/web-components"
+      alt="altIconWithLink"
+    />
+  </Story>
+  <Story name="imageIconwithLink">
+    <UserIcon 
+      src="https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg"
+      linkUrl="https://github.com/mtg-maple/web-components"
+      alt="imageIconwithLink"
+    />
+  </Story>
+</Preview>

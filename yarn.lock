@@ -1548,18 +1548,6 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@mtg-maple/web-components@0.2.7":
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/@mtg-maple/web-components/-/web-components-0.2.7.tgz#50ef375676a889a16f61684c91af75aa7f3a8fb5"
-  integrity sha512-bv8iViqK3LjQVh4Gd+oqTnqQVaN/xFn7KMXW+stqxD4GToIrhET8zn/rjoguLwuc+WzBirmNnAAkk8z+SdzduA==
-  dependencies:
-    "@fortawesome/fontawesome-svg-core" "1.2.27"
-    "@fortawesome/free-brands-svg-icons" "5.12.1"
-    "@fortawesome/free-regular-svg-icons" "5.12.1"
-    "@fortawesome/free-solid-svg-icons" "5.12.1"
-    "@fortawesome/react-fontawesome" "0.1.9"
-    mana-font "1.6.0"
-
 "@nodelib/fs.stat@^1.1.2":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"

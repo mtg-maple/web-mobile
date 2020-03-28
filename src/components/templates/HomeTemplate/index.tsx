@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Tag } from '@mtg-maple/web-components';
+import { Tag } from '../../molecules/Tags';
 
 import Header from '../../organisms/Header';
 import SearchBar from '../../organisms/SearchBar';
