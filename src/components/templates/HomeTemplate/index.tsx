@@ -21,15 +21,17 @@ export type HomeTemplateProps = {
 const HomeTemplate: FC<HomeTemplateProps> = ({ searchBar, decks }) => {
   return (
     <div className={styles.root}>
-      <Header headingText="自分のデッキ" funcProps={{
-        options: [
-            { label: 'スタンダード', value: 'standard'},
-            { label: 'パイオニア', value: 'pioneer'},
-            { label: 'モダン', value: 'modern'},
-            { label: 'レガシー', value: 'legacy'},
-        ]
-      }}/>
-      <SearchBar className={styles.searchBar} placeholder="デッキの名前、説明" {...searchBar}/>
+      <section className={styles.default}>
+        <Header headingText="自分のデッキ" funcProps={{
+          options: [
+              { label: 'スタンダード', value: 'standard'},
+              { label: 'パイオニア', value: 'pioneer'},
+              { label: 'モダン', value: 'modern'},
+              { label: 'レガシー', value: 'legacy'},
+          ]
+        }}/>
+        <SearchBar className={styles.searchBar} placeholder="デッキの名前、説明" {...searchBar}/>
+      </section>
       <DeckList decks={decks} className={styles.deckList}/>
     </div>
   );

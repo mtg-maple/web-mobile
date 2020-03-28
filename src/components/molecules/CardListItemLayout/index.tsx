@@ -12,9 +12,9 @@ export type CardListItemLayoutProps = {
   className?: string;
 };
 
-const CardListItemLayout: FC<CardListItemLayoutProps> = ({ cardImageProps, info, onClick, showMoreIcon, className }) => {
-  const listItemContent = (
-    <div className={[styles.cardListItemContent, className].join(' ')}>
+const CardListItemLayout: FC<CardListItemLayoutProps> = ({ cardImageProps, info, onClick, showMoreIcon, className }) => (
+  <li className={[styles.cardListItem, className].join(' ')}>
+    <button className={[styles.cardListItemButton, className].join(' ')} onClick={onClick}>
       <CardImage { ...{ ...cardImageProps, className: [cardImageProps.className, styles.cardImage].join(' ') } }/>
         <div className={styles.info}>
           { info }
@@ -23,15 +23,8 @@ const CardListItemLayout: FC<CardListItemLayoutProps> = ({ cardImageProps, info,
           showMoreIcon &&
           <MoreIcon color="muteText" className={styles.moreIcon}/>
         }
-    </div>
-  );
-  return (
-    <li className={[styles.cardListItem, className].join(' ')}>
-      {
-        typeof onClick === 'undefined' ? listItemContent : <button className={styles.cardListItemLink} onClick={onClick}>{ listItemContent }</button>
-      }
-    </li> 
-  );
-};
+    </button>
+  </li> 
+);
 
 export default CardListItemLayout;

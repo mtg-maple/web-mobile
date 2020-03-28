@@ -5,9 +5,12 @@
 }
 
 
-.cardListItem .cardListItemLink {
+.cardListItemButton {
   width: 100%;
-  display: block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
   border: 0;
   background-color: transparent;
   text-rendering: auto;
@@ -18,25 +21,20 @@
   text-shadow: none;
   text-align: left;
   font: inherit;
+  padding: $space $space-2x;
 }
 
-.cardListItem .cardListItemLink:focus {
+.cardListItem .cardListItemButton:focus {
   outline: 0;
 }
 
-.cardListItem .cardListItemLink:hover {
+.cardListItem .cardListItemButton:hover {
   cursor: pointer;
 }
 
-.cardListItem .cardListItemLink:not(:disabled):focus {
+.cardListItem .cardListItemButton:not(:disabled):focus {
   background-color: $color-base-aft;
   transition: all $hover-animation-timing $hover-animation-duration;
-}
-
-.cardListItemContent {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }
 
 .cardImage {
