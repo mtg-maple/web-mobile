@@ -10,6 +10,29 @@ const SearchTemplate: FC<SearchTemplateProps> = () => {
   return (
     <>
       <Header headingText="Search"/>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
     </>
   );
 }
