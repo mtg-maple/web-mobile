@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,8 +13,6 @@ import SearchPage from './components/pages/SearchPage';
 import UserPage from './components/pages/UserPage';
 import DeckPage from './components/pages/DeckPage';
 import RestoredScroll from './hooks/RestoredScroll';
-import { setSearchBarQuery, setSearchBarTags, ISearchTag } from './store';
-import { Deck, getDecks, IResponse, DecksPage } from './mock';
 import useStore from './store';
 
 import styles from './style.module.scss';
@@ -23,24 +21,10 @@ import styles from './style.module.scss';
 const App: FC = () => {
   const [store, dispatch] = useStore();
 
-  const decksState = useState<Deck[]>([]);
   const homePageProps = {
-    query: store.tabs.home.searchBar.query, 
-    setQuery: (newQuery: string) => dispatch(setSearchBarQuery('home', newQuery)),
-    tags: store.tabs.home.searchBar.tags,
-    setTags: (newTags: ISearchTag[]) => dispatch(setSearchBarTags('home', newTags)),
-    decksState,
+    store: store.tabs.home,
+    dispatch,
   };
-
-  const setDecks = decksState[1];
-  useEffect(() => {
-    getDecks('').then((res: IResponse<DecksPage>) => {
-      if (res.status === 200) {
-        setDecks(res.result.data);
-      }
-    });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <div className={styles.app}>

@@ -3,10 +3,9 @@ import React, { FC } from 'react';
 import Header from '../../organisms/Header';
 import SearchBar from '../../organisms/SearchBar';
 import DeckList from '../../organisms/DeckList';
-import { Deck } from '../../../mock';
 
 import styles from './style.module.scss';
-import { ISearchTag } from '../../../store';
+import { ISearchTag, IDeckListItem } from '../../../store';
 
 export type HomeTemplateProps = {
   searchBar: {
@@ -16,7 +15,7 @@ export type HomeTemplateProps = {
     setTags: (newTags: ISearchTag[]) => void;
     onClick: (e: React.MouseEvent) => void;
   }
-  decks: Deck[];
+  decks: IDeckListItem[];
 }
 
 const HomeTemplate: FC<HomeTemplateProps> = ({ searchBar, decks }) => {

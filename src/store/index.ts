@@ -5,6 +5,8 @@ import { IAction, ActionType } from './actions';
 import { reduceSetScrollPosition } from './setScrollPosition';
 import { reduceSetSearchBarQuery } from './setSearchBarQuery';
 import { reduceSetSearchBarTags } from './setSearchBarTags';
+import { reduceSetDecks } from './setDecks';
+import { reduceAppendDecks } from './appendDecks';
 
 
 function reducer(state: IStore, action: IAction): IStore {
@@ -15,6 +17,10 @@ function reducer(state: IStore, action: IAction): IStore {
       return reduceSetSearchBarQuery(state, action);
     case ActionType.SetSearchBarTags:
       return reduceSetSearchBarTags(state, action);
+    case ActionType.SetDecks:
+      return reduceSetDecks(state, action);
+    case ActionType.AppendDecks:
+      return reduceAppendDecks(state, action);
     default:
       return state;
   }
@@ -30,3 +36,5 @@ export * from './model';
 export * from './setScrollPosition';
 export * from './setSearchBarQuery';
 export * from './setSearchBarTags';
+export * from './setDecks';
+export * from './appendDecks';
