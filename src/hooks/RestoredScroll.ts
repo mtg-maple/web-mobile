@@ -20,7 +20,6 @@ const RestoredScroll: FC<RestoredScrollProps> = ({ store, dispatch, tab, childre
     const unregister = history.listen(() => {
       const scrollPositionY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
       dispatch(setScrollPosition(tab, scrollPositionY));
-      console.log(`route changed: ${JSON.stringify(store.tabs)}`);
     });
     return (): void => {
       unregister();
