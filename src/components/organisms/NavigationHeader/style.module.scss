@@ -1,6 +1,9 @@
+@import "../../../properties.scss";
+
 .navigationHeader {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: $space $space-2x;
 }
