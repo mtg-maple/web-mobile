@@ -1,10 +1,18 @@
 import React, { FC } from 'react';
 
-import Header from '../../organisms/Header';
+import NavigationHeader from '../../organisms/NavigationHeader'
+import { IDeck } from '../../../store';
+import commonStyles from '../style.module.scss';
 
-const DeckTemplate: FC = () => (
+export type DeckTemplateProps = {
+  deck: IDeck;
+}
+
+const DeckTemplate: FC<DeckTemplateProps> = ({ deck }) => (
     <>
-      <Header headingText="Deck"/>
+      <section className={commonStyles.default}>
+        <NavigationHeader title={deck.name}/>
+      </section>
     </>
 );
 

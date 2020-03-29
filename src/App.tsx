@@ -35,7 +35,7 @@ const App: FC = () => {
                 <RestoredScroll tab="home" store={store} dispatch={dispatch}>
                   <Switch>
                     <Route path="/home/decks/:id">
-                      <DeckPage/>
+                      <DeckPage { ...{dispatch} }/>
                     </Route>
                     <Redirect from="/home/decks" to="/home"/>
                     <Route path="/home">    

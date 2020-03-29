@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import DeckListItem from '../DeckListItem';
 import styles from './style.module.scss';
@@ -10,6 +11,8 @@ export type DeckListProps = {
 };
 
 const DeckList: FC<DeckListProps> = ({ decks, className }) => {
+  let history = useHistory();
+  let { path } = useRouteMatch();
   return (
     <ul className={[styles.deckList, className].join(' ')}>
       {
@@ -22,7 +25,7 @@ const DeckList: FC<DeckListProps> = ({ decks, className }) => {
             thumbnailImageUrl={deck.thumbnailImageUrl}
             colors={deck.colors}
             className={styles.deckListItem}
-            onClick={() => console.log('clicked')}
+            onClick={() => history.push(`${path}/decks/${deck.id}`)}
             showMoreIcon
           />
         ))
