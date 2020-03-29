@@ -1,0 +1,32 @@
+import { useState } from 'react';
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import NavigationHeader from '../NavigationHeader';
+
+<Meta
+  title="Organisms/NavigationHeader"
+  parameters={{
+    component: NavigationHeader,
+  }}
+/>
+
+# NavigationHeader
+
+<Source code={`
+    import NavigationHeader from '@mtg-maple/web-components/organisms/NavigationHeader';
+     
+    export default = (props) => {
+      return <NavigationHeader title="青白コントロール"/>;
+    };
+`} />
+
+<Props of={NavigationHeader} />
+
+## Basic
+
+<Preview withSource="open">
+  <Story name="Basic" >
+    <NavigationHeader title="青白コントロール"/>
+  </Story>
+</Preview>
