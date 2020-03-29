@@ -1,0 +1,41 @@
+import { FC } from 'react';
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import { ForwardButton, BackButton, CloseButton, ClearButton } from '../ButtonInstance';
+
+<Meta
+  title="Molecules/ButtonInstance"
+  parameters={{
+    component: BackButton,
+  }}
+/>
+
+# ButtonInstance
+
+<Source code={`
+    import { BackButton } from '@mtg-maple/web-components/molecules/ButtonInstance';
+    
+    export default = (props) => {
+      return <BackButton onClick={() => alert('clicked')}/>;
+    };
+`} />
+
+<Props of={BackButton} />
+
+## Gallery
+
+<Preview withSource="open">
+  <Story name="BackButton" >
+    <BackButton onClick={() => alert('clicked')}/>
+  </Story>
+  <Story name="ForwardButton" >
+    <ForwardButton onClick={() => alert('clicked')}/>
+  </Story>
+  <Story name="CloseButton" >
+    <CloseButton onClick={() => alert('clicked')}/>
+  </Story>
+  <Story name="ClearButton" >
+    <ClearButton onClick={() => alert('clicked')}/>
+  </Story>
+</Preview>

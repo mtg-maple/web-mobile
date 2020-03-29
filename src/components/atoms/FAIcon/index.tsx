@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, IconDefinition, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './style.module.scss';
 
@@ -29,3 +29,4 @@ const iconFactory = (icon: IconDefinition): FC<IconProps> => {
 };
 
 export const MoreIcon = iconFactory(faChevronRight);
+export const BackIcon = iconFactory(faChevronLeft);

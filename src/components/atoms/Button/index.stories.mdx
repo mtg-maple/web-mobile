@@ -1,0 +1,37 @@
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source } from "@storybook/addon-docs/blocks";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+import Button from '../Button';
+
+<Meta
+  title="Atoms/Button"
+  parameters={{
+    component: Button,
+  }}
+/>
+
+# Button
+
+<Source code={`
+import Button from '@mtg-maple/web-components/atoms/Button';
+	
+export default = (props) => (
+	<Button onClick={() => alert('clicked')}>
+    Basic Button
+  </Button>
+);
+`} />
+
+<Props of={Button} />
+
+## Basic
+
+<Preview withSource="open">
+	<Story name="Basic">
+		<Button onClick={() => alert('clicked')}>
+      Basic Button
+    </Button>
+  </Story>
+</Preview>

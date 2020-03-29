@@ -1,0 +1,135 @@
+@import "../../../properties.scss";
+
+$text-button-height-s: 1.5rem;
+$text-button-height-m: 2rem;
+$text-button-height-l: 2.5rem;
+$text-button-border-outline: 3px;
+
+$icon-button-size-l: 2rem;
+$icon-button-size-m: 1.5rem;
+$icon-button-size-s: 1rem;
+
+.button.text {
+    border: $text-button-border-outline solid transparent;
+
+    text-align: center;
+    font-family: $font-family-text;
+    font-style: normal;
+    font-weight: $font-weight-bold;
+}
+
+.button.text.large {
+  height: $text-button-height-l;
+  border-radius: calc(#{$text-button-height-l} / 2);
+  padding: calc(.5rem - #{$text-button-border-outline}) calc(2.25rem - #{$text-button-border-outline});
+  font-size: $font-size-m;
+  line-height: $font-size-m;
+}
+
+.button.text.medium {
+  height: $text-button-height-m;
+  border-radius: calc(#{$text-button-height-m} / 2);
+  padding: calc(.5rem - #{$text-button-border-outline}) calc(2rem - #{$text-button-border-outline});
+  font-size: $font-size-s;
+  line-height: $font-size-s;
+}
+
+.button.text.small {
+  height: $text-button-height-s;
+  border-radius: calc(#{$text-button-height-s} / 2);
+  padding: calc(.5rem - #{$text-button-border-outline}) calc(1.5rem - #{$text-button-border-outline});
+  font-size: $font-size-xs;
+  line-height: $font-size-xs;
+}
+
+.button.text.grow {
+    width: 100%;
+}
+
+.button.text:focus {
+    outline: 0;
+}
+
+.button.text:not(:disabled):hover {
+    cursor: pointer;
+    transition: all $hover-animation-timing $hover-animation-duration;
+}
+
+.button.text.primary {
+    background-color: $color-primary;
+    color: $color-text;
+}
+
+.button.text.primary:not(:disabled):hover {
+    background-color: $color-primary-focus;
+}
+
+.button.text.primary:not(:disabled):focus {
+    background-color: $color-primary-focus;
+    border-color: $color-primary-disabled;
+}
+
+.button.text.primary:disabled {
+    background-color: $color-primary-disabled;
+    color: rgba($color-text, .5);
+}
+
+.button.text.secondary {
+    background-color: $color-secondary;
+    color: $color-text;
+}
+
+.button.text.secondary:not(:disabled):hover {
+    background-color: $color-secondary-focus;
+}
+
+.button.text.secondary:not(:disabled):focus {
+    background-color: $color-secondary-focus;
+    border-color: $color-secondary-disabled;
+}
+
+.button.text.secondary:disabled {
+    background-color: $color-secondary-disabled;
+    color: rgba($color-text, .5);
+}
+
+
+.button.icon {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.button.icon:hover {
+  cursor: pointer;
+}
+
+.button.icon.large {
+  font-size: $font-size-l;
+  width: $icon-button-size-l;
+  height: $icon-button-size-l;
+}
+
+.button.icon.medium {
+  font-size: $font-size-m;
+  width: $icon-button-size-m;
+  height: $icon-button-size-m;
+}
+
+.button.icon.small {
+  font-size: $font-size-s;
+  width: $icon-button-size-s;
+  height: $icon-button-size-s;
+}
+
+.button.icon.primary {
+  color: $color-text;
+}
+
+.button.icon.secondary {
+  color: $color-text-mute;
+}
+
