@@ -5,15 +5,15 @@ import { IStore, ISearchTag } from './model';
 export interface SetSearchBarTagsAction {
   type: ActionType.SetSearchBarTags;
   payload: {
-    tab: 'home' | 'search';
+    path: string;
     tags: ISearchTag[];
   };
 }
 
 // Action Creator
-export const setSearchBarTags = (tab: 'home' | 'search', tags: ISearchTag[]): SetSearchBarTagsAction => ({
+export const setSearchBarTags = (path: string, tags: ISearchTag[]): SetSearchBarTagsAction => ({
   type: ActionType.SetSearchBarTags,
-  payload: { tab, tags },
+  payload: { path, tags },
 });
 
 // User-Defined Type Guard
@@ -25,17 +25,17 @@ const isSetSearchBarTagsAction = (arg: any): arg is SetSearchBarTagsAction => {
 export const reduceSetSearchBarTags = (state: IStore, action: IAction): IStore => {
   if (isSetSearchBarTagsAction(action)) {
     const tags = action.payload.tags;
-    switch(action.payload.tab) {
-      case 'home':
-        const home = { ...state.tabs.home, searchBar: { ...state.tabs.home.searchBar, tags } };
-        return { ...state, ...{ tabs: { ...state.tabs, home }} };
-      case 'search':
-        const search = { ...state.tabs.search, searchBar: { ...state.tabs.search.searchBar, tags } };
-        return { ...state, ...{ tabs: { ...state.tabs, search }} };
-      default:
-        return state;
+    if (action.payload.path === '/home') {
+      const searchBar = { ...state.homeTab.homePage.searchBar, tags };
+      const homePage = { ...state.homeTab.homePage, searchBar }
+      const homeTab = { ...state.homeTab, homePage };
+      return { ...state, homeTab };
+    } else if (action.payload.path === '/search') {
+      const searchBar = { ...state.searchTab.searchPage.searchBar, tags };
+      const searchPage = { ...state.searchTab.searchPage, searchBar }
+      const searchTab = { ...state.searchTab, searchPage };
+      return { ...state, searchTab };
     }
-  } else {
-    return state;
   }
+  return state;
 };

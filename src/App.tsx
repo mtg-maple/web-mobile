@@ -20,37 +20,32 @@ import styles from './style.module.scss';
 
 const App: FC = () => {
   const [store, dispatch] = useStore();
-
-  const homePageProps = {
-    store: store.tabs.home,
-    dispatch,
-  };
-
+  
   return (
     <div className={styles.app}>
       <Router>
           <section className={styles.appView}>
             <Switch>
               <Route path="/home">
-                <RestoredScroll tab="home" store={store} dispatch={dispatch}>
+                <RestoredScroll store={store} dispatch={dispatch}>
                   <Switch>
                     <Route path="/home/decks/:id">
                       <DeckPage { ...{dispatch} }/>
                     </Route>
                     <Redirect from="/home/decks" to="/home"/>
                     <Route path="/home">    
-                      <HomePage {...homePageProps}/>
+                      <HomePage { ...{ store: store.homeTab.homePage, dispatch } }/>
                     </Route>
                   </Switch>
                 </RestoredScroll>
               </Route>
               <Route path="/search">
-                <RestoredScroll tab="search" store={store} dispatch={dispatch}>
+                <RestoredScroll store={store} dispatch={dispatch}>
                   <SearchPage/>
                 </RestoredScroll>
               </Route>
               <Route path="/user">
-                <RestoredScroll tab="user" store={store} dispatch={dispatch}>
+                <RestoredScroll store={store} dispatch={dispatch}>
                   <UserPage/>
                 </RestoredScroll>
               </Route>

@@ -1,19 +1,22 @@
 import React, { FC, Dispatch, useEffect } from 'react';
+import { useRouteMatch } from 'react-router-dom';
 
 import HomeTemplate from '../../templates/HomeTemplate';
-import { IAction, ISearchTag, IHomeTabStore, setSearchBarQuery, setSearchBarTags, setDecks } from '../../../store';
+import { IAction, ISearchTag, IHomePageStore, setSearchBarQuery, setSearchBarTags, setDecks } from '../../../store';
 import { getDecks, IResponse, DecksPage } from '../../../mock';
 
 export type HomePageProps = {
-  store: IHomeTabStore,
+  store: IHomePageStore,
   dispatch: Dispatch<IAction>;
 }
 
 const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
+  const { path } = useRouteMatch();
+
   useEffect(() => {
     getDecks('').then((res: IResponse<DecksPage>) => {
       if (res.status === 200) {
-        dispatch(setDecks('home', res.result.data));
+        dispatch(setDecks(path, res.result.data));
       }
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -26,7 +29,7 @@ const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
     setTags: (newTags: ISearchTag[]) => dispatch(setSearchBarTags('home', newTags)),
     onClick: () => alert('clicked'),
   }
-  const decks = store.myDecks;
+  const decks = store.decks;
   
   const props = { searchBar, decks };
   return (

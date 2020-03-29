@@ -5,15 +5,15 @@ import { IStore, IDeckListItem } from './model';
 export interface SetDecksAction {
   type: ActionType.SetDecks;
   payload: {
-    tab: 'home' | 'search';
+    path: string;
     decks: IDeckListItem[];
   };
 }
 
 // Action Creator
-export const setDecks = (tab: 'home' | 'search', decks: IDeckListItem[]): SetDecksAction => ({
+export const setDecks = (path: string, decks: IDeckListItem[]): SetDecksAction => ({
   type: ActionType.SetDecks,
-  payload: { tab, decks },
+  payload: { path, decks },
 });
 
 // User-Defined Type Guard
@@ -25,17 +25,15 @@ export const isSetDecksAction = (arg: any): arg is SetDecksAction => {
 export const reduceSetDecks = (state: IStore, action: IAction): IStore => {
   if (isSetDecksAction(action)) {
     const decks = action.payload.decks;
-    switch(action.payload.tab) {
-      case 'home':
-        const home = { ...state.tabs.home, myDecks: decks };
-        return { ...state, ...{ tabs: { ...state.tabs, home }} };
-      case 'search':
-        const search = { ...state.tabs.search, resultDecks: decks };
-        return { ...state, ...{ tabs: { ...state.tabs, search }} };
-      default:
-        return state;
+    if (action.payload.path === '/home') {
+      const homePage = { ...state.homeTab.homePage, decks };
+      const homeTab = { ...state.homeTab, homePage }
+      return { ...state, homeTab };
+    } else if (action.payload.path === '/search') {
+      const searchPage = { ...state.searchTab.searchPage, decks };
+      const searchTab = { ...state.searchTab, searchPage }
+      return { ...state, searchTab };
     }
-  } else {
-    return state;
   }
+  return state;
 };

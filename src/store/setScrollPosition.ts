@@ -5,15 +5,15 @@ import { IStore } from './model';
 export interface SetScrollPositionAction {
   type: ActionType.SetScrollPosition;
   payload: {
-    tab: 'home' | 'search' | 'user';
+    path: string;
     scrollPositionY: number;
   };
 }
 
 // Action Creator
-export const setScrollPosition = (tab: 'home' | 'search' | 'user', scrollPositionY: number): SetScrollPositionAction => ({
+export const setScrollPosition = (path: string, scrollPositionY: number): SetScrollPositionAction => ({
   type: ActionType.SetScrollPosition,
-  payload: { tab, scrollPositionY },
+  payload: { path, scrollPositionY },
 });
 
 // User-Defined Type Guard
@@ -25,20 +25,16 @@ const isSetScrollPositionAction = (arg: any): arg is SetScrollPositionAction => 
 export const reduceSetScrollPosition = (state: IStore, action: IAction): IStore => {
   if (isSetScrollPositionAction(action)) {
     const scrollPositionY = action.payload.scrollPositionY;
-    switch(action.payload.tab) {
-      case 'home':
-        const home = { ...state.tabs.home, scrollPositionY };
-        return { ...state, ...{ tabs: { ...state.tabs, home }} };
-      case 'search':
-        const search = { ...state.tabs.search, scrollPositionY };
-        return { ...state, ...{ tabs: { ...state.tabs, search }} };
-      case 'user':
-        const user = { ...state.tabs.user, scrollPositionY };
-        return { ...state, ...{ tabs: { ...state.tabs, user }} };
-      default:
-        return state;
+    if (action.payload.path.startsWith('/home')) {
+      const homeTab = { ...state.homeTab, scrollPositionY };
+      return { ...state, homeTab };
+    } else if (action.payload.path.startsWith('/search')) {
+      const searchTab = { ...state.searchTab, scrollPositionY };
+      return { ...state, searchTab };
+    } else if (action.payload.path.startsWith('/user')) {
+      const userTab = { ...state.userTab, scrollPositionY };
+      return { ...state, userTab };
     }
-  } else {
-    return state;
   }
+  return state;
 };

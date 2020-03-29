@@ -1,9 +1,7 @@
 export interface IStore {
-  tabs: {
-    home: IHomeTabStore,
-    search: ISearchTabStore,
-    user: IUserTabStore,
-  };
+  homeTab: IHomeTabStore,
+  searchTab: ISearchTabStore,
+  userTab: IUserTabStore,
 }
 
 export interface ITabStore {
@@ -11,13 +9,25 @@ export interface ITabStore {
 }
 
 export interface IHomeTabStore extends ITabStore {
+  homePage: IHomePageStore;
+  deckPage: IDeckPageStore;
+}
+
+export interface IHomePageStore {
   searchBar: ISearchBarState;
-  myDecks: IDeckListItem[];
+  decks: IDeckListItem[];
+}
+
+export interface IDeckPageStore {
+  deck?: IDeck;
 }
 
 export interface ISearchTabStore extends ITabStore {
+  searchPage: ISearchPageStore;
+}
+export interface ISearchPageStore {
   searchBar: ISearchBarState;
-  resultDecks: IDeckListItem[];
+  decks: IDeckListItem[];
 }
 
 export interface IUserTabStore extends ITabStore {
@@ -67,25 +77,30 @@ export type ManaCostSymbol =
 '11' | '12' | '13' | '14'  | '15'  | '16'  | '17'  | '18'  | '19'  | '20' | '1/2';
 
 export const initialStore: IStore = {
-  tabs: {
-    home: {
-      scrollPositionY: 0,
+  homeTab: {
+    scrollPositionY: 0,
+    homePage: {
       searchBar: {
         query: '',
         tags: [],
       },
-      myDecks: [],
+      decks: [],
     },
-    search: {
-      scrollPositionY: 0,
+    deckPage: {
+      deck: undefined,
+    },
+  },
+  searchTab: {
+    scrollPositionY: 0,
+    searchPage: {
       searchBar: {
         query: '',
         tags: [],
       },
-      resultDecks: [],
-    },
-    user: {
-      scrollPositionY: 0,
+      decks: [],
     }
-  }
+  },
+  userTab: {
+    scrollPositionY: 0,
+  },
 };

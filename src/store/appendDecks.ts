@@ -5,15 +5,15 @@ import { IStore, IDeckListItem } from './model';
 export interface AppendDecksAction {
   type: ActionType.AppendDecks;
   payload: {
-    tab: 'home' | 'search';
+    path: string;
     decks: IDeckListItem[];
   };
 }
 
 // Action Creator
-export const appendDecks = (tab: 'home' | 'search', decks: IDeckListItem[]): AppendDecksAction => ({
+export const appendDecks = (path: string, decks: IDeckListItem[]): AppendDecksAction => ({
   type: ActionType.AppendDecks,
-  payload: { tab, decks },
+  payload: { path, decks },
 });
 
 // User-Defined Type Guard
@@ -24,20 +24,18 @@ export const isAppendDecksAction = (arg: any): arg is AppendDecksAction => {
 // Reducer
 export const reduceAppendDecks = (state: IStore, action: IAction): IStore => {
   if (isAppendDecksAction(action)) {
-    const decks = action.payload.decks;
-    switch(action.payload.tab) {
-      case 'home':
-        const myDecks = state.tabs.home.myDecks.concat(decks);
-        const home = { ...state.tabs.home, myDecks };
-        return { ...state, ...{ tabs: { ...state.tabs, home }} };
-      case 'search':
-        const resultDecks = state.tabs.search.resultDecks.concat(decks);
-        const search = { ...state.tabs.search, resultDecks };
-        return { ...state, ...{ tabs: { ...state.tabs, search }} };
-      default:
-        return state;
+    const newDecks = action.payload.decks;
+    if (action.payload.path === '/home') {
+      const decks = state.homeTab.homePage.decks.concat(newDecks);
+      const homePage = { ...state.homeTab.homePage, decks };
+      const homeTab = { ...state.homeTab, homePage };
+      return { ...state, homeTab };
+    } else if (action.payload.path === '/search') {
+      const decks = state.searchTab.searchPage.decks.concat(newDecks);
+      const searchPage = { ...state.searchTab.searchPage, decks };
+      const searchTab = { ...state.searchTab, searchPage };
+      return { ...state, searchTab };
     }
-  } else {
-    return state;
   }
+  return state;
 };

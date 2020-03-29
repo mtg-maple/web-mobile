@@ -5,15 +5,15 @@ import { IStore } from './model';
 export interface SetSearchBarQueryAction {
   type: ActionType.SetSearchBarQuery;
   payload: {
-    tab: 'home' | 'search';
+    path: string;
     query: string;
   };
 }
 
 // Action Creator
-export const setSearchBarQuery = (tab: 'home' | 'search', query: string): SetSearchBarQueryAction => ({
+export const setSearchBarQuery = (path: string, query: string): SetSearchBarQueryAction => ({
   type: ActionType.SetSearchBarQuery,
-  payload: { tab, query },
+  payload: { path, query },
 });
 
 // User-Defined Type Guard
@@ -25,17 +25,17 @@ const isSetSearchBarQueryAction = (arg: any): arg is SetSearchBarQueryAction => 
 export const reduceSetSearchBarQuery = (state: IStore, action: IAction): IStore => {
   if (isSetSearchBarQueryAction(action)) {
     const query = action.payload.query;
-    switch(action.payload.tab) {
-      case 'home':
-        const home = { ...state.tabs.home, searchBar: { ...state.tabs.home.searchBar, query } };
-        return { ...state, ...{ tabs: { ...state.tabs, home }} };
-      case 'search':
-        const search = { ...state.tabs.search, searchBar: { ...state.tabs.search.searchBar, query } };
-        return { ...state, ...{ tabs: { ...state.tabs, search }} };
-      default:
-        return state;
+    if (action.payload.path === '/home') {
+      const searchBar = { ...state.homeTab.homePage.searchBar, query };
+      const homePage = { ...state.homeTab.homePage, searchBar }
+      const homeTab = { ...state.homeTab, homePage };
+      return { ...state, homeTab };
+    } else if (action.payload.path === '/search') {
+      const searchBar = { ...state.searchTab.searchPage.searchBar, query };
+      const searchPage = { ...state.searchTab.searchPage, searchBar }
+      const searchTab = { ...state.searchTab, searchPage };
+      return { ...state, searchTab };
     }
-  } else {
-    return state;
   }
+  return state;
 };

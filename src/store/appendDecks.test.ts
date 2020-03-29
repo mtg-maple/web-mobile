@@ -23,11 +23,11 @@ describe('appendDecks', ():void => {
   const action = appendDecks('home', newDecks);
   const store = {
     ...initialStore,
-    tabs: {
-        ...initialStore.tabs,
-        home: {
-          ...initialStore.tabs.home, 
-          myDecks: currentDecks,
+    homeTab: {
+        ...initialStore.homeTab,
+        homePage: {
+          ...initialStore.homeTab.homePage, 
+          decks: currentDecks,
         }
     }
   };
@@ -36,7 +36,7 @@ describe('appendDecks', ():void => {
     expect(action).toMatchObject({
       type: ActionType.AppendDecks,
       payload: {
-        tab: 'home',
+        path: '/home',
         decks: newDecks,
       },
     });
@@ -52,7 +52,7 @@ describe('appendDecks', ():void => {
 
   it('Reducer: Valid Use', (): void => {
     const newStore = reduceAppendDecks(store, action);
-    expect(newStore.tabs.home.myDecks).toMatchObject(currentDecks.concat(newDecks));
+    expect(newStore.homeTab.homePage.decks).toMatchObject(currentDecks.concat(newDecks));
   });
 
   it('Reducer: Invalid Use', (): void => {

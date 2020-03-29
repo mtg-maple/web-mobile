@@ -11,13 +11,13 @@ describe('setDecks', ():void => {
       colors: ['W' as ManaColor],
     }
   ];
-  const action = setDecks('home', decks);
+  const action = setDecks('/home', decks);
 
   it('Action Creator', (): void => {
     expect(action).toMatchObject({
       type: ActionType.SetDecks,
       payload: {
-        tab: 'home',
+        path: '/home',
         decks,
       },
     });
@@ -33,7 +33,7 @@ describe('setDecks', ():void => {
 
   it('Reducer: Valid Use', (): void => {
     const newStore = reduceSetDecks(initialStore, action);
-    expect(newStore.tabs.home.myDecks).toMatchObject(decks);
+    expect(newStore.homeTab.homePage.decks).toMatchObject(decks);
   });
 
   it('Reducer: Invalid Use', (): void => {
