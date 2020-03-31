@@ -2,7 +2,7 @@ import { useEffect, Dispatch } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { IAction, setLastLocation } from '../store';
 
-const useUpdateLocation = (path: string, dispatch: Dispatch<IAction>): void => {
+const useTraceLocation = (path: string, dispatch: Dispatch<IAction>): void => {
   let history = useHistory();
   let location = useLocation();
   useEffect(() => {
@@ -17,4 +17,4 @@ const useUpdateLocation = (path: string, dispatch: Dispatch<IAction>): void => {
   }, []);
 };
 
-export default useUpdateLocation;
+export default useTraceLocation;

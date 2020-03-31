@@ -3,7 +3,7 @@ import { useRouteMatch } from 'react-router-dom';
 
 import UserPage from '../pages/UserPage';
 import { IUserTabStore, IAction } from '../../store';
-import useUpdateLocation from '../../hooks/useUpdateLocation';
+import useTraceLocation from '../../hooks/useTraceLocation';
 import useRestoreScroll from '../../hooks/useRestoreScroll';
 
 export type UserTabProps = {
@@ -13,7 +13,7 @@ export type UserTabProps = {
 
 const UserTab: FC<UserTabProps> = ({ store, dispatch }) => {
   const { path } = useRouteMatch();
-  useUpdateLocation(path, dispatch);
+  useTraceLocation(path, dispatch);
   useRestoreScroll(store.scrollPositionY);
   return (
     <UserPage store={store.userPage} dispatch={dispatch} />
