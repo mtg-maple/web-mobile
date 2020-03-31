@@ -3,7 +3,6 @@ import {
   Switch,
   Route,
   Redirect,
-  useLocation,
 } from 'react-router-dom';
 import { faHome, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,18 +10,13 @@ import TabBar from './components/organisms/TabBar';
 import HomeTab from './components/tabs/HomeTab';
 import SearchTab from './components/tabs/SearchTab';
 import UserTab from './components/tabs/UserTab';
-import useStore, { setScrollPosition } from './store';
+import useStore from './store';
 import { AppLocationContext } from './context';
-
+import { TabIdentifier } from './utils/location';
 import styles from './style.module.scss';
+
 const App: FC = () => {
   const [store, dispatch] = useStore();
-  let { pathname } = useLocation();
-
-  const onTabChange = () => {
-    const scrollPositionY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-    dispatch(setScrollPosition(pathname, scrollPositionY));
-  }
 
   return (
     <AppLocationContext.Provider value={{ lastLocation: store.lastLocation }}>
@@ -41,10 +35,25 @@ const App: FC = () => {
             <Redirect from="/" to="/home" />
           </Switch>
         </section>
-        <TabBar className={styles.tabBar} links={[
-          { icon: faHome, link: store.homeTab.lastLocation?.pathname || '/home', onClick: () => onTabChange() },
-          { icon: faSearch, link: store.searchTab.lastLocation?.pathname || '/search', onClick: () => onTabChange() },
-          { icon: faUser, link: store.userTab.lastLocation?.pathname || '/user', onClick: () => onTabChange() },
+        <TabBar 
+          className={styles.tabBar} 
+          dispatch={dispatch}
+          links={[
+            {
+              tabIdentifier: TabIdentifier.Home,
+              icon: faHome,
+              lastLocation: store.homeTab.lastLocation,
+            },
+            { 
+              tabIdentifier: TabIdentifier.Search,
+              icon: faSearch,
+              lastLocation: store.searchTab.lastLocation,
+            },
+            { 
+              tabIdentifier: TabIdentifier.User,
+              icon: faUser,
+              lastLocation: store.userTab.lastLocation,
+            },
         ]} />
       </div>
     </AppLocationContext.Provider>
