@@ -35,10 +35,10 @@ import TabBar from '../TabBar';
 
 <Props of={TabBar} />
 
-## Appearance
+## Basic
 
 <Preview withSource="open">
-  <Story name="default" >
+  <Story name="Basic" >
     <Router>
       <Switch>
         <Route path='/home'><p>HOME</p></Route>
@@ -49,6 +49,25 @@ import TabBar from '../TabBar';
         { icon: faHome, link: '/home' },
         { icon: faSearch, link: '/search' },
         { icon: faUser, link: '/mypage' },
+      ]}/>
+    </Router>
+  </Story>
+</Preview>
+
+## OnClick
+
+<Preview withSource="open">
+  <Story name="onClick" >
+    <Router>
+      <Switch>
+        <Route path='/home'><p>HOME</p></Route>
+        <Route path='/search'><p>SEARCH</p></Route>
+        <Route path='/mypage'><p>MYPAGE</p></Route>
+      </Switch>
+      <TabBar links={[
+        { icon: faHome, link: '/home', onClick: () => alert('home clicked') },
+        { icon: faSearch, link: '/search', onClick: () => alert('search clicked')  },
+        { icon: faUser, link: '/mypage', onClick: () => alert('mypage clicked')  },
       ]}/>
     </Router>
   </Story>

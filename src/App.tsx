@@ -1,64 +1,53 @@
 import React, { FC } from 'react';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
+  useLocation,
 } from 'react-router-dom';
 import { faHome, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 
 import TabBar from './components/organisms/TabBar';
-import HomePage from './components/pages/HomePage';
-import SearchPage from './components/pages/SearchPage';
-import UserPage from './components/pages/UserPage';
-import DeckPage from './components/pages/DeckPage';
-import RestoredScroll from './hooks/RestoredScroll';
-import useStore from './store';
+import HomeTab from './components/tabs/HomeTab';
+import SearchTab from './components/tabs/SearchTab';
+import UserTab from './components/tabs/UserTab';
+import useStore, { setScrollPosition } from './store';
+import { AppLocationContext } from './context';
 
 import styles from './style.module.scss';
-
-
 const App: FC = () => {
   const [store, dispatch] = useStore();
-  
+  let { pathname } = useLocation();
+
+  const onTabChange = () => {
+    const scrollPositionY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    dispatch(setScrollPosition(pathname, scrollPositionY));
+  }
+
   return (
-    <div className={styles.app}>
-      <Router>
-          <section className={styles.appView}>
-            <Switch>
-              <Route path="/home">
-                <RestoredScroll store={store} dispatch={dispatch}>
-                  <Switch>
-                    <Route path="/home/decks/:id">
-                      <DeckPage { ...{dispatch} }/>
-                    </Route>
-                    <Redirect from="/home/decks" to="/home"/>
-                    <Route path="/home">    
-                      <HomePage { ...{ store: store.homeTab.homePage, dispatch } }/>
-                    </Route>
-                  </Switch>
-                </RestoredScroll>
-              </Route>
-              <Route path="/search">
-                <RestoredScroll store={store} dispatch={dispatch}>
-                  <SearchPage/>
-                </RestoredScroll>
-              </Route>
-              <Route path="/user">
-                <RestoredScroll store={store} dispatch={dispatch}>
-                  <UserPage/>
-                </RestoredScroll>
-              </Route>
-              <Redirect from="/" to="/home"/>
-            </Switch>
-          </section>
+    <AppLocationContext.Provider value={{ lastLocation: store.lastLocation }}>
+      <div className={styles.app}>
+        <section className={styles.appView}>
+          <Switch>
+            <Route path="/home">
+              <HomeTab store={store.homeTab} dispatch={dispatch} />
+            </Route>
+            <Route path="/search">
+              <SearchTab store={store.searchTab} dispatch={dispatch} />
+            </Route>
+            <Route path="/user">
+              <UserTab store={store.userTab} dispatch={dispatch} />
+            </Route>
+            <Redirect from="/" to="/home" />
+          </Switch>
+        </section>
         <TabBar className={styles.tabBar} links={[
-          { icon: faHome, link: '/home' },
-          { icon: faSearch, link: '/search' },
-          { icon: faUser, link: '/user' },
-        ]}/>
-      </Router>
-    </div>
+          { icon: faHome, link: store.homeTab.lastLocation?.pathname || '/home', onClick: () => onTabChange() },
+          { icon: faSearch, link: store.searchTab.lastLocation?.pathname || '/search', onClick: () => onTabChange() },
+          { icon: faUser, link: store.userTab.lastLocation?.pathname || '/user', onClick: () => onTabChange() },
+        ]} />
+      </div>
+    </AppLocationContext.Provider>
   );
 }
 

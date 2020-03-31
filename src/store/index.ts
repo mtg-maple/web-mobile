@@ -7,6 +7,7 @@ import { reduceSetSearchBarQuery } from './setSearchBarQuery';
 import { reduceSetSearchBarTags } from './setSearchBarTags';
 import { reduceSetDecks } from './setDecks';
 import { reduceAppendDecks } from './appendDecks';
+import { reduceSetLastLocation } from './setLastLocation';
 
 
 function reducer(state: IStore, action: IAction): IStore {
@@ -21,6 +22,8 @@ function reducer(state: IStore, action: IAction): IStore {
       return reduceSetDecks(state, action);
     case ActionType.AppendDecks:
       return reduceAppendDecks(state, action);
+    case ActionType.SetLastLocation:
+      return reduceSetLastLocation(state, action);
     default:
       return state;
   }
@@ -38,3 +41,4 @@ export * from './setSearchBarQuery';
 export * from './setSearchBarTags';
 export * from './setDecks';
 export * from './appendDecks';
+export * from './setLastLocation';

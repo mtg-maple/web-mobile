@@ -6,13 +6,14 @@ import styles from './style.module.scss';
 
 export type NavigationBarProps = {
   title: string;
+  pathBackward: string;
 }
 
-const NavigationHeader: FC<NavigationBarProps> = ({ title }) => {
+const NavigationHeader: FC<NavigationBarProps> = ({ title, pathBackward }) => {
   let history = useHistory();
   return (
     <header className={styles.navigationHeader}>
-      <BackButton onClick={() => history.goBack()}/>
+      <BackButton onClick={() => history.push(pathBackward)}/>
       <Heading level="2">{title}</Heading>
       <OptionButton onClick={() => alert('clicked')}/>
     </header>

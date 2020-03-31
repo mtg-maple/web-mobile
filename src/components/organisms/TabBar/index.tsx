@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, MouseEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -15,6 +15,7 @@ export type TabBarProps = {
 export type NavigationLink = {
   icon: IconDefinition;
   link: string;
+  onClick?: (e: MouseEvent) => void;
 }
 
 const TabBar: FC<TabBarProps> = ({ links, className }) => {
@@ -23,7 +24,7 @@ const TabBar: FC<TabBarProps> = ({ links, className }) => {
       {
         links.map((props: NavigationLink) => (
           <li className={styles.tabBarItem} key={props.link}>
-            <NavLink to={props.link} className={styles.tabBarLink} activeClassName={styles.active}>
+            <NavLink to={props.link} className={styles.tabBarLink} activeClassName={styles.active} onClick={props.onClick}>
               <FontAwesomeIcon icon={props.icon}/>
             </NavLink>
           </li>

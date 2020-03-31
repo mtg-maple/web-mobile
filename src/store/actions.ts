@@ -9,4 +9,5 @@ export enum ActionType {
   SetSearchBarTags = 'SET_SEARCH_BAR_TAGS',
   SetDecks = 'SET_DECKS',
   AppendDecks = 'APPEND_DECKS',
+  SetLastLocation = 'SET_LAST_LOCATION',
 }

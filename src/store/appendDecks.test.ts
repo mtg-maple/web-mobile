@@ -20,7 +20,7 @@ describe('appendDecks', ():void => {
       colors: ['B' as ManaColor],
     }
   ];
-  const action = appendDecks('home', newDecks);
+  const action = appendDecks('/home', newDecks);
   const store = {
     ...initialStore,
     homeTab: {

@@ -5,11 +5,48 @@ import { IDeck } from '../../../store';
 
 export type DeckTemplateProps = {
   deck: IDeck;
+  pathBackward: string;
 }
 
-const DeckTemplate: FC<DeckTemplateProps> = ({ deck }) => (
+const DeckTemplate: FC<DeckTemplateProps> = ({ deck, pathBackward }) => (
     <>
-      <NavigationHeader title={deck.name}/>
+      <NavigationHeader title={deck.name} pathBackward={pathBackward}/>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
+      <p>lorem ipsum</p>
     </>
 );
 
