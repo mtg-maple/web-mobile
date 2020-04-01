@@ -1,11 +1,23 @@
-import React, { FC, Dispatch, useEffect } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import React, { FC, Dispatch, useEffect, MouseEvent } from 'react';
+import { useRouteMatch, useHistory } from 'react-router-dom';
 
 import HomeTemplate from '../templates/HomeTemplate';
-import { IAction, ISearchTag, IHomePageStore, setSearchBarQuery, setSearchBarTags, setDecks } from '../../store';
+import { 
+  IAction, 
+  ISearchTag, 
+  IHomePageStore, 
+  IDeckListItem,
+  setSearchBarQuery, 
+  setSearchBarTags, 
+  setDecks, 
+
+} from '../../store';
 import { getDecks, IResponse, DecksPage } from '../../mock';
-import useScrollSaveOnUnmount from '../../hooks/useScrollSaveOnUnmount';
-import useScrollRestoreOnMount from '../../hooks/useScrollRestoreOnMount';
+import {
+  useScrollSaveOnUnmount,
+  useScrollRestoreOnMount,
+  useLocationSaveOnUnmount,
+} from '../../hooks';
 
 export type HomePageProps = {
   store: IHomePageStore,
@@ -14,9 +26,11 @@ export type HomePageProps = {
 
 const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
   const { path } = useRouteMatch();
+  let history = useHistory();
 
   useScrollSaveOnUnmount(dispatch);
   useScrollRestoreOnMount(store, dispatch);
+  useLocationSaveOnUnmount(dispatch);
 
   useEffect(() => {
     getDecks('').then((res: IResponse<DecksPage>) => {
@@ -34,9 +48,17 @@ const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
     setTags: (newTags: ISearchTag[]) => dispatch(setSearchBarTags('home', newTags)),
     onClick: () => alert('clicked'),
   }
-  const decks = store.decks;
+  const deckList = {
+    decks: store.decks,
+    onClicks: store.decks.map((deck: IDeckListItem): (e: MouseEvent) => void => {
+      return (e: MouseEvent) => {
+        const toPath = `/home/decks/${deck.id}`;
+        history.push(toPath);
+      };
+    }),
+  };
   
-  const props = { searchBar, decks };
+  const props = { searchBar, deckList };
   return (
     <HomeTemplate { ...props }/>
   );

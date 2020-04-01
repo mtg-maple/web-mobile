@@ -9,11 +9,13 @@ export interface IStore {
 
 export interface ITabStore {
   lastLocation?: H.Location<H.History.PoorMansUnknown>;
-  beforeLastLocation?: H.Location<H.History.PoorMansUnknown>;
 }
 
 export interface IPageStore {
   scrollPositionY: number;
+}
+export interface IChildPageStore {
+  backLocation?: H.Location<H.History.PoorMansUnknown>;
 }
 
 export interface IHomeTabStore extends ITabStore {
@@ -26,7 +28,7 @@ export interface IHomePageStore extends IPageStore {
   decks: IDeckListItem[];
 }
 
-export interface IDeckPageStore extends IPageStore {
+export interface IDeckPageStore extends IPageStore, IChildPageStore {
   deck?: IDeck;
 }
 
@@ -98,7 +100,6 @@ export type ILocation = {
 export const initialStore: IStore = {
   homeTab: {
     lastLocation: undefined,
-    beforeLastLocation: undefined,
     homePage: {
       scrollPositionY: 0,
       searchBar: {
@@ -109,12 +110,12 @@ export const initialStore: IStore = {
     },
     deckPage: {
       scrollPositionY: 0,
+      backLocation: undefined,
       deck: undefined,
     },
   },
   searchTab: {
     lastLocation: undefined,
-    beforeLastLocation: undefined,
     searchPage: {
       scrollPositionY: 0,
       searchBar: {
@@ -126,7 +127,6 @@ export const initialStore: IStore = {
   },
   userTab: {
     lastLocation: undefined,
-    beforeLastLocation: undefined,
     userPage: {
       scrollPositionY: 0,
     },

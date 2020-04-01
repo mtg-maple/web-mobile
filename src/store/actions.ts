@@ -10,4 +10,5 @@ export enum ActionType {
   SetDecks = 'SET_DECKS',
   AppendDecks = 'APPEND_DECKS',
   SetLastLocation = 'SET_LAST_LOCATION',
+  InitChildPage = 'INIT_CHILD_PAGE',
 }

@@ -1,19 +1,24 @@
 import React, { FC, Dispatch } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import DeckTemplate from '../templates/DeckTemplate';
 import { IAction, ManaColor, IDeckCard, IDeckPageStore } from '../../store';
-import useScrollSaveOnUnmount from '../../hooks/useScrollSaveOnUnmount';
-import useScrollRestoreOnMount from '../../hooks/useScrollRestoreOnMount';
+import {
+  useScrollSaveOnUnmount,
+  useScrollRestoreOnMount,
+  useLocationSaveOnUnmount,
+} from '../../hooks';
 
 export type DeckPageProps = {
-  store: IDeckPageStore;
+  store: IDeckPageStore,
   dispatch: Dispatch<IAction>,
-  pathBackward: string,
 }
 
-const DeckPage: FC<DeckPageProps> = ({ store, dispatch, pathBackward }) => {
+const DeckPage: FC<DeckPageProps> = ({ store, dispatch }) => {
   useScrollSaveOnUnmount(dispatch);
   useScrollRestoreOnMount(store, dispatch);
+  useLocationSaveOnUnmount(dispatch);
+  let history = useHistory();
   const deck = {
     id: 'aaaa',
     name: '青白コントロール',
@@ -23,9 +28,12 @@ const DeckPage: FC<DeckPageProps> = ({ store, dispatch, pathBackward }) => {
     mainboard: [] as IDeckCard[],
     sideboard: [] as IDeckCard[],
   };
+  const onBackButtonClick = () => {
+    history.push(`${store.backLocation?.pathname}?action=back` || '/home' );
+  };
 
   return (
-    <DeckTemplate { ...{ deck, pathBackward } } />
+    <DeckTemplate { ...{ deck, onBackButtonClick } } />
   );
 };
 

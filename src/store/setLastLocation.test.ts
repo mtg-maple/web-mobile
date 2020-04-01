@@ -6,19 +6,18 @@ import { ActionType, initialStore } from '../store';
 describe('setLastLocation', ():void => {
   const lastLocation: H.Location<H.History.PoorMansUnknown> = {
     key: 'ac3df4',
-    pathname: '/somewhere',
+    pathname: '/home/decks/a25u3925',
     search: '?some=search-string',
     hash: '#howdy',
     state: null,
   };
-  const action = setLastLocation('/home', lastLocation);
+  const action = setLastLocation(lastLocation);
 
   it('Action Creator', (): void => {
     expect(action).toMatchObject({
       type: ActionType.SetLastLocation,
       payload: {
-        path: '/home',
-        lastLocation,
+        location: lastLocation,
       },
     });
   });
@@ -34,6 +33,7 @@ describe('setLastLocation', ():void => {
   it('Reducer: Valid Use', (): void => {
     const newStore = reduceSetLastLocation(initialStore, action);
     expect(newStore.homeTab.lastLocation).toMatchObject(lastLocation);
+    expect(newStore.lastLocation).toMatchObject(lastLocation);
   });
 
   it('Reducer: Invalid Use', (): void => {

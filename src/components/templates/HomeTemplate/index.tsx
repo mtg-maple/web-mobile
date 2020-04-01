@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, MouseEvent } from 'react';
 
 import Header from '../../organisms/Header';
 import SearchBar from '../../organisms/SearchBar';
@@ -15,10 +15,13 @@ export type HomeTemplateProps = {
     setTags: (newTags: ISearchTag[]) => void;
     onClick: (e: React.MouseEvent) => void;
   }
-  decks: IDeckListItem[];
+  deckList: {
+    decks: IDeckListItem[];
+    onClicks: ((e: MouseEvent) => void)[];
+  }
 }
 
-const HomeTemplate: FC<HomeTemplateProps> = ({ searchBar, decks }) => {
+const HomeTemplate: FC<HomeTemplateProps> = ({ searchBar, deckList }) => {
   return (
     <div className={styles.root}>
       <section className={styles.default}>
@@ -32,7 +35,7 @@ const HomeTemplate: FC<HomeTemplateProps> = ({ searchBar, decks }) => {
         }}/>
         <SearchBar className={styles.searchBar} placeholder="デッキの名前、説明" {...searchBar}/>
       </section>
-      <DeckList decks={decks} className={styles.deckList}/>
+      <DeckList decks={deckList.decks} onClicks={deckList.onClicks} className={styles.deckList}/>
     </div>
   );
 }

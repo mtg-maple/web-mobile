@@ -6,15 +6,14 @@ import * as H from 'history';
 export interface SetLastLocationAction {
   type: ActionType.SetLastLocation;
   payload: {
-    path: string;
-    lastLocation: H.Location<H.History.PoorMansUnknown>;
+    location: H.Location<H.History.PoorMansUnknown>;
   };
 }
 
 // Action Creator
-export const setLastLocation = (path: string, lastLocation: H.Location<H.History.PoorMansUnknown>): SetLastLocationAction => ({
+export const setLastLocation = (location: H.Location<H.History.PoorMansUnknown>): SetLastLocationAction => ({
   type: ActionType.SetLastLocation,
-  payload: { path, lastLocation },
+  payload: { location },
 });
 
 // User-Defined Type Guard
@@ -25,19 +24,16 @@ export const isSetLastLocationAction = (arg: any): arg is SetLastLocationAction 
 // Reducer
 export const reduceSetLastLocation = (state: IStore, action: IAction): IStore => {
   if (isSetLastLocationAction(action)) {
-    const lastLocation = action.payload.lastLocation;
+    const lastLocation = action.payload.location;
     const newState = { ...state, lastLocation };
-    if (action.payload.path.startsWith('/home')) {
-      const beforeLastLocation = state.homeTab.lastLocation;
-      const homeTab = { ...state.homeTab, lastLocation, beforeLastLocation };
+    if (lastLocation.pathname.startsWith('/home')) {
+      const homeTab = { ...state.homeTab, lastLocation };
       return { ...newState, homeTab };
-    } else if (action.payload.path.startsWith('/search')) {
-      const beforeLastLocation = state.searchTab.lastLocation;
-      const searchTab = { ...state.searchTab, lastLocation, beforeLastLocation };
+    } else if (lastLocation.pathname.startsWith('/search')) {
+      const searchTab = { ...state.searchTab, lastLocation };
       return { ...newState, searchTab };
-    } else if (action.payload.path.startsWith('/user')) {
-      const beforeLastLocation = state.userTab.lastLocation;
-      const userTab = { ...state.userTab, lastLocation, beforeLastLocation };
+    } else if (lastLocation.pathname.startsWith('/user')) {
+      const userTab = { ...state.userTab, lastLocation };
       return { ...newState, userTab };
     }
     return newState;
