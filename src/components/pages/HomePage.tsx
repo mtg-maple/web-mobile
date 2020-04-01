@@ -1,5 +1,5 @@
 import React, { FC, Dispatch, useEffect, MouseEvent } from 'react';
-import { useRouteMatch, useHistory } from 'react-router-dom';
+import { useRouteMatch, useHistory, useLocation } from 'react-router-dom';
 
 import HomeTemplate from '../templates/HomeTemplate';
 import { 
@@ -9,7 +9,9 @@ import {
   IDeckListItem,
   setSearchBarQuery, 
   setSearchBarTags, 
-  setDecks, 
+  setDecks,
+  initSubPage,
+  Page, 
 
 } from '../../store';
 import { getDecks, IResponse, DecksPage } from '../../mock';
@@ -27,6 +29,7 @@ export type HomePageProps = {
 const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
   const { path } = useRouteMatch();
   let history = useHistory();
+  const currentLocation = useLocation();
 
   useScrollSaveOnUnmount(dispatch);
   useScrollRestoreOnMount(store, dispatch);
@@ -52,8 +55,8 @@ const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
     decks: store.decks,
     onClicks: store.decks.map((deck: IDeckListItem): (e: MouseEvent) => void => {
       return (e: MouseEvent) => {
-        const toPath = `/home/decks/${deck.id}`;
-        history.push(toPath);
+        dispatch(initSubPage(Page.Deck, currentLocation));
+        history.push(`/decks/${deck.id}`);
       };
     }),
   };

@@ -1,5 +1,4 @@
 import React, { FC, Dispatch } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import DeckTemplate from '../templates/DeckTemplate';
 import { IAction, ManaColor, IDeckCard, IDeckPageStore } from '../../store';
@@ -18,7 +17,6 @@ const DeckPage: FC<DeckPageProps> = ({ store, dispatch }) => {
   useScrollSaveOnUnmount(dispatch);
   useScrollRestoreOnMount(store, dispatch);
   useLocationSaveOnUnmount(dispatch);
-  let history = useHistory();
   const deck = {
     id: 'aaaa',
     name: '青白コントロール',
@@ -28,12 +26,16 @@ const DeckPage: FC<DeckPageProps> = ({ store, dispatch }) => {
     mainboard: [] as IDeckCard[],
     sideboard: [] as IDeckCard[],
   };
-  const onBackButtonClick = () => {
-    history.push(`${store.backLocation?.pathname}?action=back` || '/home' );
+  const backButtonProps = {
+    to: store.fromLocation || '/home',
+    onClick: () => {
+      // TODO:
+      // Clean up
+    },
   };
 
   return (
-    <DeckTemplate { ...{ deck, onBackButtonClick } } />
+    <DeckTemplate { ...{ deck, backButtonProps } } />
   );
 };
 

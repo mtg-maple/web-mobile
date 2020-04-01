@@ -26,15 +26,13 @@ export const reduceSetSearchBarTags = (state: IStore, action: IAction): IStore =
   if (isSetSearchBarTagsAction(action)) {
     const tags = action.payload.tags;
     if (action.payload.path === '/home') {
-      const searchBar = { ...state.homeTab.homePage.searchBar, tags };
-      const homePage = { ...state.homeTab.homePage, searchBar }
-      const homeTab = { ...state.homeTab, homePage };
-      return { ...state, homeTab };
+      const searchBar = { ...state.homePage.searchBar, tags };
+      const homePage = { ...state.homePage, searchBar }
+      return { ...state, homePage };
     } else if (action.payload.path === '/search') {
-      const searchBar = { ...state.searchTab.searchPage.searchBar, tags };
-      const searchPage = { ...state.searchTab.searchPage, searchBar }
-      const searchTab = { ...state.searchTab, searchPage };
-      return { ...state, searchTab };
+      const searchBar = { ...state.searchPage.searchBar, tags };
+      const searchPage = { ...state.searchPage, searchBar };
+      return { ...state, searchPage };
     }
   }
   return state;

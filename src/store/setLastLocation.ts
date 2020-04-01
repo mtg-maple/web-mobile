@@ -25,18 +25,7 @@ export const isSetLastLocationAction = (arg: any): arg is SetLastLocationAction 
 export const reduceSetLastLocation = (state: IStore, action: IAction): IStore => {
   if (isSetLastLocationAction(action)) {
     const lastLocation = action.payload.location;
-    const newState = { ...state, lastLocation };
-    if (lastLocation.pathname.startsWith('/home')) {
-      const homeTab = { ...state.homeTab, lastLocation };
-      return { ...newState, homeTab };
-    } else if (lastLocation.pathname.startsWith('/search')) {
-      const searchTab = { ...state.searchTab, lastLocation };
-      return { ...newState, searchTab };
-    } else if (lastLocation.pathname.startsWith('/user')) {
-      const userTab = { ...state.userTab, lastLocation };
-      return { ...newState, userTab };
-    }
-    return newState;
+    return { ...state, lastLocation };
   }
   return state;
 };

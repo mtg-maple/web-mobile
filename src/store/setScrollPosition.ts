@@ -28,21 +28,17 @@ export const reduceSetScrollPosition = (state: IStore, action: IAction): IStore 
     const scrollPositionY = action.payload.scrollPositionY;
     const pathname = action.payload.location.pathname;
     if (pathname === '/home') {
-      const homePage = { ...state.homeTab.homePage, scrollPositionY };
-      const homeTab = { ...state.homeTab, homePage };
-      return { ...state, homeTab };
-    } else if (pathname.startsWith('/home/decks')) {
-      const deckPage = { ...state.homeTab.deckPage, scrollPositionY };
-      const homeTab = { ...state.homeTab, deckPage };
-      return { ...state, homeTab };
+      const homePage = { ...state.homePage, scrollPositionY };
+      return { ...state, homePage };
     } else if (pathname === '/search') {
-      const searchPage = { ...state.searchTab.searchPage, scrollPositionY }
-      const searchTab = { ...state.searchTab, searchPage };
-      return { ...state, searchTab };
+      const searchPage = { ...state.searchPage, scrollPositionY }
+      return { ...state, searchPage };
     } else if (pathname === '/user') {
-      const userPage = { ...state.userTab.userPage, scrollPositionY }
-      const userTab = { ...state.userTab, userPage };
-      return { ...state, userTab };
+      const userPage = { ...state.userPage, scrollPositionY }
+      return { ...state, userPage };
+    } else if (pathname.startsWith('/decks')) {
+      const deckPage = { ...state.deckPage, scrollPositionY };
+      return { ...state, deckPage };
     }
   }
   return state;

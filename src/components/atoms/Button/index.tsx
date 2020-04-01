@@ -8,7 +8,7 @@ export interface ButtonProps extends ButtonInstanceProps {
 }
 
 export interface ButtonInstanceProps {
-  onClick: (e: React.MouseEvent) => void;
+  onClick?: (e: React.MouseEvent) => void;
   contextualClass?: 'primary' | 'secondary';
   size?: 'small' | 'medium' | 'large';
   className?: string;

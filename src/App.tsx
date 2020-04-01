@@ -7,13 +7,15 @@ import {
 import { faHome, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 
 import TabBar from './components/organisms/TabBar';
-import HomeTab from './components/tabs/HomeTab';
-import SearchTab from './components/tabs/SearchTab';
-import UserTab from './components/tabs/UserTab';
+
 import useStore from './store';
 import { AppLocationContext } from './context';
 import { TabIdentifier } from './utils/location';
 import styles from './style.module.scss';
+import HomePage from './components/pages/HomePage';
+import UserPage from './components/pages/UserPage';
+import SearchPage from './components/pages/SearchPage';
+import DeckPage from './components/pages/DeckPage';
 
 const App: FC = () => {
   const [store, dispatch] = useStore();
@@ -24,13 +26,16 @@ const App: FC = () => {
         <section className={styles.appView}>
           <Switch>
             <Route path="/home">
-              <HomeTab store={store.homeTab} dispatch={dispatch} />
+              <HomePage store={store.homePage} dispatch={dispatch} />
             </Route>
             <Route path="/search">
-              <SearchTab store={store.searchTab} dispatch={dispatch} />
+              <SearchPage store={store.searchPage} dispatch={dispatch} />
             </Route>
             <Route path="/user">
-              <UserTab store={store.userTab} dispatch={dispatch} />
+              <UserPage store={store.userPage} dispatch={dispatch} />
+            </Route>
+            <Route path="/decks/:id">
+              <DeckPage store={store.deckPage} dispatch={dispatch} />
             </Route>
             <Redirect from="/" to="/home" />
           </Switch>
@@ -38,21 +43,21 @@ const App: FC = () => {
         <TabBar 
           className={styles.tabBar} 
           dispatch={dispatch}
-          links={[
+          tabs={[
             {
               tabIdentifier: TabIdentifier.Home,
               icon: faHome,
-              lastLocation: store.homeTab.lastLocation,
+              to: '/home',
             },
             { 
               tabIdentifier: TabIdentifier.Search,
               icon: faSearch,
-              lastLocation: store.searchTab.lastLocation,
+              to: '/search',
             },
             { 
               tabIdentifier: TabIdentifier.User,
               icon: faUser,
-              lastLocation: store.userTab.lastLocation,
+              to: '/user',
             },
         ]} />
       </div>

@@ -1,26 +1,25 @@
 import * as H from 'history';
 
 export interface IStore {
-  homeTab: IHomeTabStore,
-  searchTab: ISearchTabStore,
-  userTab: IUserTabStore,
+  homePage: IHomePageStore;
+  deckPage: IDeckPageStore;
+  searchPage: ISearchPageStore;
+  userPage: IUserPageStore;
   lastLocation?: H.Location<H.History.PoorMansUnknown>;
 }
 
-export interface ITabStore {
-  lastLocation?: H.Location<H.History.PoorMansUnknown>;
+export enum Page {
+  Home = 'HOME',
+  Search = 'SEARCH',
+  User = 'USER',
+  Deck = 'DECK',
 }
 
 export interface IPageStore {
   scrollPositionY: number;
 }
-export interface IChildPageStore {
-  backLocation?: H.Location<H.History.PoorMansUnknown>;
-}
-
-export interface IHomeTabStore extends ITabStore {
-  homePage: IHomePageStore;
-  deckPage: IDeckPageStore;
+export interface ISubPageStore {
+  fromLocation?: H.Location<H.History.PoorMansUnknown>;
 }
 
 export interface IHomePageStore extends IPageStore {
@@ -28,20 +27,13 @@ export interface IHomePageStore extends IPageStore {
   decks: IDeckListItem[];
 }
 
-export interface IDeckPageStore extends IPageStore, IChildPageStore {
+export interface IDeckPageStore extends IPageStore, ISubPageStore {
   deck?: IDeck;
 }
 
-export interface ISearchTabStore extends ITabStore {
-  searchPage: ISearchPageStore;
-}
 export interface ISearchPageStore extends IPageStore {
   searchBar: ISearchBarState;
   decks: IDeckListItem[];
-}
-
-export interface IUserTabStore extends ITabStore {
-  userPage: IUserPageStore;
 }
 
 export interface IUserPageStore extends IPageStore {
@@ -98,38 +90,29 @@ export type ILocation = {
 }
 
 export const initialStore: IStore = {
-  homeTab: {
-    lastLocation: undefined,
-    homePage: {
-      scrollPositionY: 0,
-      searchBar: {
-        query: '',
-        tags: [],
-      },
-      decks: [],
+  homePage: {
+    scrollPositionY: 0,
+    searchBar: {
+      query: '',
+      tags: [],
     },
-    deckPage: {
-      scrollPositionY: 0,
-      backLocation: undefined,
-      deck: undefined,
-    },
+    decks: [],
   },
-  searchTab: {
-    lastLocation: undefined,
-    searchPage: {
-      scrollPositionY: 0,
-      searchBar: {
-        query: '',
-        tags: [],
-      },
-      decks: [],
-    }
+  deckPage: {
+    scrollPositionY: 0,
+    fromLocation: undefined,
+    deck: undefined,
   },
-  userTab: {
-    lastLocation: undefined,
-    userPage: {
-      scrollPositionY: 0,
+  searchPage: {
+    scrollPositionY: 0,
+    searchBar: {
+      query: '',
+      tags: [],
     },
+    decks: [],
+  },
+  userPage: {
+    scrollPositionY: 0,
   },
   lastLocation: undefined,
 };

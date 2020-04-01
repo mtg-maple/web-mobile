@@ -8,6 +8,7 @@ import { reduceSetSearchBarTags } from './setSearchBarTags';
 import { reduceSetDecks } from './setDecks';
 import { reduceAppendDecks } from './appendDecks';
 import { reduceSetLastLocation } from './setLastLocation';
+import { reduceInitSubPage } from './initSubPage';
 
 
 function reducer(state: IStore, action: IAction): IStore {
@@ -24,6 +25,8 @@ function reducer(state: IStore, action: IAction): IStore {
       return reduceAppendDecks(state, action);
     case ActionType.SetLastLocation:
       return reduceSetLastLocation(state, action);
+    case ActionType.InitSubPage:
+      return reduceInitSubPage(state, action);
     default:
       return state;
   }
@@ -42,3 +45,4 @@ export * from './setSearchBarTags';
 export * from './setDecks';
 export * from './appendDecks';
 export * from './setLastLocation';
+export * from './initSubPage';

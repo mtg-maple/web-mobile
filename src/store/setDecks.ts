@@ -26,13 +26,11 @@ export const reduceSetDecks = (state: IStore, action: IAction): IStore => {
   if (isSetDecksAction(action)) {
     const decks = action.payload.decks;
     if (action.payload.path === '/home') {
-      const homePage = { ...state.homeTab.homePage, decks };
-      const homeTab = { ...state.homeTab, homePage }
-      return { ...state, homeTab };
+      const homePage = { ...state.homePage, decks };
+      return { ...state, homePage };
     } else if (action.payload.path === '/search') {
-      const searchPage = { ...state.searchTab.searchPage, decks };
-      const searchTab = { ...state.searchTab, searchPage }
-      return { ...state, searchTab };
+      const searchPage = { ...state.searchPage, decks };
+      return { ...state, searchPage };
     }
   }
   return state;

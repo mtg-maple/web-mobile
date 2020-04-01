@@ -6,7 +6,7 @@ import { ActionType, initialStore } from '../store';
 describe('setLastLocation', ():void => {
   const lastLocation: H.Location<H.History.PoorMansUnknown> = {
     key: 'ac3df4',
-    pathname: '/home/decks/a25u3925',
+    pathname: '/home',
     search: '?some=search-string',
     hash: '#howdy',
     state: null,
@@ -32,7 +32,6 @@ describe('setLastLocation', ():void => {
 
   it('Reducer: Valid Use', (): void => {
     const newStore = reduceSetLastLocation(initialStore, action);
-    expect(newStore.homeTab.lastLocation).toMatchObject(lastLocation);
     expect(newStore.lastLocation).toMatchObject(lastLocation);
   });
 

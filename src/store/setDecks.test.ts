@@ -33,7 +33,7 @@ describe('setDecks', ():void => {
 
   it('Reducer: Valid Use', (): void => {
     const newStore = reduceSetDecks(initialStore, action);
-    expect(newStore.homeTab.homePage.decks).toMatchObject(decks);
+    expect(newStore.homePage.decks).toMatchObject(decks);
   });
 
   it('Reducer: Invalid Use', (): void => {
