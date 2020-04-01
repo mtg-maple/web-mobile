@@ -5,6 +5,7 @@ import UserPage from '../pages/UserPage';
 import { IUserTabStore, IAction } from '../../store';
 import useTraceLocation from '../../hooks/useTraceLocation';
 import useRestoreScroll from '../../hooks/useRestoreScroll';
+import useScrollSaveOnUnmount from '../../hooks/useScrollSaveOnUnmount';
 
 export type UserTabProps = {
   store: IUserTabStore,
@@ -15,6 +16,7 @@ const UserTab: FC<UserTabProps> = ({ store, dispatch }) => {
   const { path } = useRouteMatch();
   useTraceLocation(path, dispatch);
   useRestoreScroll(store.scrollPositionY);
+  useScrollSaveOnUnmount(dispatch);
   return (
     <UserPage store={store.userPage} dispatch={dispatch} />
   );

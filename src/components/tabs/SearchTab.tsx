@@ -2,6 +2,7 @@ import React, { FC, Dispatch } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import useTraceLocation from '../../hooks/useTraceLocation';
 import useRestoreScroll from '../../hooks/useRestoreScroll';
+import useScrollSaveOnUnmount from '../../hooks/useScrollSaveOnUnmount';
 
 import SearchPage from '../pages/SearchPage';
 import { ISearchTabStore, IAction } from '../../store';
@@ -15,6 +16,7 @@ const SearchTab: FC<SearchTabProps> = ({ store, dispatch }) => {
   const { path } = useRouteMatch();
   useTraceLocation(path, dispatch);
   useRestoreScroll(store.scrollPositionY);
+  useScrollSaveOnUnmount(dispatch);
   return (
     <SearchPage store={store.searchPage} dispatch={dispatch} />
   );

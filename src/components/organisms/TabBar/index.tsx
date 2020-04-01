@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './style.module.scss';
 import { isTopPage, getTopPagePath, identifyTab, TabIdentifier } from '../../../utils/location';
-import { IAction, setScrollPosition } from '../../../store';
+import { IAction } from '../../../store';
 
 export type TabBarProps = {
   links: NavigationLink[];
@@ -29,10 +29,6 @@ const TabBar: FC<TabBarProps> = ({ links, className, dispatch }) => {
       if (tabIdentifier === identifyTab(currentLocation) && isTopPage(tabIdentifier, currentLocation)) {
         // タブのトップページでそのタブがタップされたらスクロール位置をtopに移動
         window.scroll(0, 0);
-      } else {
-        // タブ移動直前にそのタブでのスクロール位置を保存
-        const scrollPositionY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-        dispatch(setScrollPosition(currentLocation.pathname, scrollPositionY));
       }
     };
   };

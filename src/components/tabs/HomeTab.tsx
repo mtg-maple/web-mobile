@@ -11,6 +11,7 @@ import DeckPage from '../pages/DeckPage';
 import { IAction, IHomeTabStore } from '../../store';
 import useTraceLocation from '../../hooks/useTraceLocation';
 import useRestoreScroll from '../../hooks/useRestoreScroll';
+import useScrollSaveOnUnmount from '../../hooks/useScrollSaveOnUnmount';
 
 export type HomeTabProps = {
   store: IHomeTabStore,
@@ -21,6 +22,7 @@ const HomeTab: FC<HomeTabProps> = ({store, dispatch}) => {
   const { path } = useRouteMatch();
   useTraceLocation(path, dispatch);
   useRestoreScroll(store.scrollPositionY);
+  useScrollSaveOnUnmount(dispatch);
   return (
     <Switch>
       <Route path="/home/decks/:id">
