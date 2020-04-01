@@ -9,7 +9,7 @@ const useScrollSaveOnUnmount = (dispatch: Dispatch<IAction>) => {
     return () => {
       // タブunmount前にそのタブでのスクロール位置を保存
       const scrollPositionY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-      dispatch(setScrollPosition(currentLocation.pathname, scrollPositionY));
+      dispatch(setScrollPosition(currentLocation, scrollPositionY));
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

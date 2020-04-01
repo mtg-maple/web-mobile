@@ -46,9 +46,14 @@ const TabBar: FC<TabBarProps> = ({ links, className, dispatch }) => {
         return getTopPagePath(tabIdentifier);
       }
     } else {
-      // 現在のタブと異なるタブがタップされたら、そのタブのトップページに遷移する
-      const toTop = getTopPagePath(tabIdentifier);
-      return lastLocation || toTop
+      // 現在のタブと異なるタブがタップされたら、そのタブで開いた最後のページに遷移する。履歴がない場合はそのタブのトップページに遷移する
+      if (typeof lastLocation === 'undefined') {
+        return getTopPagePath(tabIdentifier);
+      } else {
+        let params = new URLSearchParams(lastLocation.search);
+        params.set('action', 'resume');
+        return { ...lastLocation, search: params.toString() };
+      }
     }
   };
 

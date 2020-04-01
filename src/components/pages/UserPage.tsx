@@ -1,9 +1,9 @@
-import React, { FC, Dispatch, useContext }  from 'react';
+import React, { FC, Dispatch }  from 'react';
 
 import UserTemplate from '../templates/UserTemplate';
-import useInitScroll from '../../hooks/useInitScroll';
 import { IUserPageStore, IAction } from '../../store';
-import { AppLocationContext } from '../../context';
+import useScrollSaveOnUnmount from '../../hooks/useScrollSaveOnUnmount';
+import useScrollRestoreOnMount from '../../hooks/useScrollRestoreOnMount';
 
 export type UserPageProps = {
   store: IUserPageStore,
@@ -11,8 +11,8 @@ export type UserPageProps = {
 }
 
 const UserPage: FC<UserPageProps> = ({ store, dispatch }) => {
-  const { lastLocation } = useContext(AppLocationContext);
-  useInitScroll(lastLocation);
+  useScrollSaveOnUnmount(dispatch);
+  useScrollRestoreOnMount(store, dispatch);
 
   return (
     <UserTemplate />

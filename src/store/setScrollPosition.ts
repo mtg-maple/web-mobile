@@ -1,3 +1,4 @@
+import * as H from 'history';
 import { ActionType, IAction } from './actions';
 import { IStore } from './model';
 
@@ -5,15 +6,15 @@ import { IStore } from './model';
 export interface SetScrollPositionAction {
   type: ActionType.SetScrollPosition;
   payload: {
-    path: string;
+    location: H.Location<H.History.PoorMansUnknown>;
     scrollPositionY: number;
   };
 }
 
 // Action Creator
-export const setScrollPosition = (path: string, scrollPositionY: number): SetScrollPositionAction => ({
+export const setScrollPosition = (location: H.Location<H.History.PoorMansUnknown>, scrollPositionY: number): SetScrollPositionAction => ({
   type: ActionType.SetScrollPosition,
-  payload: { path, scrollPositionY },
+  payload: { location, scrollPositionY },
 });
 
 // User-Defined Type Guard
@@ -25,14 +26,22 @@ const isSetScrollPositionAction = (arg: any): arg is SetScrollPositionAction => 
 export const reduceSetScrollPosition = (state: IStore, action: IAction): IStore => {
   if (isSetScrollPositionAction(action)) {
     const scrollPositionY = action.payload.scrollPositionY;
-    if (action.payload.path.startsWith('/home')) {
-      const homeTab = { ...state.homeTab, scrollPositionY };
+    const pathname = action.payload.location.pathname;
+    if (pathname === '/home') {
+      const homePage = { ...state.homeTab.homePage, scrollPositionY };
+      const homeTab = { ...state.homeTab, homePage };
       return { ...state, homeTab };
-    } else if (action.payload.path.startsWith('/search')) {
-      const searchTab = { ...state.searchTab, scrollPositionY };
+    } else if (pathname.startsWith('/home/decks')) {
+      const deckPage = { ...state.homeTab.deckPage, scrollPositionY };
+      const homeTab = { ...state.homeTab, deckPage };
+      return { ...state, homeTab };
+    } else if (pathname === '/search') {
+      const searchPage = { ...state.searchTab.searchPage, scrollPositionY }
+      const searchTab = { ...state.searchTab, searchPage };
       return { ...state, searchTab };
-    } else if (action.payload.path.startsWith('/user')) {
-      const userTab = { ...state.userTab, scrollPositionY };
+    } else if (pathname === '/user') {
+      const userPage = { ...state.userTab.userPage, scrollPositionY }
+      const userTab = { ...state.userTab, userPage };
       return { ...state, userTab };
     }
   }

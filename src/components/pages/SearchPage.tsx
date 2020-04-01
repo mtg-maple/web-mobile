@@ -1,9 +1,9 @@
-import React, { FC, Dispatch, useContext } from 'react';
+import React, { FC, Dispatch } from 'react';
 
 import SearchTemplate from '../templates/SearchTemplate';
 import { ISearchPageStore, IAction } from '../../store';
-import useInitScroll from '../../hooks/useInitScroll';
-import { AppLocationContext } from '../../context';
+import useScrollSaveOnUnmount from '../../hooks/useScrollSaveOnUnmount';
+import useScrollRestoreOnMount from '../../hooks/useScrollRestoreOnMount';
 
 export type SearchPageProps = {
   store: ISearchPageStore,
@@ -11,8 +11,8 @@ export type SearchPageProps = {
 }
 
 const SearchPage: FC<SearchPageProps> = ({store, dispatch}) => {
-  const { lastLocation } = useContext(AppLocationContext);
-  useInitScroll(lastLocation);
+  useScrollSaveOnUnmount(dispatch);
+  useScrollRestoreOnMount(store, dispatch);
 
   return (
     <SearchTemplate/>

@@ -1,9 +1,9 @@
-import React, { FC, Dispatch, useContext } from 'react';
+import React, { FC, Dispatch } from 'react';
 
 import DeckTemplate from '../templates/DeckTemplate';
 import { IAction, ManaColor, IDeckCard, IDeckPageStore } from '../../store';
-import useInitScroll from '../../hooks/useInitScroll';
-import { AppLocationContext } from '../../context';
+import useScrollSaveOnUnmount from '../../hooks/useScrollSaveOnUnmount';
+import useScrollRestoreOnMount from '../../hooks/useScrollRestoreOnMount';
 
 export type DeckPageProps = {
   store: IDeckPageStore;
@@ -12,9 +12,8 @@ export type DeckPageProps = {
 }
 
 const DeckPage: FC<DeckPageProps> = ({ store, dispatch, pathBackward }) => {
-  const { lastLocation } = useContext(AppLocationContext);
-  useInitScroll(lastLocation);
-
+  useScrollSaveOnUnmount(dispatch);
+  useScrollRestoreOnMount(store, dispatch);
   const deck = {
     id: 'aaaa',
     name: '青白コントロール',

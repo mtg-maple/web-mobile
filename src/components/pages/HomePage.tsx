@@ -1,11 +1,11 @@
-import React, { FC, Dispatch, useEffect, useContext } from 'react';
+import React, { FC, Dispatch, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 
 import HomeTemplate from '../templates/HomeTemplate';
 import { IAction, ISearchTag, IHomePageStore, setSearchBarQuery, setSearchBarTags, setDecks } from '../../store';
 import { getDecks, IResponse, DecksPage } from '../../mock';
-import useInitScroll from '../../hooks/useInitScroll';
-import { AppLocationContext } from '../../context';
+import useScrollSaveOnUnmount from '../../hooks/useScrollSaveOnUnmount';
+import useScrollRestoreOnMount from '../../hooks/useScrollRestoreOnMount';
 
 export type HomePageProps = {
   store: IHomePageStore,
@@ -15,8 +15,8 @@ export type HomePageProps = {
 const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
   const { path } = useRouteMatch();
 
-  const { lastLocation } = useContext(AppLocationContext);
-  useInitScroll(lastLocation);
+  useScrollSaveOnUnmount(dispatch);
+  useScrollRestoreOnMount(store, dispatch);
 
   useEffect(() => {
     getDecks('').then((res: IResponse<DecksPage>) => {

@@ -8,9 +8,12 @@ export interface IStore {
 }
 
 export interface ITabStore {
-  scrollPositionY: number;
   lastLocation?: H.Location<H.History.PoorMansUnknown>;
   beforeLastLocation?: H.Location<H.History.PoorMansUnknown>;
+}
+
+export interface IPageStore {
+  scrollPositionY: number;
 }
 
 export interface IHomeTabStore extends ITabStore {
@@ -18,19 +21,19 @@ export interface IHomeTabStore extends ITabStore {
   deckPage: IDeckPageStore;
 }
 
-export interface IHomePageStore {
+export interface IHomePageStore extends IPageStore {
   searchBar: ISearchBarState;
   decks: IDeckListItem[];
 }
 
-export interface IDeckPageStore {
+export interface IDeckPageStore extends IPageStore {
   deck?: IDeck;
 }
 
 export interface ISearchTabStore extends ITabStore {
   searchPage: ISearchPageStore;
 }
-export interface ISearchPageStore {
+export interface ISearchPageStore extends IPageStore {
   searchBar: ISearchBarState;
   decks: IDeckListItem[];
 }
@@ -39,7 +42,7 @@ export interface IUserTabStore extends ITabStore {
   userPage: IUserPageStore;
 }
 
-export interface IUserPageStore {
+export interface IUserPageStore extends IPageStore {
 
 }
 
@@ -94,10 +97,10 @@ export type ILocation = {
 
 export const initialStore: IStore = {
   homeTab: {
-    scrollPositionY: 0,
     lastLocation: undefined,
     beforeLastLocation: undefined,
     homePage: {
+      scrollPositionY: 0,
       searchBar: {
         query: '',
         tags: [],
@@ -105,14 +108,15 @@ export const initialStore: IStore = {
       decks: [],
     },
     deckPage: {
+      scrollPositionY: 0,
       deck: undefined,
     },
   },
   searchTab: {
-    scrollPositionY: 0,
     lastLocation: undefined,
     beforeLastLocation: undefined,
     searchPage: {
+      scrollPositionY: 0,
       searchBar: {
         query: '',
         tags: [],
@@ -121,11 +125,10 @@ export const initialStore: IStore = {
     }
   },
   userTab: {
-    scrollPositionY: 0,
     lastLocation: undefined,
     beforeLastLocation: undefined,
     userPage: {
-
+      scrollPositionY: 0,
     },
   },
   lastLocation: undefined,
