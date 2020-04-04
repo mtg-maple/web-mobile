@@ -4,16 +4,11 @@ import Label from '../../atoms/Label';
 import Description from '../../atoms/Description';
 import ManaColors from '../../molecules/ManaColors';
 import { AddCardButton } from '../../molecules/ButtonInstance';
-import { ManaColor } from '../../../store';
+import { IDeckListItem } from '../../../store';
 import styles from './style.module.scss';
 
 export type DeckSummaryProps = {
-  deck: {
-    name: string;
-    description: string;
-    thumbnailImageUrl: string;
-    colors: ManaColor[];
-  };
+  deck: IDeckListItem;
   onAddCardClick?: (e: MouseEvent) => void;
 }
 
