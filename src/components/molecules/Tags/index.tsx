@@ -19,7 +19,7 @@ const Tags: FC<TagsProps> = ({ tags, setTags }) => {
       {
         tags.map((tag: ISearchTag) => (
           <li className={styles.tagItem} key={tag.label}>
-            <Label text={tag.label} weight="bold" size="small"/>
+            <Label weight="bold" size="small">{tag.label}</Label>
             <IconButton color="text"
               icon={faTimes}
               onClick={(): void => {

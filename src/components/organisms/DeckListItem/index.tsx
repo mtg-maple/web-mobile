@@ -25,7 +25,7 @@ const DeckListItem: FC<DeckListItemProps> = ({ thumbnailImageUrl, name, descript
   };
   const info = (
     <>
-      <Label className={styles.infoItem} text={name} weight='bold'/>
+      <Label className={styles.infoItem} weight='bold'>{name}</Label>
       {
         description &&
         <Description className={styles.infoItem} size='small' color='muteText'>{ description }</Description>
