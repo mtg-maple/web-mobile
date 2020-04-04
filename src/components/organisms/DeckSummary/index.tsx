@@ -2,6 +2,7 @@ import React, { FC, MouseEvent } from 'react';
 
 import Label from '../../atoms/Label';
 import Description from '../../atoms/Description';
+import ManaColors from '../../molecules/ManaColors';
 import { AddCardButton } from '../../molecules/ButtonInstance';
 import { ManaColor } from '../../../store';
 import styles from './style.module.scss';
@@ -32,7 +33,10 @@ const DeckSummary: FC<DeckSummaryProps> = ({ deck, onAddCardClick }) => {
         className={styles.deckSummaryThumbnail}
       />
       <div className={styles.deckSummaryInfo}>
-        <Label weight="bold">{deck.name}</Label>
+        <div className={styles.deckSummaryInfoHeader}>
+          <Label weight="bold">{deck.name}</Label>
+          <ManaColors colors={deck.colors} />
+        </div>
         <Description className={styles.description} size="small" color="muteText">{deck.description}</Description>
         <AddCardButton
           className={styles.addCardButton}
