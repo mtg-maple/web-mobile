@@ -24,3 +24,4 @@ export const BackButton = buttonFactory({ type: 'icon', children: <FontAwesomeIc
 export const CloseButton = buttonFactory({ type: 'icon', children: <FontAwesomeIcon icon={faTimes}/>});
 export const ClearButton = buttonFactory({ type: 'icon', children: <FontAwesomeIcon icon={faTimesCircle}/>});
 export const OptionButton = buttonFactory({ type: 'icon', children: <FontAwesomeIcon icon={faEllipsisH}/>});
+export const AddCardButton = buttonFactory({ type: 'text', children: <>カードを追加</>});
