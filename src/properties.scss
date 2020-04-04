@@ -92,3 +92,8 @@ $fade-animation: $fade-animation-duration $fade-animation-timing;
 
 /* Z Index */
 $z-header: 10;
+
+/* CSS Custom Properties */
+:root {
+  --color-base: #{$color-black};
+}
