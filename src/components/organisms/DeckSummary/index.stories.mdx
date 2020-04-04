@@ -1,0 +1,46 @@
+import { useState } from 'react';
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import DeckSummary from '../DeckSummary';
+
+<Meta
+  title="Organisms/DeckSummary"
+  parameters={{
+    component: DeckSummary,
+  }}
+/>
+
+# DeckSummary
+
+<Source code={`
+    import DeckList from '@mtg-maple/web-components/organisms/DeckSummary';
+     
+    export default = (props) => {
+      return (
+        <DeckSummary
+          title="青白コントロール"
+          description="lorem ipsum"
+          thumbnailImageUrl="https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg"
+          colors={['W', 'B']}
+        />
+      );
+    };
+`} />
+
+<Props of={DeckSummary} />
+
+## Basic
+
+<Preview withSource="open">
+  <Story name="Basic" >
+    <DeckSummary
+      deck={{
+        name: '青白コントロール',
+        description: '青と白のコントロールデッキです。Magic Fest名古屋向けに調整中。勝率60%くらい。青と白のコントロールデッキです。Magic Fest名古屋向けに調整中。勝率60%くらい',
+        thumbnailImageUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+        colors: ['W', 'B'],
+      }}
+    />
+  </Story>
+</Preview>

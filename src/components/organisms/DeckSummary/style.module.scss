@@ -1,0 +1,50 @@
+@import "../../../properties.scss";
+
+$bg-blur: 12px;
+
+section.deckSummary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 0;
+  overflow: hidden;
+  position: relative;
+  padding: 3rem $space-2x $space-2x $space-2x;
+}
+section.deckSummary:before{
+  content: '';
+  background: inherit;
+  -webkit-filter: blur($bg-blur);
+  -moz-filter: blur($bg-blur);
+  -o-filter: blur($bg-blur);
+  -ms-filter: blur($bg-blur);
+  filter: blur($bg-blur);
+  position: absolute;
+  top: $bg-blur * -1;
+  left: $bg-blur * -1;
+  right: $bg-blur * -1;
+  bottom: $bg-blur * -1;
+  z-index: -1;
+}
+
+.deckSummaryThumbnail {
+  width: 231px;
+  margin-top: 3rem;
+  border-radius: $radius;
+  box-shadow: 4px 8px 5px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(to bottom, transparent, $color-base 75%, $color-base);
+}
+
+.deckSummaryInfo {
+  margin-top: 3rem;
+  max-width: 600px;
+}
+
+.description {
+  margin-top: $space;
+}
+
+.addCardButton {
+  margin-top: $space;
+  width: 100%;
+}
