@@ -30,6 +30,7 @@ const getDeck = async (deckId: string): Promise<IResponse<IDeckResult>>  => {
             count: deckCard.count,
             name: card.name,
             thumbnailImageUrl: `https://img.scryfall.com/cards/art_crop/front/${card.scryfallId.slice(0,1)}/${card.scryfallId.slice(1,2)}/${card.scryfallId}.jpg`,
+            manaCost: card.manaCost,
             colors: typeof card.colors === 'undefined' ? [] : card.colors.split(','),
             types: card.types.split(','),
             type: card.type,
