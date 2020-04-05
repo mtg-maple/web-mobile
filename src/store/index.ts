@@ -18,7 +18,7 @@ export const initialStore: IStore = {
       query: '',
       tags: [],
     },
-    decks: [],
+    decks: undefined,
   },
   deckPage: {
     scrollPositionY: 0,

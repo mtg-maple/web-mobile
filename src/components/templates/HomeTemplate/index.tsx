@@ -15,7 +15,7 @@ export type HomeTemplateProps = {
     setTags: (newTags: ISearchTag[]) => void;
     onClick: (e: React.MouseEvent) => void;
   }
-  deckList: {
+  deckList?: {
     decks: IDeckListItem[];
     onClicks: ((e: MouseEvent) => void)[];
   }
@@ -35,7 +35,11 @@ const HomeTemplate: FC<HomeTemplateProps> = ({ searchBar, deckList }) => {
         }}/>
         <SearchBar className={styles.searchBar} placeholder="デッキの名前、説明" {...searchBar}/>
       </section>
-      <DeckList decks={deckList.decks} onClicks={deckList.onClicks} className={styles.deckList}/>
+      {
+        typeof deckList === 'undefined' ?
+          'loading...' : 
+          <DeckList decks={deckList.decks} onClicks={deckList.onClicks} className={styles.deckList}/>
+      }
     </div>
   );
 }

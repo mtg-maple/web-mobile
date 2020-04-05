@@ -53,7 +53,7 @@ const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
     setTags: (newTags: ISearchTag[]) => dispatch(setSearchBarTags('home', newTags)),
     onClick: () => alert('clicked'),
   }
-  const deckList = {
+  const deckList = store.decks && {
     decks: store.decks,
     onClicks: store.decks.map((deck: IDeckListItem): (e: MouseEvent) => void => {
       return (e: MouseEvent) => {

@@ -28,7 +28,7 @@ export interface ISubPageStore {
 
 export interface IHomePageStore extends IPageStore {
   searchBar: ISearchBarState;
-  decks: IDeckListItem[];
+  decks?: IDeckListItem[];
 }
 
 export interface IDeckPageStore extends IPageStore, ISubPageStore {
@@ -37,7 +37,7 @@ export interface IDeckPageStore extends IPageStore, ISubPageStore {
 
 export interface ISearchPageStore extends IPageStore {
   searchBar: ISearchBarState;
-  decks: IDeckListItem[];
+  decks?: IDeckListItem[];
 }
 
 export interface IUserPageStore extends IPageStore {

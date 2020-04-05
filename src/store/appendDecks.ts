@@ -26,11 +26,11 @@ export const reduceAppendDecks = (state: IStore, action: IAction): IStore => {
   if (isAppendDecksAction(action)) {
     const newDecks = action.payload.decks;
     if (action.payload.path === '/home') {
-      const decks = state.homePage.decks.concat(newDecks);
+      const decks = typeof state.homePage.decks !== 'undefined' ? state.homePage.decks.concat(newDecks) : newDecks;
       const homePage = { ...state.homePage, decks };
       return { ...state, homePage };
     } else if (action.payload.path === '/search') {
-      const decks = state.searchPage.decks.concat(newDecks);
+      const decks = typeof state.searchPage.decks !== 'undefined' ? state.searchPage.decks.concat(newDecks) : newDecks;
       const searchPage = { ...state.searchPage, decks };
       return { ...state, searchPage };
     }
