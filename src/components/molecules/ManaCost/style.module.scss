@@ -10,6 +10,17 @@
   list-style-type: none;
 }
 
-.manaCostItem:nth-child(n+2) {
+.manaCostItem {
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+}
+
+.manaCostItem.large:nth-child(n+2) {
   margin-left: $space;
+}
+
+.manaCostItem.medium:nth-child(n+2),
+.manaCostItem.small:nth-child(n+2) {
+  margin-left: calc(#{$space} / 2);
 }

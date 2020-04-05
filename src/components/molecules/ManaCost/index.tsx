@@ -25,7 +25,7 @@ export const ManaCostPresenter: FC<ManaCostPresenterProps> = ({ symbols, size, c
   <ul className={[styles.manaCostItemList, className].join(' ')}>
     {
       symbols.map((symbol: MagicSymbolString) => (
-        <li className={styles.manaCostItem}>
+        <li className={[styles.manaCostItem, styles[size]].join(' ')}>
           <MagicSymbol type="cost" value={symbol} size={size}/>
         </li>
       ))
