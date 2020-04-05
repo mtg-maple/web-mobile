@@ -10,14 +10,14 @@ import {
   initSubPage,
 
 } from '../../store';
-import { 
+import {
+  IResponse,
   ISearchTag, 
   IHomePageStore, 
   IDeckListItem,
   Page, 
-
 } from '../../models';
-import { getDecks, IResponse, DecksPage } from '../../mock';
+import { getDeckList, IDeckListResult } from '../../services';
 import {
   useScrollSaveOnUnmount,
   useScrollRestoreOnMount,
@@ -39,7 +39,7 @@ const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
   useLocationSaveOnUnmount(dispatch);
 
   useEffect(() => {
-    getDecks('').then((res: IResponse<DecksPage>) => {
+    getDeckList('12345').then((res: IResponse<IDeckListResult>) => {
       if (res.status === 200) {
         dispatch(setDecks(path, res.result.data));
       }
