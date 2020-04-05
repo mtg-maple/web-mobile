@@ -9,7 +9,7 @@ section.deckSummary {
   z-index: 0;
   overflow: hidden;
   position: relative;
-  padding: 3rem $space-2x $space-2x $space-2x;
+  padding: 3rem $space-2x 1.5rem $space-2x;
 }
 section.deckSummary:before{
   content: '';
