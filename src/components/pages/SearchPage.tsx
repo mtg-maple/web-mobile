@@ -1,7 +1,7 @@
 import React, { FC, Dispatch } from 'react';
 
 import SearchTemplate from '../templates/SearchTemplate';
-import { ISearchPageStore, ISearchTag } from '.././../models';
+import { ISearchPageStore, ISearchTag, Page } from '.././../models';
 import { IAction, setSearchBarQuery, setSearchBarTags } from '../../store';
 import {
   useScrollSaveOnUnmount,
@@ -21,9 +21,9 @@ const SearchPage: FC<SearchPageProps> = ({store, dispatch}) => {
 
   const searchBar = {
     query: store.searchBar.query, 
-    setQuery: (newQuery: string) => dispatch(setSearchBarQuery('/search', newQuery)),
+    setQuery: (newQuery: string) => dispatch(setSearchBarQuery(Page.Search, newQuery)),
     tags: store.searchBar.tags,
-    setTags: (newTags: ISearchTag[]) => dispatch(setSearchBarTags('/search', newTags)),
+    setTags: (newTags: ISearchTag[]) => dispatch(setSearchBarTags(Page.Search, newTags)),
     onClick: () => alert('clicked'),
   }
 
