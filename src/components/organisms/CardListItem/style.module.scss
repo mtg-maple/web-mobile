@@ -1,0 +1,16 @@
+@import "../../../properties.scss";
+
+.infoItem:nth-child(n+2) {
+  margin-top: $space;
+}
+
+.countName {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.countName *:nth-child(n+2) {
+  margin-left: $space;
+}

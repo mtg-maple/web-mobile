@@ -70,7 +70,8 @@ export interface IDeckCard extends ICard {
 export interface ICard {
   id: string;
   name: string;
-  cost: ManaCostSymbol[],
+  description?: string;
+  cost: string,
   thumbnailImageUrl: string,
 }
 

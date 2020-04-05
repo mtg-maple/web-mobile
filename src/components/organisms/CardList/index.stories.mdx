@@ -1,0 +1,98 @@
+import { useState } from 'react';
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import CardList from '../CardList';
+
+<Meta
+  title="Organisms/CardList"
+  parameters={{
+    component: CardList,
+  }}
+/>
+
+# CardList
+
+<Source code={`
+    import CardList from '@mtg-maple/web-components/organisms/CardList';
+     
+    export default = (props) => {
+      return (
+        <CardList
+          onClicks={[
+            () => {},
+            () => {},
+            () => {},
+          ]}
+          cards={[
+            {
+              id: '12234',
+              name: '厚かましい借り手',
+              description: 'クリーチャー - フェアリー・ならず者 (3/1)',
+              cost: '{1}{U}{U}',
+              count: 2,
+              thumbnailImageUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+            },
+            {
+              id: '12234',
+              name: '厚かましい借り手',
+              description: 'クリーチャー - フェアリー・ならず者 (3/1)',
+              cost: '{1}{U}{U}',
+              count: 2,
+              thumbnailImageUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+            },
+            {
+              id: '12234',
+              name: '厚かましい借り手',
+              description: 'クリーチャー - フェアリー・ならず者 (3/1)',
+              cost: '{1}{U}{U}',
+              count: 2,
+              thumbnailImageUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+            },
+          ]}
+        />
+      );
+    };
+`} />
+
+<Props of={CardList} />
+
+## Basic
+
+<Preview withSource="open">
+  <Story name="Basic" >
+    <CardList
+      onClicks={[
+        () => {},
+        () => {},
+        () => {},
+      ]}
+      cards={[
+        {
+          id: '12234',
+          name: '厚かましい借り手',
+          description: 'クリーチャー - フェアリー・ならず者 (3/1)',
+          cost: '{1}{U}{U}',
+          count: 2,
+          thumbnailImageUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+        },
+        {
+          id: '12234',
+          name: '厚かましい借り手',
+          description: 'クリーチャー - フェアリー・ならず者 (3/1)',
+          cost: '{1}{U}{U}',
+          count: 2,
+          thumbnailImageUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+        },
+        {
+          id: '12234',
+          name: '厚かましい借り手',
+          description: 'クリーチャー - フェアリー・ならず者 (3/1)',
+          cost: '{1}{U}{U}',
+          count: 2,
+          thumbnailImageUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+        },
+      ]}
+    />
+  </Story>
+</Preview>
