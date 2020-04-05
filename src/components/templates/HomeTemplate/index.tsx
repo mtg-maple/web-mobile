@@ -14,11 +14,11 @@ export type HomeTemplateProps = {
     tags: ISearchTag[];
     setTags: (newTags: ISearchTag[]) => void;
     onClick: (e: React.MouseEvent) => void;
-  }
+  };
   deckList?: {
     decks: IDeckListItem[];
     onClicks: ((e: MouseEvent) => void)[];
-  }
+  };
 }
 
 const HomeTemplate: FC<HomeTemplateProps> = ({ searchBar, deckList }) => {

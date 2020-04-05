@@ -48,9 +48,9 @@ const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
 
   const searchBar = {
     query: store.searchBar.query, 
-    setQuery: (newQuery: string) => dispatch(setSearchBarQuery('home', newQuery)),
+    setQuery: (newQuery: string) => dispatch(setSearchBarQuery('/home', newQuery)),
     tags: store.searchBar.tags,
-    setTags: (newTags: ISearchTag[]) => dispatch(setSearchBarTags('home', newTags)),
+    setTags: (newTags: ISearchTag[]) => dispatch(setSearchBarTags('/home', newTags)),
     onClick: () => alert('clicked'),
   }
   const deckList = store.decks && {
