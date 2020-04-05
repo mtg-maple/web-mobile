@@ -1,4 +1,4 @@
-import { IDeckListItem, ManaColor } from '../models';
+import { IDeckListItem } from '../models';
 import { IResponse } from './response';
 
 import dummyDecksResponse from './dummyDecksResponse.json';
@@ -16,7 +16,7 @@ const getDecks = async (id: string): Promise<IResponse<DecksPage>>  => {
       ...dummyDecksResponse.result,
       data: dummyDecksResponse.result.data.map((deck) => ({
         ...deck,
-        colors: deck.colors as ManaColor[],
+        colors: deck.colors,
       })),
     },
   };
