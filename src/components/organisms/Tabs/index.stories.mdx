@@ -1,0 +1,67 @@
+import { useState } from 'react';
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
+
+import { Tab, Tabs, TabList, TabPanel } from '../Tabs';
+
+<Meta
+  title="Organisms/Tabs"
+  parameters={{
+    component: Tabs,
+  }}
+/>
+
+# Tabs
+
+<Source code={`
+    import { Tab, Tabs, TabList, TabPanel } from ~/components/organisms/Tabs';
+     
+    export default = (props) => {
+      return (
+        <Tabs>
+          <TabList>
+            <Tab>カード</Tab>
+            <Tab>統計</Tab>
+            <Tab>メモ</Tab>
+          </TabList>
+          <TabPanel>
+            <h2>Any content 1</h2>
+          </TabPanel>
+          <TabPanel>
+            <h2>Any content 2</h2>
+          </TabPanel>
+          <TabPanel>
+            <h2>Any content 3</h2>
+          </TabPanel>
+        </Tabs>
+      );
+    };
+`} />
+
+## Basic
+
+<Preview withSource="open">
+  <Story name="Basic" >
+    <Tabs>
+      <TabList>
+        <Tab>カード</Tab>
+        <Tab>統計</Tab>
+        <Tab>メモ</Tab>
+      </TabList>
+      <TabPanel>
+        <h2>Any content 1</h2>
+      </TabPanel>
+      <TabPanel>
+        <h2>Any content 2</h2>
+      </TabPanel>
+      <TabPanel>
+        <h2>Any content 3</h2>
+      </TabPanel>
+    </Tabs>
+  </Story>
+</Preview>
