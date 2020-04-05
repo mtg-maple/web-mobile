@@ -2,6 +2,11 @@
 
 .heading {
   transition: opacity 100ms ease-in ;
+  font-size: $font-size-s;
+  line-height: $font-size-s;
+  font-weight: $font-weight-default;
+  margin-block-start: .5em;
+  margin-block-end: .5em;
 }
 
 .heading.hidden {
@@ -34,7 +39,7 @@ h2.heading {
 }
 
 h3.heading {
-  font-size: $font-size-s;
-  line-height: $font-size-s;
-  font-weight: $font-weight-default;
+  font-size: $font-size-m;
+  line-height: $font-size-m;
+  font-weight: $font-weight-bold;
 }
