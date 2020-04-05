@@ -5,7 +5,7 @@ import MagicSymbol from '../../atoms/MagicSymbol';
 import styles from './style.module.scss';
 
 export type ManaColorsProps = {
-  colors: ManaColor[];
+  colors: string[];
 
   /**
    * @default 'medium'
@@ -21,7 +21,7 @@ const ManaColors: FC<ManaColorsProps> = ({ colors, size = 'medium', className = 
   return (
     <ul className={[styles.manaColorItemList, className].join(' ')}>
       {
-        colors.map((color: ManaColor) => (
+        colors.map((color: string) => (
           <li key={color} className={[styles.manaColorItem, styles[size]].join(' ')}><MagicSymbol type="cost" value={color} size={size}/></li>
         ))
       }

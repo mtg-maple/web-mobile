@@ -1,6 +1,7 @@
-import { ActionType, IAction } from './actions';
-import { IStore } from './model';
 import * as H from 'history';
+
+import { IStore } from '../models';
+import { ActionType, IAction } from './actions';
 
 // Action
 export interface SetLastLocationAction {

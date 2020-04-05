@@ -6,7 +6,7 @@ export type MagicSymbolString =
   '11' | '12' | '13' | '14'  | '15'  | '16'  | '17'  | '18'  | '19'  | '20' | '1/2' |
   'Artifact' | 'Creature' | 'Enchantment' | 'Instant' | 'Land' | 'Planeswalker' | 'Sorcery';
 
-export const getClassName = (value: MagicSymbolString): string => {
+export const getClassName = (value: string): string => {
   switch(value) {
     case 'W':
       return 'ms-w';

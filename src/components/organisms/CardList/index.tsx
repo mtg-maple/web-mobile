@@ -2,7 +2,7 @@ import React, { FC, MouseEvent } from 'react';
 
 import CardListItem from '../CardListItem';
 import styles from './style.module.scss';
-import { IDeckCard, ICard } from '../../../store';
+import { IDeckCard, ICard } from '../../../models';
 
 export type DeckListProps = {
   cards: (IDeckCard | ICard)[];

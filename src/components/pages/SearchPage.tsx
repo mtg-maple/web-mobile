@@ -1,7 +1,8 @@
 import React, { FC, Dispatch } from 'react';
 
 import SearchTemplate from '../templates/SearchTemplate';
-import { ISearchPageStore, IAction } from '../../store';
+import { ISearchPageStore } from '.././../models';
+import { IAction } from '../../store';
 import {
   useScrollSaveOnUnmount,
   useScrollRestoreOnMount,

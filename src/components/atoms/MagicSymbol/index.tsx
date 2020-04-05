@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 
-import { MagicSymbolString, getClassName } from './string';
+import { getClassName } from './string';
 import styles from './style.module.scss';
 
 export type MagicSymbolProps = {
-  value: MagicSymbolString;
+  value: string;
 
   /**
    * Type of the symbol

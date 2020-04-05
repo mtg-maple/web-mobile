@@ -2,7 +2,7 @@ import React, { FC, MouseEvent } from 'react';
 
 import DeckListItem from '../DeckListItem';
 import styles from './style.module.scss';
-import { IDeckListItem } from '../../../store';
+import { IDeckListItem } from '../../../models';
 
 export type DeckListProps = {
   decks: IDeckListItem[];

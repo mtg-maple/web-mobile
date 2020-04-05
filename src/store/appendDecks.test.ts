@@ -1,5 +1,6 @@
+import { ManaColor } from '../models';
+import { ActionType, initialStore } from '../store';
 import { appendDecks, isAppendDecksAction, reduceAppendDecks } from './appendDecks';
-import { ManaColor, ActionType, initialStore } from '../store';
 
 describe('appendDecks', ():void => {
   const currentDecks = [

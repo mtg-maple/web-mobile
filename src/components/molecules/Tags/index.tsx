@@ -4,7 +4,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Label from '../../atoms/Label';
 import IconButton from '../../atoms/IconButton';
 import styles from './style.module.scss';
-import { ISearchTag } from '../../../store';
+import { ISearchTag } from '../../../models';
 
 export type TagsProps = {
   tags: ISearchTag[];

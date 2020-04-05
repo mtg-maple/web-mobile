@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import CardListItemLayout from '../../molecules/CardListItemLayout';
-import ManaColors, { ManaColor } from '../../molecules/ManaColors';
+import ManaColors from '../../molecules/ManaColors';
 import Label from '../../atoms/Label';
 import Description from '../../atoms/Description';
 import styles from './style.module.scss';
@@ -11,7 +11,7 @@ export type DeckListItemProps = {
   id: string;
   name: string;
   description: string;
-  colors: ManaColor[];
+  colors: string[];
   onClick?: (e: React.MouseEvent) => void;
   showMoreIcon?: boolean;
   className?: string;

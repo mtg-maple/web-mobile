@@ -1,6 +1,5 @@
 import React, { FC, ReactElement } from 'react';
 import MagicSymbol from '../../atoms/MagicSymbol';
-import { MagicSymbolString } from '../../atoms/MagicSymbol/string';
 import { containPresenter } from '../../../utils';
 
 import styles from './style.module.scss';
@@ -16,7 +15,7 @@ export type ManaCostProps = {
 }
 
 export type ManaCostPresenterProps = {
-  symbols: MagicSymbolString[];
+  symbols: string[];
   size: 'small' | 'medium' | 'large';
   className: string;
 }
@@ -24,8 +23,8 @@ export type ManaCostPresenterProps = {
 export const ManaCostPresenter: FC<ManaCostPresenterProps> = ({ symbols, size, className }) => (
   <ul className={[styles.manaCostItemList, className].join(' ')}>
     {
-      symbols.map((symbol: MagicSymbolString) => (
-        <li className={[styles.manaCostItem, styles[size]].join(' ')}>
+      symbols.map((symbol: string, index: number) => (
+        <li key={`${symbol}${index}`} className={[styles.manaCostItem, styles[size]].join(' ')}>
           <MagicSymbol type="cost" value={symbol} size={size}/>
         </li>
       ))
@@ -34,7 +33,7 @@ export const ManaCostPresenter: FC<ManaCostPresenterProps> = ({ symbols, size, c
 );
 
 export const ManaCostContainer = (presenter: FC<ManaCostPresenterProps>, props: ManaCostProps): ReactElement | null => {
-  const symbols = (props.value.trim().slice(1, -1).split('}{') as MagicSymbolString[]);
+  const symbols = props.value.trim().slice(1, -1).split('}{');
   const className = props.className || '';
   const size = props.size || 'medium';
   return presenter({ symbols, size, className });

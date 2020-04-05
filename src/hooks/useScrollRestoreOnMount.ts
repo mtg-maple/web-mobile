@@ -1,5 +1,6 @@
 import { Dispatch, useLayoutEffect } from 'react';
-import { IAction, IPageStore } from '../store';
+import { IPageStore } from '../models';
+import { IAction } from '../store';
 
 const useScrollRestoreOnMount = (store: IPageStore, dispatch: Dispatch<IAction>): void => {
   useLayoutEffect(() => {

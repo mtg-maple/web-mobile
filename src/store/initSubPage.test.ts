@@ -1,7 +1,8 @@
 import * as H from 'history';
 
+import { Page } from '../models';
 import { initSubPage, isInitSubPageAction, reduceInitSubPage } from './initSubPage';
-import { ActionType, Page, initialStore } from '../store';
+import { ActionType, initialStore } from '../store';
 
 describe('initSubPage', ():void => {
   const targetPage = Page.Deck;

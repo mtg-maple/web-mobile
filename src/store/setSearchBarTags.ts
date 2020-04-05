@@ -1,5 +1,5 @@
+import { IStore, ISearchTag } from '../models';
 import { ActionType, IAction } from './actions';
-import { IStore, ISearchTag } from './model';
 
 // Action
 export interface SetSearchBarTagsAction {

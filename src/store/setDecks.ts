@@ -1,5 +1,5 @@
 import { ActionType, IAction } from './actions';
-import { IStore, IDeckListItem } from './model';
+import { IStore, IDeckListItem } from '../models';
 
 // Action
 export interface SetDecksAction {

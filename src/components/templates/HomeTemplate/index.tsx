@@ -5,7 +5,7 @@ import SearchBar from '../../organisms/SearchBar';
 import DeckList from '../../organisms/DeckList';
 
 import styles from './style.module.scss';
-import { ISearchTag, IDeckListItem } from '../../../store';
+import { ISearchTag, IDeckListItem } from '../../../models';
 
 export type HomeTemplateProps = {
   searchBar: {

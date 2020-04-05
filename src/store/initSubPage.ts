@@ -1,5 +1,5 @@
 import { ActionType, IAction } from './actions';
-import { IStore, Page } from './model';
+import { IStore, Page } from '../models';
 import * as H from 'history';
 
 // Action

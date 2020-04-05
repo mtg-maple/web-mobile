@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 
-import { IStore, initialStore } from './model';
+import { IStore } from '../models';
 import { IAction, ActionType } from './actions';
 import { reduceSetScrollPosition } from './setScrollPosition';
 import { reduceSetSearchBarQuery } from './setSearchBarQuery';
@@ -10,6 +10,33 @@ import { reduceAppendDecks } from './appendDecks';
 import { reduceSetLastLocation } from './setLastLocation';
 import { reduceInitSubPage } from './initSubPage';
 
+export const initialStore: IStore = {
+  homePage: {
+    scrollPositionY: 0,
+    searchBar: {
+      query: '',
+      tags: [],
+    },
+    decks: [],
+  },
+  deckPage: {
+    scrollPositionY: 0,
+    fromLocation: undefined,
+    deck: undefined,
+  },
+  searchPage: {
+    scrollPositionY: 0,
+    searchBar: {
+      query: '',
+      tags: [],
+    },
+    decks: [],
+  },
+  userPage: {
+    scrollPositionY: 0,
+  },
+  lastLocation: undefined,
+};
 
 function reducer(state: IStore, action: IAction): IStore {
   switch (action.type) {
@@ -38,7 +65,6 @@ const useStore = () => {
 
 export default useStore;
 export * from './actions';
-export * from './model';
 export * from './setScrollPosition';
 export * from './setSearchBarQuery';
 export * from './setSearchBarTags';

@@ -1,5 +1,6 @@
+import { ManaColor } from '../models';
 import { setDecks, isSetDecksAction, reduceSetDecks } from './setDecks';
-import { ManaColor, ActionType, initialStore } from '../store';
+import { ActionType, initialStore } from '../store';
 
 describe('setDecks', ():void => {
   const decks = [

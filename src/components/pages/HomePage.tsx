@@ -4,16 +4,19 @@ import { useRouteMatch, useHistory, useLocation } from 'react-router-dom';
 import HomeTemplate from '../templates/HomeTemplate';
 import { 
   IAction, 
-  ISearchTag, 
-  IHomePageStore, 
-  IDeckListItem,
   setSearchBarQuery, 
   setSearchBarTags, 
   setDecks,
   initSubPage,
-  Page, 
 
 } from '../../store';
+import { 
+  ISearchTag, 
+  IHomePageStore, 
+  IDeckListItem,
+  Page, 
+
+} from '../../models';
 import { getDecks, IResponse, DecksPage } from '../../mock';
 import {
   useScrollSaveOnUnmount,

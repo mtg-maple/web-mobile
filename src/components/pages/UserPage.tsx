@@ -1,7 +1,8 @@
 import React, { FC, Dispatch }  from 'react';
 
 import UserTemplate from '../templates/UserTemplate';
-import { IUserPageStore, IAction } from '../../store';
+import { IUserPageStore } from '../../models';
+import { IAction } from '../../store';
 import {
   useScrollSaveOnUnmount,
   useScrollRestoreOnMount,

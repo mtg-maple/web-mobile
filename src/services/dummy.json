@@ -1,0 +1,212 @@
+{
+  "users": [
+    {
+      "id": "12345",
+      "profile": {
+        "name": "kecy"
+      },
+      "decks": ["abc", "def", "ghi", "jkl", "mno", "pqr", "stu", "vwx", "yza"]
+    }
+  ],
+  "decks": [
+    {
+      "id": "abc",
+      "name": "Jeskai Fires",
+      "description": "It's best deck in the metagame",
+      "thumbnailImageUrl": "https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg",
+      "colors": ["W", "U"],
+      "mainboard": [
+        { "cardId": "0d20bccc-09ea-5a65-ab0e-618fc3da6f07", "count": 4 },
+        { "cardId": "5afb3dea-b505-5b9d-ba44-b008efab85d6", "count": 4 },
+        { "cardId": "c056edff-90ba-54fd-9354-3a4feee5c2d3", "count": 3 },
+        { "cardId": "a55fe4aa-fd82-557c-986b-7861401b5d32", "count": 3 },
+        { "cardId": "096074aa-af25-51d7-9298-40a065e4fb6a", "count": 4 },
+        { "cardId": "ce0e8f81-7be4-540e-bbb9-90fc24ee271c", "count": 4 },
+        { "cardId": "b54ebbde-1fa3-5def-989d-5ea2dfa3469a", "count": 4 }
+      ],
+      "sideboard": [
+        { "cardId": "e793edbc-f5ea-5f75-9a68-bb265eef8956", "count": 4 },
+        { "cardId": "7ffd8cb2-9969-5626-a766-64d300a4391", "count": 3 },
+        { "cardId": "557c8017-1e9c-5597-9380-c6d01331a347", "count": 3 }
+      ]
+    },
+    {
+      "id": "def",
+      "name": "青白コントロール1",
+      "description": "青と白のコントロールです",
+      "thumbnailImageUrl": "https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg",
+      "colors": ["W", "U"],
+      "mainboard": [],
+      "sideboard": []
+    },
+    {
+      "id": "ghi",
+      "name": "青白コントロール2",
+      "description": "青と白のコントロールです",
+      "thumbnailImageUrl": "https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg",
+      "colors": ["W", "U"],
+      "mainboard": [],
+      "sideboard": []
+    },
+    {
+      "id": "jkl",
+      "name": "青白コントロール3",
+      "description": "青と白のコントロールです",
+      "thumbnailImageUrl": "https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg",
+      "colors": ["W", "U"]
+    },
+    {
+      "id": "lmn",
+      "name": "青白コントロール4",
+      "description": "青と白のコントロールです",
+      "thumbnailImageUrl": "https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg",
+      "colors": ["W", "U"],
+      "mainboard": [],
+      "sideboard": []
+    },
+    {
+      "id": "opq",
+      "name": "青白コントロール5",
+      "description": "青と白のコントロールです",
+      "thumbnailImageUrl": "https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg",
+      "colors": ["W", "U"],
+      "mainboard": [],
+      "sideboard": []
+    },
+    {
+      "id": "rst",
+      "name": "青白コントロール6",
+      "description": "青と白のコントロールです",
+      "thumbnailImageUrl": "https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg",
+      "colors": ["W", "U"],
+      "mainboard": [],
+      "sideboard": []
+    },
+    {
+      "id": "uvw",
+      "name": "青白コントロール7",
+      "description": "青と白のコントロールです",
+      "thumbnailImageUrl": "https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg",
+      "colors": ["W", "U"],
+      "mainboard": [],
+      "sideboard": []
+    },
+    {
+      "id": "yza",
+      "name": "青白コントロール8",
+      "description": "青と白のコントロールです",
+      "thumbnailImageUrl": "https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg",
+      "colors": ["W", "U"],
+      "mainboard": [],
+      "sideboard": []
+    }
+  ],
+  "cards": [
+    {
+      "id": "0d20bccc-09ea-5a65-ab0e-618fc3da6f07",
+      "scryfallId": "a874dfe1-eb4d-4817-877f-8a4cd75107e1",
+      "types": "Land",
+      "name": "Temple of Triumph",
+      "type": "Land",
+      "convertedManaCost": 0,
+      "colors": ""
+    },
+    {
+      "id": "5afb3dea-b505-5b9d-ba44-b008efab85d6",
+      "scryfallId": "00f8ec3c-d2cb-477c-a7e8-ff497df646d6",
+      "types": "Land",
+      "name": "Temple of Epiphany",
+      "type": "Land",
+      "convertedManaCost": 0,
+      "colors": ""
+    },
+    {
+        "id": "c056edff-90ba-54fd-9354-3a4feee5c2d3",
+        "scryfallId": "b8ebe3cf-7143-453a-b0ef-2f5bdaac3185",
+        "types": "Land",
+        "name": "Steam Vents",
+        "type": "Land — Island Mountain",
+        "convertedManaCost": 0,
+        "colors": ""
+    },
+    {
+      "id": "a55fe4aa-fd82-557c-986b-7861401b5d32",
+      "scryfallId": "b7b598d0-535d-477d-a33d-d6a10ff5439a",
+      "types": "Land",
+      "name": "Sacred Foundry",
+      "type": "Land — Mountain Plains",
+      "convertedManaCost": 0,
+      "colors": ""
+    },
+    {
+      "id": "096074aa-af25-51d7-9298-40a065e4fb6a",
+      "scryfallId": "09fd2d9c-1793-4beb-a3fb-7a869f660cd4",
+      "types": "Creature",
+      "name": "Bonecrusher Giant",
+      "type": "Creature — Giant",
+      "power": 4,
+      "toughness": 3,
+      "manaCost": "{2}{R}",
+      "convertedManaCost": 3,
+      "colors": "R"
+    },
+    {
+      "id": "ce0e8f81-7be4-540e-bbb9-90fc24ee271c",
+      "scryfallId": "cf2386fd-edc0-4731-8f4e-7a7c45548bf3",
+      "types": "Creature",
+      "name": "Sphinx of Foresight",
+      "type": "Creature — Sphinx",
+      "power": 4,
+      "toughness": 4,
+      "manaCost": "{2}{U}{U}",
+      "convertedManaCost": 4,
+      "colors": "U"
+    },
+    {
+      "id": "b54ebbde-1fa3-5def-989d-5ea2dfa3469a",
+      "scryfallId": "0c18c541-758b-4237-9961-9637e996e8a5",
+      "types": "Creature",
+      "name": "Cavalier of Flame",
+      "type": "Creature — Elemental Knight",
+      "power": 6,
+      "toughness": 5,
+      "manaCost": "{2}{R}{R}{R}",
+      "convertedManaCost": 5,
+      "colors": "R"
+    },
+    {
+      "id": "e793edbc-f5ea-5f75-9a68-bb265eef8956",
+      "scryfallId": "0ecbe097-ba51-42e5-957c-382eb66c08f0",
+      "types": "Creature",
+      "name": "Robber of the Rich",
+      "type": "Creature — Human Archer Rogue",
+      "power": 2,
+      "toughness": 2,
+      "manaCost": "{1}{R}",
+      "convertedManaCost": 2,
+      "colors": "R"
+    },
+    {
+      "id": "7ffd8cb2-9969-5626-a766-64d300a4391",
+      "scryfallId": "5e84cb9c-9876-47a4-aea4-78574321bc36",
+      "types": "Creature",
+      "name": "Legion Warboss",
+      "type": "Creature — Goblin Soldier",
+      "power": 2,
+      "toughness": 2,
+      "manaCost": "{2}{R}",
+      "convertedManaCost": 3,
+      "colors": "R"
+    },
+    {
+      "id": "557c8017-1e9c-5597-9380-c6d01331a347",
+      "scryfallId": "fbe04cb8-a8b9-4241-baae-b398a2509a3a",
+      "types": "Instant",
+      "name": "Mystical Dispute",
+      "type": "Instant",
+      "manaCost": "{2}{U}",
+      "convertedManaCost": 3,
+      "colors": "U"
+    }
+  ]
+}

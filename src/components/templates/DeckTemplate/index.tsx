@@ -6,11 +6,11 @@ import Heading from '../../atoms/Heading';
 import NavigationHeader from '../../organisms/NavigationHeader'
 import DeckSummary from '../../organisms/DeckSummary';
 import CardList from '../../organisms/CardList';
-import { IDeck, IDeckCard } from '../../../store';
+import { IDeck, IDeckCard } from '../../../models';
 import styles from './style.module.scss';
 
 export type DeckTemplateProps = {
-  deck: IDeck;
+  deck?: IDeck;
   backButtonProps: {
     to: H.LocationDescriptor<H.History.PoorMansUnknown> | ((location: H.Location<H.History.PoorMansUnknown>) => H.LocationDescriptor<H.History.PoorMansUnknown>);
     onClick?: (e: MouseEvent) => void;
@@ -38,44 +38,50 @@ const DeckTemplate: FC<DeckTemplateProps> = ({ deck, backButtonProps }) => {
   }, []);
   return (
     <div className={styles.pageRoot}>
-      <NavigationHeader
-        className={styles.navigationHeader}
-        title={deck.name}
-        backButtonProps={backButtonProps}
-        isSimple={belowTopSection}
-      />
-      <DeckSummary deck={deck} />
-      <span style={{ visibility: 'hidden' }} ref={anchorRef}></span>
-      <Tabs>
-        <TabList>
-          <Tab>カード</Tab>
-          <Tab>メモ</Tab>
-        </TabList>
+      {
+        typeof deck === 'undefined' ? 
+          'loading...' :
+          <>
+            <NavigationHeader
+              className={styles.navigationHeader}
+              title={deck.name}
+              backButtonProps={backButtonProps}
+              isSimple={belowTopSection}
+            />
+            <DeckSummary deck={deck} />
+            <span style={{ visibility: 'hidden' }} ref={anchorRef}></span>
+            <Tabs>
+              <TabList>
+                <Tab>カード</Tab>
+                <Tab>メモ</Tab>
+              </TabList>
 
-        <TabPanel className={styles.tabPanel}>
-          <section>
-            <Heading className={styles.heading} level="3">{`メインボード(${deck.mainboard.length})`}</Heading>
-            <CardList 
-              cards={deck.mainboard}
-              onClicks={
-                deck.mainboard.map((card: IDeckCard) => () => alert(`${card.name} clicked`))
-              }
-            />
-          </section>
-          <section>            
-            <Heading className={styles.heading} level="3">{`サイドボード(${deck.sideboard.length})`}</Heading>
-            <CardList 
-              cards={deck.sideboard}
-              onClicks={
-                deck.sideboard.map((card: IDeckCard) => () => alert(`${card.name} clicked`))
-              }
-            />
-          </section>
-        </TabPanel>
-        <TabPanel>
-          <h2>Any content 3</h2>
-        </TabPanel>
-      </Tabs>
+              <TabPanel className={styles.tabPanel}>
+                <section>
+                  <Heading className={styles.heading} level="3">{`メインボード(${deck.mainboard.length})`}</Heading>
+                  <CardList 
+                    cards={deck.mainboard}
+                    onClicks={
+                      deck.mainboard.map((card: IDeckCard) => () => alert(`${card.name} clicked`))
+                    }
+                  />
+                </section>
+                <section>            
+                  <Heading className={styles.heading} level="3">{`サイドボード(${deck.sideboard.length})`}</Heading>
+                  <CardList 
+                    cards={deck.sideboard}
+                    onClicks={
+                      deck.sideboard.map((card: IDeckCard) => () => alert(`${card.name} clicked`))
+                    }
+                  />
+                </section>
+              </TabPanel>
+              <TabPanel>
+                <h2>Any content 3</h2>
+              </TabPanel>
+            </Tabs>
+          </>
+      }
     </div>
   )
 };

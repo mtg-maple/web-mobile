@@ -1,4 +1,4 @@
-import { IDeckListItem, ManaColor } from '../store';
+import { IDeckListItem, ManaColor } from '../models';
 import { IResponse } from './response';
 
 import dummyDecksResponse from './dummyDecksResponse.json';

@@ -6,7 +6,7 @@ import Input from '../../molecules/Input';
 import Tags from '../../molecules/Tags';
 
 import styles from './style.module.scss';
-import { ISearchTag } from '../../../store';
+import { ISearchTag } from '../../../models';
 
 export type SearchBarProps = {
   query: string;

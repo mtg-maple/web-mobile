@@ -4,7 +4,7 @@ import Label from '../../atoms/Label';
 import Description from '../../atoms/Description';
 import ManaColors from '../../molecules/ManaColors';
 import { AddCardButton } from '../../molecules/ButtonInstance';
-import { IDeckListItem } from '../../../store';
+import { IDeckListItem } from '../../../models';
 import styles from './style.module.scss';
 
 export type DeckSummaryProps = {

@@ -5,7 +5,7 @@ import NumberText from '../../atoms/NumberText';
 import Description from '../../atoms/Description';
 import CardListItemLayout from '../../molecules/CardListItemLayout';
 import ManaCost from '../../molecules/ManaCost';
-import { ICard, IDeckCard } from '../../../store';
+import { ICard, IDeckCard } from '../../../models';
 
 import styles from './style.module.scss';
 
@@ -33,11 +33,14 @@ const CardListItem: FC<DeckListItemProps> = ({ card, onClick, showMoreIcon, clas
           :
           <Label className={styles.infoItem} weight='bold'>{card.name}</Label>
       }
+      <Description className={styles.infoItem} size='small' color='muteText'>{
+        typeof card.power !== 'undefined' &&  typeof card.toughness !== 'undefined' ? 
+          `${card.type}(${card.power}/${card.toughness})` : card.type 
+      }</Description>
       {
-        card.description &&
-        <Description className={styles.infoItem} size='small' color='muteText'>{ card.description }</Description>
+        card.manaCost && 
+          <ManaCost className={styles.infoItem} value={card.manaCost} size='small' />
       }
-      <ManaCost className={styles.infoItem} value={card.cost} size='small' />
     </>
   );
   return (
