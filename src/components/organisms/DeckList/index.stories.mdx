@@ -18,11 +18,35 @@ import DeckList from '../DeckList';
      
     export default = (props) => {
       return (
-        <DeckListItem
-          title="青白コントロール"
-          description="lorem ipsum"
-          thumbnailImageUrl="https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg"
-          colors={['W', 'B']}
+        <DeckList
+          onClicks={[
+            () => {},
+            () => {},
+            () => {},
+          ]}
+          decks={[
+            {
+              id: 'aaaa',
+              name: '青白コントロール',
+              description: '青と白のコントロールです',
+              thumbnailImageUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+              colors: ['W', 'U']
+            },
+            {
+              id: 'aaaa',
+              name: '青白コントロール',
+              description: '青と白のコントロールです',
+              thumbnailImageUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+              colors: ['W', 'U']
+            },
+            {
+              id: 'aaaa',
+              name: '青白コントロール',
+              description: '青と白のコントロールです',
+              thumbnailImageUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+              colors: ['W', 'U']
+            },
+          ]}
         />
       );
     };
@@ -35,26 +59,31 @@ import DeckList from '../DeckList';
 <Preview withSource="open">
   <Story name="Basic" >
     <DeckList
+      onClicks={[
+        () => {},
+        () => {},
+        () => {},
+      ]}
       decks={[
         {
           id: 'aaaa',
           name: '青白コントロール',
           description: '青と白のコントロールです',
-          thumbnailUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+          thumbnailImageUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
           colors: ['W', 'U']
         },
         {
           id: 'aaaa',
           name: '青白コントロール',
           description: '青と白のコントロールです',
-          thumbnailUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+          thumbnailImageUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
           colors: ['W', 'U']
         },
         {
           id: 'aaaa',
           name: '青白コントロール',
           description: '青と白のコントロールです',
-          thumbnailUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+          thumbnailImageUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
           colors: ['W', 'U']
         },
       ]}
