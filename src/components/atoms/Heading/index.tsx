@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, ReactElement } from 'react';
+import React, { FC, ReactNode, ReactElement, CSSProperties } from 'react';
 
 import { containPresenter } from '../../../utils';
 import styles from './style.module.scss';
@@ -33,21 +33,23 @@ export type HeadingProps = {
    */
   color?: HeadingTextColor;
 
-  classNames?: string[];
+  className?: string;
+  style?: CSSProperties;
+  hidden?: boolean;
 }
 
 export type HeadingPresenterProps = {
   children: ReactNode;
   tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   color: HeadingTextColor;
-  classNames: string[];
+  className?: string;
+  style?: CSSProperties;
 }
 
-export const HeadingPresenter: FC<HeadingPresenterProps> = ({ children, tag, color, classNames }) => {
+export const HeadingPresenter: FC<HeadingPresenterProps> = ({ children, tag, color, className, style }) => {
   const Tag = tag as keyof JSX.IntrinsicElements;
-  const className = [styles.heading, styles[color], ...classNames].join(' ');
   return (
-    <Tag className={className}>
+    <Tag className={[styles.heading, styles[color], className].join(' ')} style={style}>
       {children}
     </Tag>
   );
@@ -75,11 +77,13 @@ export const HeadingContainer = (presenter: FC<HeadingPresenterProps>, props: He
     default:
       tag = 'h1';
   }
+  const className = props.hidden ? [props.className, styles.hidden].join(' ') : props.className;
   const presenterProps: HeadingPresenterProps = {
     children: props.children,
     tag,
     color: props.color || 'text',
-    classNames: props.classNames || [],
+    className,
+    style: props.style,
   }
   return presenter(presenterProps);
 }
