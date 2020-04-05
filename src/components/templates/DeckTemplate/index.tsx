@@ -1,9 +1,12 @@
 import React, { FC, MouseEvent, useState, useEffect, useRef } from 'react';
 import * as H from 'history';
+import { Tab, Tabs, TabList, TabPanel } from '../../organisms/Tabs';
 
+import Heading from '../../atoms/Heading';
 import NavigationHeader from '../../organisms/NavigationHeader'
 import DeckSummary from '../../organisms/DeckSummary';
-import { IDeck } from '../../../store';
+import CardList from '../../organisms/CardList';
+import { IDeck, IDeckCard } from '../../../store';
 import styles from './style.module.scss';
 
 export type DeckTemplateProps = {
@@ -43,41 +46,36 @@ const DeckTemplate: FC<DeckTemplateProps> = ({ deck, backButtonProps }) => {
       />
       <DeckSummary deck={deck} />
       <span style={{ visibility: 'hidden' }} ref={anchorRef}></span>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
-      <p>lorem ipsum</p>
+      <Tabs>
+        <TabList>
+          <Tab>カード</Tab>
+          <Tab>メモ</Tab>
+        </TabList>
+
+        <TabPanel className={styles.tabPanel}>
+          <section>
+            <Heading className={styles.heading} level="3">{`メインボード(${deck.mainboard.length})`}</Heading>
+            <CardList 
+              cards={deck.mainboard}
+              onClicks={
+                deck.mainboard.map((card: IDeckCard) => () => alert(`${card.name} clicked`))
+              }
+            />
+          </section>
+          <section>            
+            <Heading className={styles.heading} level="3">{`サイドボード(${deck.sideboard.length})`}</Heading>
+            <CardList 
+              cards={deck.sideboard}
+              onClicks={
+                deck.sideboard.map((card: IDeckCard) => () => alert(`${card.name} clicked`))
+              }
+            />
+          </section>
+        </TabPanel>
+        <TabPanel>
+          <h2>Any content 3</h2>
+        </TabPanel>
+      </Tabs>
     </div>
   )
 };

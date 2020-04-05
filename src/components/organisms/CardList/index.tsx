@@ -2,10 +2,10 @@ import React, { FC, MouseEvent } from 'react';
 
 import CardListItem from '../CardListItem';
 import styles from './style.module.scss';
-import { ICard } from '../../../store';
+import { IDeckCard, ICard } from '../../../store';
 
 export type DeckListProps = {
-  cards: ICard[];
+  cards: (IDeckCard | ICard)[];
   onClicks: ((e: MouseEvent) => void)[];
   className?: string;
 };
@@ -14,7 +14,7 @@ const DeckList: FC<DeckListProps> = ({ cards, onClicks, className }) => {
   return (
     <ul className={[styles.cardList, className].join(' ')}>
       {
-        cards.map((card: ICard, i: number) => (
+        cards.map((card: IDeckCard | ICard, i: number) => (
           <CardListItem
             key={card.id}
             card={card}

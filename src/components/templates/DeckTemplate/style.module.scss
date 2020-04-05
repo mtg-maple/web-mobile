@@ -13,3 +13,13 @@
 #anchor {
   display: none;
 }
+
+.tabPanel section {
+  margin-top: $space-3x;
+}
+
+.tabPanel .heading,
+.tabPanel .subHeading {
+  padding-right: $space-2x;
+  padding-left: $space-2x;
+}
