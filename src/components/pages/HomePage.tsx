@@ -1,5 +1,5 @@
 import React, { FC, Dispatch, useEffect, MouseEvent } from 'react';
-import { useRouteMatch, useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import HomeTemplate from '../templates/HomeTemplate';
 import { 
@@ -7,9 +7,8 @@ import {
   setSearchBarQuery, 
   setSearchBarTags, 
   setDeck,
-  setDecks,
+  setDeckList,
   initSubPage,
-
 } from '../../store';
 import {
   IResponse,
@@ -31,7 +30,6 @@ export type HomePageProps = {
 }
 
 const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
-  const { path } = useRouteMatch();
   let history = useHistory();
   const currentLocation = useLocation();
 
@@ -42,7 +40,7 @@ const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
   useEffect(() => {
     getDeckList('12345').then((res: IResponse<IDeckListResult>) => {
       if (res.status === 200) {
-        dispatch(setDecks(path, res.result.data));
+        dispatch(setDeckList(Page.Home, res.result.data));
       }
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
