@@ -11,15 +11,21 @@ export type NavigationBarProps = {
     to: H.LocationDescriptor<H.History.PoorMansUnknown> | ((location: H.Location<H.History.PoorMansUnknown>) => H.LocationDescriptor<H.History.PoorMansUnknown>);
     onClick?: (e: MouseEvent) => void;
   };
+  className?: string;
+  isSimple?: boolean;
 }
 
-const NavigationHeader: FC<NavigationBarProps> = ({ title, backButtonProps }) => {
+const NavigationHeader: FC<NavigationBarProps> = ({ title, isSimple = false, backButtonProps, className }) => {
+  let classNames = [styles.navigationHeader, className];
+  if (isSimple) {
+    classNames.push(styles.simple);
+  }
   return (
-    <header className={styles.navigationHeader}>
+    <header className={classNames.join(' ')}>
       <Link to={backButtonProps.to}>
         <BackButton onClick={backButtonProps.onClick}/>
       </Link>
-      <Heading level="2">{title}</Heading>
+      <Heading level="2" hidden={!isSimple}>{title}</Heading>
       <OptionButton onClick={() => alert('clicked')}/>
     </header>
   );
