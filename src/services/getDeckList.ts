@@ -30,20 +30,22 @@ const getDeckList = async (userId: string): Promise<IResponse<IDeckListResult>> 
         return true;
       };
       if (assumeTypeSafe(userDecks)) {
-        resolve({
-          status: 200,
-          result: {
-            page: 0,
-            hasNextPage: true,
-            data: userDecks.map((deck: IDeckRecord) => ({
-              id: deck.id,
-              name: deck.name,
-              description: deck.description,
-              thumbnailImageUrl: deck.thumbnailImageUrl,
-              colors: deck.colors,
-            })),
-          }
-        });
+        setTimeout(() => {
+          resolve({
+            status: 200,
+            result: {
+              page: 0,
+              hasNextPage: true,
+              data: userDecks.map((deck: IDeckRecord) => ({
+                id: deck.id,
+                name: deck.name,
+                description: deck.description,
+                thumbnailImageUrl: deck.thumbnailImageUrl,
+                colors: deck.colors,
+              })),
+            }
+          });
+        }, 500);
       } else {
         reject();
       }

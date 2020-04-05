@@ -57,24 +57,30 @@ const DeckTemplate: FC<DeckTemplateProps> = ({ deck, backButtonProps }) => {
               </TabList>
 
               <TabPanel className={styles.tabPanel}>
-                <section>
-                  <Heading className={styles.heading} level="3">{`メインボード(${deck.mainboard.length})`}</Heading>
-                  <CardList 
-                    cards={deck.mainboard}
-                    onClicks={
-                      deck.mainboard.map((card: IDeckCard) => () => alert(`${card.name} clicked`))
-                    }
-                  />
-                </section>
-                <section>            
-                  <Heading className={styles.heading} level="3">{`サイドボード(${deck.sideboard.length})`}</Heading>
-                  <CardList 
-                    cards={deck.sideboard}
-                    onClicks={
-                      deck.sideboard.map((card: IDeckCard) => () => alert(`${card.name} clicked`))
-                    }
-                  />
-                </section>
+                {
+                  typeof deck.mainboard === 'undefined' || typeof deck.sideboard === 'undefined' ? 
+                  'loading...' :
+                  <>
+                    <section>
+                      <Heading className={styles.heading} level="3">{`メインボード(${deck.mainboard.length})`}</Heading>
+                      <CardList 
+                        cards={deck.mainboard}
+                        onClicks={
+                          deck.mainboard.map((card: IDeckCard) => () => alert(`${card.name} clicked`))
+                        }
+                      />
+                    </section>
+                    <section>            
+                      <Heading className={styles.heading} level="3">{`サイドボード(${deck.sideboard.length})`}</Heading>
+                      <CardList 
+                        cards={deck.sideboard}
+                        onClicks={
+                          deck.sideboard.map((card: IDeckCard) => () => alert(`${card.name} clicked`))
+                        }
+                      />
+                    </section>
+                  </>
+                }
               </TabPanel>
               <TabPanel>
                 <h2>Any content 3</h2>

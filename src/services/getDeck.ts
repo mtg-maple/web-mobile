@@ -42,20 +42,22 @@ const getDeck = async (deckId: string): Promise<IResponse<IDeckResult>>  => {
       try {
         const mainboard = deck.mainboard.map(createDeckCard);
         const sideboard = deck.sideboard.map(createDeckCard);
-        resolve({
-          status: 200,
-          result: {
-            data: {
-              id: deck.id,
-              name: deck.name,
-              description: deck.description,
-              thumbnailImageUrl: deck.thumbnailImageUrl,
-              colors: deck.colors,
-              mainboard,
-              sideboard,
+        setTimeout(() => {
+          resolve({
+            status: 200,
+            result: {
+              data: {
+                id: deck.id,
+                name: deck.name,
+                description: deck.description,
+                thumbnailImageUrl: deck.thumbnailImageUrl,
+                colors: deck.colors,
+                mainboard,
+                sideboard,
+              }
             }
-          }
-        });
+          });
+        }, 500);
       } catch(e) {
         reject(e.message);
       }

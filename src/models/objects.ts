@@ -7,8 +7,8 @@ export interface IDeckListItem {
 }
 
 export interface IDeck extends IDeckListItem {
-  mainboard: IDeckCard[];
-  sideboard: IDeckCard[];
+  mainboard?: IDeckCard[];
+  sideboard?: IDeckCard[];
 }
 
 export interface IDeckCard extends ICard {

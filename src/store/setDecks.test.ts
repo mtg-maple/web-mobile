@@ -1,4 +1,3 @@
-import { ManaColor } from '../models';
 import { setDecks, isSetDecksAction, reduceSetDecks } from './setDecks';
 import { ActionType, initialStore } from '../store';
 
@@ -9,7 +8,7 @@ describe('setDecks', ():void => {
       name: 'deckname',
       description: 'deckdescription',
       thumbnailImageUrl: 'https://dummy',
-      colors: ['W' as ManaColor],
+      colors: ['W'],
     }
   ];
   const action = setDecks('/home', decks);

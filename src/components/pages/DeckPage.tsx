@@ -1,8 +1,8 @@
-import React, { FC, Dispatch, useState, useEffect } from 'react';
+import React, { FC, Dispatch, useEffect } from 'react';
 
 import DeckTemplate from '../templates/DeckTemplate';
-import { IAction } from '../../store';
-import { IDeckPageStore, IDeck, IResponse } from '../../models';
+import { IAction, setDeck } from '../../store';
+import { IDeckPageStore, IResponse, Page } from '../../models';
 import {
   useScrollSaveOnUnmount,
   useScrollRestoreOnMount,
@@ -19,18 +19,17 @@ const DeckPage: FC<DeckPageProps> = ({ store, dispatch }) => {
   useScrollSaveOnUnmount(dispatch);
   useScrollRestoreOnMount(store, dispatch);
   useLocationSaveOnUnmount(dispatch);
-  const [deck, setDeck] = useState<undefined | IDeck>(undefined);
   useEffect(() => {
     getDeck('abc')
       .then((res: IResponse<IDeckResult>) => {
         if (res.status === 200) {
-          setDeck(res.result.data);
+          dispatch(setDeck(Page.Deck, res.result.data));
         }
       })
       .catch((reason: any) => {
         console.log(reason);
       });
-  }, []);
+  }, [dispatch]);
   const backButtonProps = {
     to: store.fromLocation || '/home',
     onClick: () => {
@@ -40,7 +39,7 @@ const DeckPage: FC<DeckPageProps> = ({ store, dispatch }) => {
   };
 
   return (
-    <DeckTemplate { ...{ deck, backButtonProps } } />
+    <DeckTemplate deck={store.deck} backButtonProps={backButtonProps} />
   );
 };
 

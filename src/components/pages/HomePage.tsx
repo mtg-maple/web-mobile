@@ -6,6 +6,7 @@ import {
   IAction, 
   setSearchBarQuery, 
   setSearchBarTags, 
+  setDeck,
   setDecks,
   initSubPage,
 
@@ -59,6 +60,7 @@ const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
     onClicks: store.decks.map((deck: IDeckListItem): (e: MouseEvent) => void => {
       return (e: MouseEvent) => {
         dispatch(initSubPage(Page.Deck, currentLocation));
+        dispatch(setDeck(Page.Deck, { ...deck, mainboard: undefined, sideboard: undefined }));
         history.push(`/decks/${deck.id}`);
       };
     }),
