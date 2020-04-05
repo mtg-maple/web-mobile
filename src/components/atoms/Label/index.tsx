@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, CSSProperties } from 'react';
 
 import styles from './style.module.scss';
 
@@ -24,10 +24,11 @@ export type LabelProps = {
   weight?: 'default' | 'bold';
 
   className?: string;
+  style?: CSSProperties;
 }
 
-const Label: FC<LabelProps> = ({ children, color = 'text', size = 'medium', weight = 'default', className = '' }) => (
-  <span className={[styles.label, styles[color], styles[size], styles[weight], className].join(' ')}>
+const Label: FC<LabelProps> = ({ children, style, color = 'text', size = 'medium', weight = 'default', className = '' }) => (
+  <span style={style} className={[styles.label, styles[color], styles[size], styles[weight], className].join(' ')}>
     {children}
   </span>
 )
