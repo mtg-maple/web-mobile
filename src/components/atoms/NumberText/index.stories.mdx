@@ -1,32 +1,32 @@
 import { action } from "@storybook/addon-actions";
 import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
 
-import Number from '../Number';
+import NumberText from '../NumberText';
 
 <Meta
-  title="Atoms/Number"
+  title="Atoms/NumberText"
   parameters={{
-    component: Number,
+    component: NumberText,
   }}
 />
 
-# Number
+# NumberText
 
 <Source code={`
-    import Number from '@mtg-maple/web-components/atoms/Number';
+    import NumberText from '@mtg-maple/web-components/atoms/NumberText';
      
     export default = (props) => (
-        <Number num={4} size="large" color="muteText"/>
+        <NumberText num={4} size="large" color="muteText"/>
     );
 `} />
 
-<Props of={Number} />
+<Props of={NumberText} />
 
 ## Default
 
 <Preview withSource="open">
   <Story name="default" >
-    <Number num={1}/>
+    <NumberText num={1}/>
   </Story>
 </Preview>
 
@@ -34,13 +34,13 @@ import Number from '../Number';
 
 <Preview withSource="open">
   <Story name="small" >
-    <Number num={1} size="small"/>
+    <NumberText num={1} size="small"/>
   </Story>
   <Story name="medium" >
-    <Number num={2} size="medium"/>
+    <NumberText num={2} size="medium"/>
   </Story>
   <Story name="large" >
-    <Number num={3} size="large"/>
+    <NumberText num={3} size="large"/>
   </Story>
 </Preview>
 
@@ -48,9 +48,9 @@ import Number from '../Number';
 
 <Preview withSource="open">
   <Story name="text" >
-    <Number num={1} color="text"/>
+    <NumberText num={1} color="text"/>
   </Story>
   <Story name="muteText" >
-    <Number num={2} color="muteText"/>
+    <NumberText num={2} color="muteText"/>
   </Story>
 </Preview>

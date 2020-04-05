@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import styles from './style.module.scss';
 
-type NumberProps = {
+type NumberTextProps = {
   /**
    * Number to show
    */
@@ -19,10 +19,10 @@ type NumberProps = {
   size?: 'large' | 'medium' | 'small';
 }
 
-const Number: FC<NumberProps> = ({ num, color = 'text', size = 'medium' }) => (
+const NumberText: FC<NumberTextProps> = ({ num, color = 'text', size = 'medium' }) => (
   <span className={[styles.number, styles[color], styles[size]].join(' ')}>
     {num}
   </span>
 )
 
-export default Number;
+export default NumberText;
