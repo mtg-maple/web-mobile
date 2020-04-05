@@ -1,0 +1,15 @@
+@import "../../../properties.scss";
+
+.pageRoot {
+  position: relative;
+}
+
+.navigationHeader {
+  position: fixed;
+  z-index: $z-header;
+  width: calc(100% - #{$space-2x} * 2);
+}
+
+#anchor {
+  display: none;
+}
