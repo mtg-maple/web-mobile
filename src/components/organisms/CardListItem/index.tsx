@@ -34,8 +34,7 @@ const CardListItem: FC<DeckListItemProps> = ({ card, onClick, showMoreIcon, clas
           <Label className={styles.infoItem} weight='bold'>{card.name}</Label>
       }
       <Description className={styles.infoItem} size='small' color='muteText'>{
-        typeof card.power !== 'undefined' &&  typeof card.toughness !== 'undefined' ? 
-          `${card.type}(${card.power}/${card.toughness})` : card.type 
+        card.power && card.toughness ? `${card.type}(${card.power}/${card.toughness})` : card.type 
       }</Description>
       {
         card.manaCost && 
