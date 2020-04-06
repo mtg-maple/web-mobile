@@ -27,6 +27,7 @@ export interface ICardRecord {
   colors?: string;
   manaCost?: string;
   convertedManaCost: 0;
-  power?: number;
-  toughness?: number;
+  power?: string;
+  toughness?: string;
+  loyalty?: string;
 }

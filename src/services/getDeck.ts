@@ -5,6 +5,7 @@ import {
   ICardRecord,
 } from '../models';
 
+import { createThumbnailImageUrl } from './utils';
 import DummyDB from './dummy.json';
 
 export type IDeckResult = {
@@ -29,7 +30,7 @@ const getDeck = async (deckId: string): Promise<IResponse<IDeckResult>>  => {
             id: deckCard.cardId,
             count: deckCard.count,
             name: card.name,
-            thumbnailImageUrl: `https://img.scryfall.com/cards/art_crop/front/${card.scryfallId.slice(0,1)}/${card.scryfallId.slice(1,2)}/${card.scryfallId}.jpg`,
+            thumbnailImageUrl: createThumbnailImageUrl(card.scryfallId),
             manaCost: card.manaCost,
             colors: typeof card.colors === 'undefined' ? [] : card.colors.split(','),
             types: card.types.split(','),

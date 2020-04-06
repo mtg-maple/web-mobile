@@ -22,8 +22,9 @@ export interface ICard {
   type: string,
   types: string[],
   convertedManaCost: number;
-  power?: number;
-  toughness?: number;
+  power?: string;
+  toughness?: string;
+  loyalty?: string;
   manaCost?: string,
   colors?: string[],
 }
