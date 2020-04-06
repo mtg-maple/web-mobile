@@ -47,7 +47,7 @@ const TabBar: FC<TabBarProps> = ({ tabs, className }) => {
   return (
     <ul className={[styles.tabBar, className].join(' ')}>
       {
-        tabs.map((props: TabProps) => <Tab {...props}/>)
+        tabs.map((props: TabProps) => <Tab key={props.to} {...props}/>)
       }
     </ul>
   );
