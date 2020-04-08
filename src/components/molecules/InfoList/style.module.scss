@@ -1,0 +1,23 @@
+@import "../../../properties.scss";
+
+section.infoList {
+  background-color: $color-base-fore;
+  display: flex;
+  flex-direction: column;
+  padding: $space-2x;
+}
+
+.infoListItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoListItem:nth-child(n+2) {
+  display: flex;
+  flex-direction: column;
+  margin-top: $space-2x;
+}
+
+.label {
+  margin-bottom: $space;
+}
