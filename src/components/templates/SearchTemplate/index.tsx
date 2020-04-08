@@ -25,7 +25,9 @@ const SearchTemplate: FC<SearchTemplateProps> = ({ searchBar, cards }) => {
         <Header headingText="Search"/>
         <SearchBar className={styles.searchBar} placeholder="Card's name, description" {...searchBar}/>
       </section>
-      <CardList cards={cards} onClicks={cards.map((card: ICard) => () => alert(`${card.name} clicked`))}/>
+      <section className={styles.list}>
+        <CardList cards={cards} onClicks={cards.map((card: ICard) => () => alert(`${card.name} clicked`))}/>
+      </section>
     </>
   );
 }

@@ -35,11 +35,13 @@ const HomeTemplate: FC<HomeTemplateProps> = ({ searchBar, deckList }) => {
         }}/>
         <SearchBar className={styles.searchBar} placeholder="デッキの名前、説明" {...searchBar}/>
       </section>
-      {
-        typeof deckList === 'undefined' ?
-          'loading...' : 
-          <DeckList decks={deckList.decks} onClicks={deckList.onClicks} className={styles.deckList}/>
-      }
+      <section className={styles.list}>
+        {
+          typeof deckList === 'undefined' ?
+            'loading...' : 
+            <DeckList decks={deckList.decks} onClicks={deckList.onClicks}/>
+        }
+      </section>
     </div>
   );
 }
