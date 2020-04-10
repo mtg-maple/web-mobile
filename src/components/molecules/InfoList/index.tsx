@@ -11,8 +11,10 @@ export type InfoListProps = {
 
 export type InfoListItem = {
   label: string;
-  descriptions: ReactNode[];
+  description: InfoListDescriptionProps;
 };
+
+export type InfoListDescriptionProps = ReactNode | ReactNode[];
 
 const InfoList: FC<InfoListProps> = ({ items }) => (
   <section className={styles.infoList}>
@@ -21,9 +23,11 @@ const InfoList: FC<InfoListProps> = ({ items }) => (
         <div className={styles.infoListItem}>
           <Label className={styles.label} size="small" color="muteText" weight="bold" key={item.label}>{item.label}</Label>
           {
-            item.descriptions.map((el: ReactNode) => (
-              <Description key={el!.toString()}>{el}</Description>
-            ))
+            Array.isArray(item.description) ?
+              item.description.map((el: ReactNode) => (
+                <Description key={el!.toString()}>{el}</Description>
+              ))
+              : <Description>{item.description}</Description>
           }
         </div>
       ))

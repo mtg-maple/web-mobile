@@ -11,13 +11,13 @@ import InfoList from 'src/components/molecules/InfoList';
   }}
 />
 
-# ButtonInstance
+# InfoList
 
 <Source code={`
     import InfoList from 'src/components/molecules/InfoList';
     
     export default = (props) => {
-      return <InfoList items={[{ label: 'Name', descriptions: ['Brazen Borrower'] }, { label: 'Mana Cost', descriptions: ['{1}{U}{U}'] }]}/>;
+      return <InfoList items={[{ label: 'Name', description: 'Brazen Borrower' }, { label: 'Mana Cost', description: '{1}{U}{U}' }]}/>;
     };
 `} />
 
@@ -27,16 +27,16 @@ import InfoList from 'src/components/molecules/InfoList';
 
 <Preview withSource="open">
   <Story name="Basic" >
-      <InfoList items={[{ label: 'Name', descriptions: ['Brazen Borrower'] }, { label: 'Mana Cost', descriptions: ['{1}{U}{U}'] }]}/>
+      <InfoList items={[{ label: 'Name', description: 'Brazen Borrower' }, { label: 'Mana Cost', description: '{1}{U}{U}' }]}/>
   </Story>
   <Story name="Full Info" >
       <InfoList items={[
-       { label: 'Name', descriptions: ['Brazen Borrower'] }, 
-       { label: 'Mana Cost', descriptions: ['{1}{U}{U}']},
-       { label: 'Type', descriptions: ['Creature']},
-       { label: 'Sub Type', descriptions: ['Faerie Rogue']},
-       { label: 'Power/Toughness', descriptions: ['3/1']},
-       { label: 'Text', descriptions: ['Flash', 'Flying', 'Brazen Borrower can block only creatures with flying.']},
+       { label: 'Name', description: 'Brazen Borrower' }, 
+       { label: 'Mana Cost', description: '{1}{U}{U}'},
+       { label: 'Type', description: 'Creature'},
+       { label: 'Sub Type', description: 'Faerie Rogue'},
+       { label: 'Power/Toughness', description: '3/1'},
+       { label: 'Text', description: ['Flash', 'Flying', 'Brazen Borrower can block only creatures with flying.']},
       ]}/>
   </Story>
 </Preview>
