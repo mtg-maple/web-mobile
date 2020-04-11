@@ -2,6 +2,8 @@ import * as H from 'history';
 import {
   IDeckListItem,
   IDeck,
+  ICardImage,
+  ICardText,
 } from './objects';
 
 export interface IStore {
@@ -9,14 +11,8 @@ export interface IStore {
   deckPage: IDeckPageStore;
   searchPage: ISearchPageStore;
   userPage: IUserPageStore;
+  cardPage: ICardPageStore;
   lastLocation?: H.Location<H.History.PoorMansUnknown>;
-}
-
-export enum Page {
-  Home = 'HOME',
-  Search = 'SEARCH',
-  User = 'USER',
-  Deck = 'DECK',
 }
 
 export interface IPageStore {
@@ -42,6 +38,12 @@ export interface ISearchPageStore extends IPageStore {
 
 export interface IUserPageStore extends IPageStore {
 
+}
+
+export interface ICardPageStore extends IPageStore, ISubPageStore {
+  title?: string;
+  cardImages?: ICardImage[];
+  cardText?: ICardText;
 }
 
 export interface ISearchBarState {

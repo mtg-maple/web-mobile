@@ -48,4 +48,21 @@ export interface IESCardData {
   colors: string[];
   manaCost: string;
   convertedManaCost: number;
+  legalities: IESLegalities;
+}
+
+export interface IESLegalities {
+  brawl?: string;
+  commander?: string;
+  duel?: string;
+  future?: string;
+  frontier?: string;
+  historic?: string;
+  legacy?: string;
+  modern?: string;
+  pauper?: string;
+  penny?: string;
+  pioneer?: string;
+  standard?: string;
+  vintage?: string;
 }

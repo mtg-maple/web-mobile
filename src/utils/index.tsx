@@ -6,3 +6,5 @@ export function containPresenter<P, PP> (
 ): FC<P> {
   return (props: P): ReactElement | null => container(presenter, props);
 }
+
+export * from './legalities';

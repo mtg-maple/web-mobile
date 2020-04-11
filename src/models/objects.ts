@@ -1,3 +1,5 @@
+import { IESLegalities } from './elasticsearch';
+
 export interface IDeckListItem {
   id: string;
   name: string;
@@ -28,3 +30,32 @@ export interface ICard {
   manaCost?: string,
   colors?: string[],
 }
+
+
+export type ICardImage = {
+  url: string;
+};
+
+export type ICardText = {
+  spells: ICardSpell[];
+  meta: ICardMeta;
+  legalities: IESLegalities;
+};
+
+export type ICardSpell = {
+  name: string;
+  manaCost: string;
+  supertypes: string[];
+  types: string[];
+  subtypes: string[];
+  power?: string;
+  toughness?: string;
+  loyalty?: string;
+  text: string;
+};
+
+export type ICardMeta = {
+  rarity: string;
+  artist: string;
+  set: string[];
+};

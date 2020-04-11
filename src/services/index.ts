@@ -6,3 +6,6 @@ export * from './getDeckList';
 
 export { default as searchCard } from './searchCard';
 export * from './searchCard';
+
+export { default as getCard } from './getCard';
+export * from './getCard';

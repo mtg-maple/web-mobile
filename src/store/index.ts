@@ -10,6 +10,7 @@ import { reduceSetDeckList } from './setDeckList';
 import { reduceAppendDecks } from './appendDecks';
 import { reduceSetLastLocation } from './setLastLocation';
 import { reduceInitSubPage } from './initSubPage';
+import { reduceLoadCardPage } from './loadCardPage';
 
 export const initialStore: IStore = {
   homePage: {
@@ -36,6 +37,12 @@ export const initialStore: IStore = {
   userPage: {
     scrollPositionY: 0,
   },
+  cardPage: {
+    scrollPositionY: 0,
+    title: undefined,
+    cardImages: undefined,
+    cardText: undefined,
+  },
   lastLocation: undefined,
 };
 
@@ -57,6 +64,10 @@ function reducer(state: IStore, action: IAction): IStore {
       return reduceSetLastLocation(state, action);
     case ActionType.InitSubPage:
       return reduceInitSubPage(state, action);
+    case ActionType.LoadCardPage:
+      return reduceLoadCardPage(state, action);
+    case ActionType.InitCardPage:
+      return { ...state, cardPage: initialStore.cardPage };
     default:
       return state;
   }
@@ -76,3 +87,6 @@ export * from './setDeckList';
 export * from './appendDecks';
 export * from './setLastLocation';
 export * from './initSubPage';
+export * from './loadCardPage';
+export const initCardPage = (): IAction => ({ type: ActionType.InitCardPage });
+

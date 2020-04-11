@@ -1,0 +1,184 @@
+import { useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { action } from "@storybook/addon-actions";
+import { Story, Meta, Preview, Props, Source, Description } from "@storybook/addon-docs/blocks";
+
+import CardTemplate from 'src/components/templates/CardTemplate';
+
+<Meta
+  title="Templates/CardTemplate"
+  parameters={{
+    component: CardTemplate,
+  }}
+/>
+
+# CardListItem
+
+<Source code={`
+    import CardTemplate from 'src/components/templates/CardTemplate';
+     
+    export default = (props) => {
+      return (
+        <CardListItem
+          card={{
+            id: '12234',
+            name: '厚かましい借り手',
+            description: 'クリーチャー - フェアリー・ならず者 (3/1)',
+            cost: '{1}{U}{U}',
+            count: 2,
+            thumbnailImageUrl: 'https://img.scryfall.com/cards/art_crop/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg',
+          }}
+        />
+      );
+    };
+`} />
+
+<Props of={CardTemplate} />
+
+## Basic
+
+<Preview withSource="open">
+  <Story name="Basic" >
+    <Router>
+      <CardTemplate
+        title="Oko, Thief of Crowns"
+        backButtonProps={{ to: '/home' }}
+        cardImages={[{ url: 'https://img.scryfall.com/cards/large/front/3/4/3462a3d0-5552-49fa-9eb7-100960c55891.jpg' }]}
+        cardText={{
+          spells: [
+            {
+                name: 'Oko, Thief of Crowns',
+                convertedManaCost: 3,
+                manaCost: '{1}{G}{U}',
+                supertypes: ['Legendary'],
+                types: ['Planeswalker'],
+                subtypes: ['Oko'],
+                loyalty: '4',
+                text: `[+2]: Create a Food token. (It's an artifact with "{2}, {T}, Sacrifice this artifact: You gain 3 life.")
+  [+1]: Target artifact or creature loses all abilities and becomes a green Elk creature with base power and toughness 3/3.
+  [−5]: Exchange control of target artifact or creature you control and target creature an opponent controls with power 3 or less.`,
+            }
+          ],
+          meta: {
+            set: ['ELD', 'PELD'],
+            rarity: 'mythic',
+            artist: 'Wesley Burt',
+          },
+          legalities: {
+            brawl: 'Banned',
+            commander: 'Legal',
+            duel: 'Legal',
+            future: 'Banned',
+            historic: 'Banned',
+            legacy: 'Legal',
+            modern: 'Banned',
+            penny: '',
+            pioneer: 'Banned',
+            standard: 'Banned',
+            vintage: 'Legal',
+          }
+        }}
+      />
+    </Router>
+  </Story>
+  <Story name="Adventure Card" >
+    <Router>
+      <CardTemplate
+        title="Brazen Borrower"
+        backButtonProps={{ to: '/home' }}
+        cardImages={[{ url: 'https://img.scryfall.com/cards/large/front/c/2/c2089ec9-0665-448f-bfe9-d181de127814.jpg' }]}
+        cardText={{
+          spells: [
+            {
+                name: 'Brazen Borrower',
+                convertedManaCost: 3,
+                manaCost: '{1}{U}{U}',
+                supertypes: [],
+                types: ['Creature'],
+                subtypes: ['Faerie', 'Rogue'],
+                power: '3',
+                toughness: '1',
+                text: `Flash
+Flying
+Brazen Borrower can block only creatures with flying.`,
+            },
+            {
+                name: 'Petty Theft',
+                convertedManaCost: 3,
+                manaCost: '{1}{U}',
+                supertypes: [],
+                types: ['Instant'],
+                subtypes: ['Adventure'],
+                text: `Return target nonland permanent an opponent controls to its owner's hand.`,
+            },
+          ],
+          meta: {
+            set: ['ELD', 'PELD'],
+            rarity: 'mythic',
+            artist: 'Iris Compiet',
+          },
+          legalities: {
+            brawl: 'Legal',
+            commander: 'Legal',
+            duel: 'Legal',
+            future: 'Legal',
+            historic: 'Legal',
+            legacy: 'Legal',
+            modern: 'Legal',
+            penny: '',
+            pioneer: 'Legal',
+            standard: 'Legal',
+            vintage: 'Legal',
+          }
+        }}
+      />
+    </Router>
+  </Story>
+  <Story name="Split Card" >
+    <Router>
+      <CardTemplate
+        title={undefined}
+        backButtonProps={{ to: '/home' }}
+        cardImages={[{ url: 'https://img.scryfall.com/cards/large/front/e/0/e0644c92-4d67-475e-8c8e-0e2c493682fb.jpg' }]}
+        cardText={{
+          spells: [
+            {
+                name: 'Expansion',
+                manaCost: '{U/R}{U/R}',
+                supertypes: [],
+                types: ['Instant'],
+                subtypes: [],
+                text: `Copy target instant or sorcery spell with converted mana cost 4 or less. You may choose new targets for the copy.`,
+            },
+            {
+                name: 'Explosion',
+                manaCost: '{X}{U}{U}{R}{R}',
+                supertypes: [],
+                types: ['Instant'],
+                subtypes: [],
+                text: `Explosion deals X damage to any target. Target player draws X cards.`,
+            },
+          ],
+          meta: {
+            set: ['GRN', 'PGRN'],
+            rarity: 'rare',
+            artist: 'Deruchenko Alexander',
+          },
+          legalities: {
+            brawl: 'Legal',
+            commander: 'Legal',
+            duel: 'Legal',
+            future: 'Legal',
+            historic: 'Legal',
+            legacy: 'Legal',
+            modern: 'Legal',
+            penny: '',
+            pioneer: 'Legal',
+            standard: 'Legal',
+            vintage: 'Legal',
+          }
+        }}
+      />
+    </Router>
+  </Story>
+</Preview>

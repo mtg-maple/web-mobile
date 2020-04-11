@@ -2,70 +2,49 @@ import React, { FC, MouseEvent } from 'react';
 import * as H from 'history';
 
 import CardImage from 'src/components/atoms/CardImage';
-import InfoList, { InfoListDescriptionProps } from 'src/components/molecules/InfoList';
+import InfoList, { InfoListItem } from 'src/components/molecules/InfoList';
 import NavigationHeader from 'src/components/organisms/NavigationHeader';
+import { ICardImage, ICardText } from 'src/models';
+import { getLegalitiesItems } from 'src/utils';
 
 import styles from './style.module.scss';
 
 export type CardTemplateProps = {
+  title?: string;
   backButtonProps: {
     to: H.LocationDescriptor<H.History.PoorMansUnknown> | ((location: H.Location<H.History.PoorMansUnknown>) => H.LocationDescriptor<H.History.PoorMansUnknown>);
     onClick?: (e: MouseEvent) => void;
   };
-  cardImages: CardImageProps[];
-  spells: SpellProps[];
-  cardMeta: CardMetaProps;
-  legality: string;
+  cardImages?: ICardImage[];
+  cardText?: ICardText;
 };
 
-export type CardImageProps = {
-  url: string;
-};
-
-export type SpellProps = {
-  name: string;
-  manaCost: string;
-  types: string[];
-  subtypes: string[];
-  power: string;
-  toughness: string;
-  loyalty: string;
-  text: string;
-};
-
-export type CardMetaProps = {
-  rarity: string;
-  artist: string;
-  expansion: string;
-};
-
-const CardTemplate: FC<CardTemplateProps> = ({ backButtonProps, cardImages, spells, cardMeta, legality }) => {
-  const cardName = spells.map((spell: SpellProps) => spell.name).join('//');
+const CardTemplate: FC<CardTemplateProps> = ({ title, backButtonProps, cardImages, cardText }) => {
+  const cardName = typeof cardText === 'undefined' ? title : cardText.spells.map((spell) => spell.name).join(' // ');
   return (
     <div className={styles.pageRoot}>
+      <NavigationHeader
+        className={styles.navigationHeader}
+        title={cardName}
+        backButtonProps={backButtonProps}
+      />
+      <section className={styles.cardImages}>
+        {
+          cardImages &&
+          cardImages.map((cardImage: ICardImage, i: number) => (
+            <CardImage key={cardImage.url} size="preview" src={cardImage.url} alt={`${title} No.${i + 1}`} />
+          ))
+        }
+      </section>
       {
-        typeof undefined === 'undefined' ? //ToDo: ローディング中の条件分岐を書く
+        typeof cardText === 'undefined' ?
           'loading...' :
-          <>
-            <NavigationHeader
-              className={styles.navigationHeader}
-              title={cardName}
-              backButtonProps={backButtonProps}
-            />
-            <section className={styles.cardImage}>
-              {
-                cardImages.map((cardImage: CardImageProps, i: number) => (                 
-                  <CardImage key={cardImage.url} src={cardImage.url} alt={`${cardName} No.${i+1}`} />
-                ))
-              }
-            </section>
+          <section className={styles.cardText}>
             {
-              spells.map((spell: SpellProps) => {
-                let items: InfoListDescriptionProps = [
+              cardText.spells.map((spell) => {
+                let items: InfoListItem[] = [
                   { label: 'Name', description: spell.name },
-                  { label: 'Mana Cost', description: spell.manaCost },
-                  { label: 'Type', description: spell.types.join(' ') },
-                  { label: 'Sub Type', description: spell.subtypes.join(' ') },
+                  { label: 'Type', description: [spell.supertypes, ...spell.types].join(' ') + (spell.subtypes.length > 0 ?  ` - ${spell.subtypes.join(' ')}` : '') },
                 ];
                 if (spell.loyalty) {
                   items.push({ label: 'Loyalty', description: spell.loyalty });
@@ -80,12 +59,12 @@ const CardTemplate: FC<CardTemplateProps> = ({ backButtonProps, cardImages, spel
               })
             }
             <InfoList items={[
-              { label: 'Expansion', description: cardMeta.expansion },
-              { label: 'Rariy', description: cardMeta.rarity },
-              { label: 'Artist', description: cardMeta.artist },
+              { label: 'Card Set', description: cardText.meta.set },
+              { label: 'Rarity', description: cardText.meta.rarity },
+              { label: 'Artist', description: cardText.meta.artist },
             ]} />
-            <InfoList items={[ { label: 'Legality', description: legality } ]} />
-          </>
+            <InfoList items={getLegalitiesItems(cardText.legalities)} />
+          </section>
       }
     </div>
   );

@@ -1,0 +1,17 @@
+@import "../../../properties.scss";
+
+section.cardImages {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+section.cardText {
+  margin-top: $space-3x;
+}
+
+section.cardText > *:nth-child(n+2) {
+  margin-top: $space-3x;
+};

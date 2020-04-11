@@ -16,6 +16,7 @@ import HomePage from './components/pages/HomePage';
 import UserPage from './components/pages/UserPage';
 import SearchPage from './components/pages/SearchPage';
 import DeckPage from './components/pages/DeckPage';
+import CardPage from 'src/components/pages/CardPage';
 
 const App: FC = () => {
   const [store, dispatch] = useStore();
@@ -36,6 +37,9 @@ const App: FC = () => {
             </Route>
             <Route path="/decks/:id">
               <DeckPage store={store.deckPage} dispatch={dispatch} />
+            </Route>
+            <Route path="/cards/:id">
+              <CardPage store={store.cardPage} dispatch={dispatch} />
             </Route>
             <Redirect from="/" to="/home" />
           </Switch>
