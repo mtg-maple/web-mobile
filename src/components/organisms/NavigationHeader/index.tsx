@@ -6,7 +6,7 @@ import { BackButton, OptionButton } from '../../molecules/ButtonInstance';
 import styles from './style.module.scss';
 
 export type NavigationBarProps = {
-  title: string;
+  title?: string;
   backButtonProps: {
     to: H.LocationDescriptor<H.History.PoorMansUnknown> | ((location: H.Location<H.History.PoorMansUnknown>) => H.LocationDescriptor<H.History.PoorMansUnknown>);
     onClick?: (e: MouseEvent) => void;
@@ -25,7 +25,10 @@ const NavigationHeader: FC<NavigationBarProps> = ({ title, isSimple = false, bac
       <Link to={backButtonProps.to}>
         <BackButton onClick={backButtonProps.onClick}/>
       </Link>
-      <Heading level="2" hidden={!isSimple}>{title}</Heading>
+      {
+        title && 
+        <Heading level="2" hidden={isSimple}>{title}</Heading>
+      }
       <OptionButton onClick={() => alert('clicked')}/>
     </header>
   );

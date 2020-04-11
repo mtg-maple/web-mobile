@@ -46,7 +46,7 @@ const DeckTemplate: FC<DeckTemplateProps> = ({ deck, backButtonProps }) => {
               className={styles.navigationHeader}
               title={deck.name}
               backButtonProps={backButtonProps}
-              isSimple={belowTopSection}
+              isSimple={!belowTopSection}
             />
             <DeckSummary deck={deck} />
             <span style={{ visibility: 'hidden' }} ref={anchorRef}></span>
