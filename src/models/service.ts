@@ -1,3 +1,5 @@
+import { ICardLegalities } from './objects';
+
 export interface IResponse<T> {
   status: number;
   result: T;
@@ -33,6 +35,7 @@ export interface IServiceCardDetail extends IServiceSpell {
   rarity: string;
   setCodes: string[];
   artist: string;
+  legalities: ICardLegalities;
 };
 
 export interface IServiceCardSummary {

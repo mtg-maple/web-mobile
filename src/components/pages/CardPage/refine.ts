@@ -42,7 +42,7 @@ export const refineServiceCard = (card: IServiceCardDetail): {
       artist: card.artist,
       sets: card.setCodes,
     },
-    legalities: {},
+    legalities: card.legalities,
   };
   return { title, cardText, cardImages };
 }

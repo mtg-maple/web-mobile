@@ -31,7 +31,19 @@ const serviceCardDummy: IServiceCardDetail = {
   layout: 'split',
   rarity: 'rare',
   artist: 'Deruchenko Alexander',
-  setCodes: ['GRN', 'PGRN']
+  setCodes: ['GRN', 'PGRN'],
+  legalities: {
+    brawl: 'Legal',
+    commander: 'Legal',
+    duel: 'Legal',
+    future: 'Legal',
+    historic: 'Legal',
+    legacy: 'Legal',
+    modern: 'Legal',
+    pioneer: 'Legal',
+    standard: 'Legal',
+    vintage: 'Legal',
+  },
 }
 
 describe('refine', () => {
@@ -77,10 +89,21 @@ describe('refine', () => {
         ],
         meta: {
           rarity: 'rare',
-          sets: [ 'GRN', 'PGRN' ],
+          sets: ['GRN', 'PGRN'],
           artist: 'Deruchenko Alexander',
         },
-        legalities: {},
+        legalities: {
+          brawl: 'Legal',
+          commander: 'Legal',
+          duel: 'Legal',
+          future: 'Legal',
+          historic: 'Legal',
+          legacy: 'Legal',
+          modern: 'Legal',
+          pioneer: 'Legal',
+          standard: 'Legal',
+          vintage: 'Legal',
+        },
       },
     });
   });
