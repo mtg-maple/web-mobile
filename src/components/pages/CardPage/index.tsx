@@ -3,8 +3,10 @@ import { useParams } from 'react-router-dom';
 
 import CardTemplate from 'src/components/templates/CardTemplate';
 import { IAction, loadCardPage, initCardPage } from 'src/store';
-import { IResponse, ICardPageStore } from 'src/models';
-import { getCard, ICardResult } from 'src/services';
+import { ICardPageStore } from 'src/models';
+import { getCard, IServiceCardInfoResponse } from 'src/services';
+
+import { refineServiceCard } from './refine';
 
 export type CardPageProps = {
   store: ICardPageStore;
@@ -16,13 +18,13 @@ const CardPage: FC<CardPageProps> = ({ store, dispatch }) => {
   useEffect(() => {
     if (id) {
       getCard(id)
-        .then((res: IResponse<ICardResult>) => {
-          if (res.status === 200) {
-            dispatch(loadCardPage(res.result));
+        .then((res: IServiceCardInfoResponse) => {
+          if (res.ok && typeof res.card !== 'undefined') {
+            dispatch(loadCardPage(refineServiceCard(res.card)));
           }
         })
         .catch((reason: any) => {
-          console.log(reason);
+          console.error(reason);
         });
     } else {
       // TODO: Error Handling

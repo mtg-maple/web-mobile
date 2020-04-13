@@ -46,6 +46,9 @@ const CardTemplate: FC<CardTemplateProps> = ({ title, backButtonProps, cardImage
                   { label: 'Name', description: spell.name },
                   { label: 'Type', description: [spell.supertypes, ...spell.types].join(' ') + (spell.subtypes.length > 0 ?  ` - ${spell.subtypes.join(' ')}` : '') },
                 ];
+                if (spell.manaCost) {
+                  items.push({ label: 'Mana Cost', description: spell.manaCost });
+                }
                 if (spell.loyalty) {
                   items.push({ label: 'Loyalty', description: spell.loyalty });
                 }
@@ -59,7 +62,7 @@ const CardTemplate: FC<CardTemplateProps> = ({ title, backButtonProps, cardImage
               })
             }
             <InfoList items={[
-              { label: 'Card Set', description: cardText.meta.set },
+              { label: 'Card Set', description: cardText.meta.sets },
               { label: 'Rarity', description: cardText.meta.rarity },
               { label: 'Artist', description: cardText.meta.artist },
             ]} />

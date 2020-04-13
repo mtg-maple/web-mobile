@@ -52,10 +52,11 @@ export type ICardSpell = {
   toughness?: string;
   loyalty?: string;
   text: string;
+  side?: string;
 };
 
 export type ICardMeta = {
   rarity: string;
   artist: string;
-  set: string[];
+  sets: string[];
 };
