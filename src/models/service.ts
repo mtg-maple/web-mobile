@@ -46,6 +46,9 @@ export interface IServiceCardSummary {
   supertypes: string[];
   types: string[];
   subtypes: string[];
+  power?: string;
+  toughness?: string;
+  loyalty?: string;
   previewImageUrl: string;
   artCropImageUrl: string;
   layout: string;

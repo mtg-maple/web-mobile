@@ -8,3 +8,4 @@ export function containPresenter<P, PP> (
 }
 
 export * from './legalities';
+export * from './stringifyCard';
