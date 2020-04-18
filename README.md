@@ -1,3 +1,23 @@
+## Getting Started
+
+### 1. Prepare config file
+Create a file named `.env.development.local`.
+
+And append environment variables as below into it.
+```
+REACT_APP_API_ENDPOINT=https://xxxxxxxxxxx.com
+REACT_APP_AWS_COGNITO_REGION=xx-xxxx-x
+REACT_APP_AWS_COGNITO_USER_POOL_ID=xx-xxxx-x_xxxxxxxxx
+REACT_APP_AWS_COGNITO_USER_POOL_WEB_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxx
+```
+
+### 2. Install dependencies and start development server
+```bash
+$ yarn install
+$ amplify init -- aws account required
+$ yarn start
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
