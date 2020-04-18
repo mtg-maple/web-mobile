@@ -43,7 +43,6 @@ const App: FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   useEffect(() => {
-    console.log(`REACT_APP_AWS_COGNITO_USER_POOL_ID: ${process.env.REACT_APP_AWS_COGNITO_USER_POOL_ID}`);
     console.log(authState);
   }, [authState]);
   return (
