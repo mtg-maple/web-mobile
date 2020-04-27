@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, MouseEvent, ChangeEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
@@ -11,10 +11,11 @@ export type InputProps = {
   icon?: IconDefinition;
   placeholder?: string;
   className?: string;
-  setValue: (newValue: string) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  initInput: (e: MouseEvent) => void;
 }
 
-const Input: FC<InputProps> = ({ value, icon, placeholder, className, setValue }) => {
+const Input: FC<InputProps> = ({ value, icon, placeholder, className, onChange, initInput }) => {
   return (
     <div className={[styles.inputBox, className].join(' ')}>
       {
@@ -26,9 +27,7 @@ const Input: FC<InputProps> = ({ value, icon, placeholder, className, setValue }
         value={value}
         className={[styles.input, icon && styles.withIcon].join(' ')}
         placeholder={placeholder}
-        onChange={(e: React.FormEvent<HTMLInputElement>): void => {
-          setValue(e.currentTarget.value);
-        }}
+        onChange={onChange}
       ></input>
       {
         value &&
@@ -37,9 +36,7 @@ const Input: FC<InputProps> = ({ value, icon, placeholder, className, setValue }
           size="small"
           color="muteText"
           className={styles.clearButton}
-          onClick={(): void => {
-            setValue('');
-          }}
+          onClick={initInput}
         />
       }
     </div>

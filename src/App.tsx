@@ -1,11 +1,10 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
+import React, { FC, useContext, useEffect } from 'react';
 import {
   Switch,
   Route,
   Redirect,
-  useHistory,
 } from 'react-router-dom';
-import Amplify, { Auth } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 import { Authenticator } from 'aws-amplify-react';
 import { faHome, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,10 +17,8 @@ import UserPage from './components/pages/UserPage';
 import SearchPage from './components/pages/SearchPage';
 import DeckPage from './components/pages/DeckPage';
 import CardPage from 'src/components/pages/CardPage';
+import SignInPage from 'src/components/pages/SignInPage';
 import TabBar from './components/organisms/TabBar';
-import Description from './components/atoms/Description';
-import Input from './components/molecules/Input';
-import { SignInButton } from 'src/components/molecules/ButtonInstance';
 
 Amplify.configure({
   Auth: {
@@ -38,10 +35,7 @@ Amplify.configure({
 
 const App: FC = () => {
   const [store, dispatch] = useStore();
-  const history = useHistory();
-  const { authState, onStateChange } = useContext(AuthContext);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const { authState } = useContext(AuthContext);
   useEffect(() => {
     console.log(authState);
   }, [authState]);
@@ -52,25 +46,9 @@ const App: FC = () => {
             authState !== 'signedIn' ?
               <Switch>
                 <Route path="/signin">
-                  <Description>signin</Description>
-                  <Input value={username} setValue={setUsername} />
-                  <Input value={password} setValue={setPassword} />
-                  <SignInButton onClick={() => {
-                    Auth.signIn(username, password)
-                      .then((data) => {
-                        if (onStateChange) {
-                          onStateChange('signedIn', data);
-                          history.push('/');
-                        }
-                      })
-                      .catch((err) => {
-                        alert(JSON.stringify(err));
-                      })
-                  }}/>
+                  <SignInPage />
                 </Route>
-                <Route path="/">
-                  <Description>home</Description>
-                </Route>
+                <Redirect to="/signin" />
               </Switch>
               :
               <>

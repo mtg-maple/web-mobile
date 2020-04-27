@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ChangeEvent } from 'react';
 import { faSlidersH, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import IconButton from '../../atoms/IconButton';
@@ -24,7 +24,8 @@ const SearchBar: FC<SearchBarProps> = ({ query, setQuery, placeholder = '', tags
       <div className={styles.searchBar}>
         <Input
           value={query}
-          setValue={setQuery}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
+          initInput={() => setQuery('')}
           placeholder={placeholder}
           icon={faSearch}
         />

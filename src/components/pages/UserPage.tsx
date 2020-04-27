@@ -28,7 +28,6 @@ const UserPage: FC<UserPageProps> = ({ store, dispatch }) => {
     <UserTemplate onSignOutButtonClicked={() => {
       Auth.signOut()
         .then(data => {
-          alert(JSON.stringify(data));
           if (onStateChange) {
             onStateChange('signIn', data);
             history.push('/');
