@@ -1,5 +1,6 @@
 import React, { FC, Dispatch, useEffect, MouseEvent } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import { API, graphqlOperation } from 'aws-amplify';
 
 import HomeTemplate from '../templates/HomeTemplate';
 import { 
@@ -11,13 +12,13 @@ import {
   initSubPage,
 } from '../../store';
 import {
-  IResponse,
+//  IResponse,
   ISearchTag, 
   IHomePageStore, 
   IDeckListItem,
   Page, 
 } from '../../models';
-import { getDeckList, IDeckListResult } from '../../services';
+// import { IDeckListResult } from '../../services';
 import {
   useScrollSaveOnUnmount,
   useScrollRestoreOnMount,
@@ -29,6 +30,34 @@ export type HomePageProps = {
   dispatch: Dispatch<IAction>;
 }
 
+const getDeckListGraphQL = /* GraphQL */ `
+  query GetDeckList(
+    $filter: DeckListFilterInput
+    $nextToken: String
+    $userId: ID
+  ) {
+    getDeckList(filter: $filter, nextToken: $nextToken, userId: $userId) {
+      items {
+        id
+        name
+        description
+        thumbnailImageUrl
+        colors
+      }
+      nextToken
+      scannedCount
+    }
+  }
+`;
+
+type getDeckListData = {
+  getDeckList: {
+    items: IDeckListItem[];
+    nextToken: string;
+    scannedCount: number;
+  }
+}
+
 const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
   let history = useHistory();
   const currentLocation = useLocation();
@@ -38,13 +67,18 @@ const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
   useLocationSaveOnUnmount(dispatch);
 
   useEffect(() => {
-    getDeckList('12345').then((res: IResponse<IDeckListResult>) => {
-      if (res.status === 200) {
-        dispatch(setDeckList(Page.Home, res.result.data));
+    (async () => {
+      const result = await API.graphql(graphqlOperation(getDeckListGraphQL, {}));
+      if ('data' in result && result.data) {
+        const data = result.data as getDeckListData;
+        dispatch(setDeckList(Page.Home, data.getDeckList.items));
       }
+      console.log(result);
+    })().catch((err) => {
+      // TODO: Error Handling
+      console.error(err);
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   const searchBar = {
     query: store.searchBar.query, 

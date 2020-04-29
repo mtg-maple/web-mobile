@@ -19,8 +19,13 @@ import DeckPage from './components/pages/DeckPage';
 import CardPage from 'src/components/pages/CardPage';
 import SignInPage from 'src/components/pages/SignInPage';
 import TabBar from './components/organisms/TabBar';
+import awsconfig from 'src/aws-exports';
 
+Amplify.configure(awsconfig);
 Amplify.configure({
+  aws_appsync_graphqlEndpoint: process.env.REACT_APP_AWS_APPSYNC_API_URL,
+  aws_appsync_region: process.env.REACT_APP_AWS_APPSYNC_REGION,
+  aws_appsync_authenticationType: process.env.REACT_APP_AWS_APPSYNC_AUTHENTICATION_TYPE,
   Auth: {
     // REQUIRED - Amazon Cognito Region
     region: process.env.REACT_APP_AWS_COGNITO_REGION,
