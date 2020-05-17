@@ -54,8 +54,11 @@ const getDeck = async (deckId: string): Promise<IResponse<IDeckResult>>  => {
                 description: deck.description,
                 thumbnailImageUrl: deck.thumbnailImageUrl,
                 colors: deck.colors,
-                mainboard,
-                sideboard,
+                versionDetail: {
+                  mainboard,
+                  sideboard,
+                },
+                ownerUsername: 'dummy',
               }
             }
           });

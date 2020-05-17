@@ -48,6 +48,9 @@ const App: FC = () => {
     <AppLocationContext.Provider value={{ lastLocation: store.lastLocation }}>
       <div className={styles.app}>
       {
+            authState === 'loading' ?
+              <>loading...</>
+            :
             authState !== 'signedIn' ?
               <Switch>
                 <Route path="/signin">
@@ -55,10 +58,13 @@ const App: FC = () => {
                 </Route>
                 <Redirect to="/signin" />
               </Switch>
-              :
+            :
               <>
                 <section className={styles.appView}>
                   <Switch>
+                    <Route path="/:username/d/:deckId">
+                      <DeckPage store={store.deckPage} dispatch={dispatch} />
+                    </Route>
                     <Route path="/home">
                       <HomePage store={store.homePage} dispatch={dispatch} />
                     </Route>
@@ -67,9 +73,6 @@ const App: FC = () => {
                     </Route>
                     <Route path="/user">
                       <UserPage store={store.userPage} dispatch={dispatch} />
-                    </Route>
-                    <Route path="/decks/:id">
-                      <DeckPage store={store.deckPage} dispatch={dispatch} />
                     </Route>
                     <Route path="/cards/:id">
                       <CardPage store={store.cardPage} dispatch={dispatch} />

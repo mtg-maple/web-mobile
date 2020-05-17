@@ -4,11 +4,16 @@ export interface IDeckListItem {
   description: string;
   thumbnailImageUrl: string;
   colors: string[];
+  ownerUsername: string;
 }
 
 export interface IDeck extends IDeckListItem {
-  mainboard?: IDeckCard[];
-  sideboard?: IDeckCard[];
+  versionDetail?: {
+    mainboard: IDeckCard[];
+    sideboard: IDeckCard[];
+    commander?: ICard[];
+    companion?: ICard[];
+  }
 }
 
 export interface IDeckCard extends ICard {

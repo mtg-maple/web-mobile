@@ -58,7 +58,14 @@ export const restoreDeckVersion = /* GraphQL */ `
       description
       format
       id
-      latestVersion {
+      latestVersion
+      memo
+      name
+      ownerUsername
+      status
+      thumbnailImageUrl
+      timestamp
+      versionDetail {
         commander {
           id
           name
@@ -103,12 +110,6 @@ export const restoreDeckVersion = /* GraphQL */ `
           count
         }
       }
-      memo
-      name
-      ownerUserId
-      status
-      thumbnailImageUrl
-      timestamp
     }
   }
 `;
@@ -120,7 +121,14 @@ export const updateDeckMeta = /* GraphQL */ `
       description
       format
       id
-      latestVersion {
+      latestVersion
+      memo
+      name
+      ownerUsername
+      status
+      thumbnailImageUrl
+      timestamp
+      versionDetail {
         commander {
           id
           name
@@ -165,12 +173,6 @@ export const updateDeckMeta = /* GraphQL */ `
           count
         }
       }
-      memo
-      name
-      ownerUserId
-      status
-      thumbnailImageUrl
-      timestamp
     }
   }
 `;

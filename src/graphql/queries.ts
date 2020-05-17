@@ -16,14 +16,21 @@ export const getCard = /* GraphQL */ `
   }
 `;
 export const getDeck = /* GraphQL */ `
-  query GetDeck($deckId: ID!, $userId: ID!) {
-    getDeck(deckId: $deckId, userId: $userId) {
+  query GetDeck($deckId: ID!, $username: ID!) {
+    getDeck(deckId: $deckId, username: $username) {
       colors
       createdAt
       description
       format
       id
-      latestVersion {
+      latestVersion
+      memo
+      name
+      ownerUsername
+      status
+      thumbnailImageUrl
+      timestamp
+      versionDetail {
         commander {
           id
           name
@@ -68,74 +75,6 @@ export const getDeck = /* GraphQL */ `
           count
         }
       }
-      memo
-      name
-      ownerUserId
-      status
-      thumbnailImageUrl
-      timestamp
-    }
-  }
-`;
-export const getDeckByUsername = /* GraphQL */ `
-  query GetDeckByUsername($deckId: ID!, $username: String!) {
-    getDeckByUsername(deckId: $deckId, username: $username) {
-      colors
-      createdAt
-      description
-      format
-      id
-      latestVersion {
-        commander {
-          id
-          name
-          subtypes
-          supertypes
-          text
-          thumbnailImageUrl
-          types
-        }
-        companion {
-          id
-          name
-          subtypes
-          supertypes
-          text
-          thumbnailImageUrl
-          types
-        }
-        createdAt
-        mainboard {
-          card {
-            id
-            name
-            subtypes
-            supertypes
-            text
-            thumbnailImageUrl
-            types
-          }
-          count
-        }
-        sideboard {
-          card {
-            id
-            name
-            subtypes
-            supertypes
-            text
-            thumbnailImageUrl
-            types
-          }
-          count
-        }
-      }
-      memo
-      name
-      ownerUserId
-      status
-      thumbnailImageUrl
-      timestamp
     }
   }
 `;
@@ -152,7 +91,14 @@ export const getDeckList = /* GraphQL */ `
         description
         format
         id
-        latestVersion {
+        latestVersion
+        memo
+        name
+        ownerUsername
+        status
+        thumbnailImageUrl
+        timestamp
+        versionDetail {
           commander {
             id
             name
@@ -179,12 +125,6 @@ export const getDeckList = /* GraphQL */ `
             count
           }
         }
-        memo
-        name
-        ownerUserId
-        status
-        thumbnailImageUrl
-        timestamp
       }
       nextToken
       scannedCount
@@ -208,7 +148,14 @@ export const getDeckListByUsername = /* GraphQL */ `
         description
         format
         id
-        latestVersion {
+        latestVersion
+        memo
+        name
+        ownerUsername
+        status
+        thumbnailImageUrl
+        timestamp
+        versionDetail {
           commander {
             id
             name
@@ -235,12 +182,6 @@ export const getDeckListByUsername = /* GraphQL */ `
             count
           }
         }
-        memo
-        name
-        ownerUserId
-        status
-        thumbnailImageUrl
-        timestamp
       }
       nextToken
       scannedCount
@@ -348,7 +289,14 @@ export const searchLimitedDeckList = /* GraphQL */ `
       description
       format
       id
-      latestVersion {
+      latestVersion
+      memo
+      name
+      ownerUsername
+      status
+      thumbnailImageUrl
+      timestamp
+      versionDetail {
         commander {
           id
           name
@@ -393,12 +341,6 @@ export const searchLimitedDeckList = /* GraphQL */ `
           count
         }
       }
-      memo
-      name
-      ownerUserId
-      status
-      thumbnailImageUrl
-      timestamp
     }
   }
 `;
@@ -410,7 +352,14 @@ export const searchOwnDeckList = /* GraphQL */ `
       description
       format
       id
-      latestVersion {
+      latestVersion
+      memo
+      name
+      ownerUsername
+      status
+      thumbnailImageUrl
+      timestamp
+      versionDetail {
         commander {
           id
           name
@@ -455,12 +404,6 @@ export const searchOwnDeckList = /* GraphQL */ `
           count
         }
       }
-      memo
-      name
-      ownerUserId
-      status
-      thumbnailImageUrl
-      timestamp
     }
   }
 `;
@@ -472,7 +415,14 @@ export const searchPublicDeckList = /* GraphQL */ `
       description
       format
       id
-      latestVersion {
+      latestVersion
+      memo
+      name
+      ownerUsername
+      status
+      thumbnailImageUrl
+      timestamp
+      versionDetail {
         commander {
           id
           name
@@ -517,12 +467,6 @@ export const searchPublicDeckList = /* GraphQL */ `
           count
         }
       }
-      memo
-      name
-      ownerUserId
-      status
-      thumbnailImageUrl
-      timestamp
     }
   }
 `;

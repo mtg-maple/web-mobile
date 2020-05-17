@@ -17,15 +17,16 @@ type Deck {
   colors: [String!]!
   createdAt: AWSTimestamp!
   description: String
-  format: String
+  format: String!
   id: ID!
-  latestVersion: DeckVersion
+  latestVersion: Int!
   memo: String
   name: String!
-  ownerUserId: ID!
+  ownerUsername: String!
   status: DeckStatus!
   thumbnailImageUrl: String
   timestamp: AWSTimestamp!
+  versionDetail: DeckVersion!
 }
 
 type DeckCard {
@@ -86,8 +87,7 @@ type Query {
   #  TODO: リソルバー実装
   # Elasticsearchから指定されたIDのカードを取得
   getCard(cardId: ID!): Card
-  getDeck(deckId: ID!, userId: ID!): Deck @aws_auth(cognito_groups : ["Admins", "Consumers"])
-  getDeckByUsername(deckId: ID!, username: String!): Deck @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  getDeck(deckId: ID!, username: ID!): Deck @aws_auth(cognito_groups : ["Admins", "Consumers"])
   getDeckList(filter: DeckListFilterInput, nextToken: String, userId: ID): DeckList @aws_auth(cognito_groups : ["Admins", "Consumers"])
   getDeckListByUsername(filter: DeckListFilterInput, nextToken: String, username: String!): DeckList @aws_auth(cognito_groups : ["Admins", "Consumers"])
   getDeckVersionList(deckId: ID!, nextToken: String): DeckVersionList @aws_auth(cognito_groups : ["Admins", "Consumers"])

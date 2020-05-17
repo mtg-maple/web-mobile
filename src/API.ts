@@ -162,9 +162,16 @@ export type RestoreDeckVersionMutation = {
     colors: Array< string >,
     createdAt: number,
     description: string | null,
-    format: string | null,
+    format: string,
     id: string,
-    latestVersion:  {
+    latestVersion: number,
+    memo: string | null,
+    name: string,
+    ownerUsername: string,
+    status: DeckStatus,
+    thumbnailImageUrl: string | null,
+    timestamp: number,
+    versionDetail:  {
       __typename: "DeckVersion",
       commander:  Array< {
         __typename: "Card",
@@ -215,13 +222,7 @@ export type RestoreDeckVersionMutation = {
         },
         count: number,
       } >,
-    } | null,
-    memo: string | null,
-    name: string,
-    ownerUserId: string,
-    status: DeckStatus,
-    thumbnailImageUrl: string | null,
-    timestamp: number,
+    },
   } | null,
 };
 
@@ -236,9 +237,16 @@ export type UpdateDeckMetaMutation = {
     colors: Array< string >,
     createdAt: number,
     description: string | null,
-    format: string | null,
+    format: string,
     id: string,
-    latestVersion:  {
+    latestVersion: number,
+    memo: string | null,
+    name: string,
+    ownerUsername: string,
+    status: DeckStatus,
+    thumbnailImageUrl: string | null,
+    timestamp: number,
+    versionDetail:  {
       __typename: "DeckVersion",
       commander:  Array< {
         __typename: "Card",
@@ -289,13 +297,7 @@ export type UpdateDeckMetaMutation = {
         },
         count: number,
       } >,
-    } | null,
-    memo: string | null,
-    name: string,
-    ownerUserId: string,
-    status: DeckStatus,
-    thumbnailImageUrl: string | null,
-    timestamp: number,
+    },
   } | null,
 };
 
@@ -352,7 +354,7 @@ export type GetCardQuery = {
 
 export type GetDeckQueryVariables = {
   deckId: string,
-  userId: string,
+  username: string,
 };
 
 export type GetDeckQuery = {
@@ -361,9 +363,16 @@ export type GetDeckQuery = {
     colors: Array< string >,
     createdAt: number,
     description: string | null,
-    format: string | null,
+    format: string,
     id: string,
-    latestVersion:  {
+    latestVersion: number,
+    memo: string | null,
+    name: string,
+    ownerUsername: string,
+    status: DeckStatus,
+    thumbnailImageUrl: string | null,
+    timestamp: number,
+    versionDetail:  {
       __typename: "DeckVersion",
       commander:  Array< {
         __typename: "Card",
@@ -414,87 +423,7 @@ export type GetDeckQuery = {
         },
         count: number,
       } >,
-    } | null,
-    memo: string | null,
-    name: string,
-    ownerUserId: string,
-    status: DeckStatus,
-    thumbnailImageUrl: string | null,
-    timestamp: number,
-  } | null,
-};
-
-export type GetDeckByUsernameQueryVariables = {
-  deckId: string,
-  username: string,
-};
-
-export type GetDeckByUsernameQuery = {
-  getDeckByUsername:  {
-    __typename: "Deck",
-    colors: Array< string >,
-    createdAt: number,
-    description: string | null,
-    format: string | null,
-    id: string,
-    latestVersion:  {
-      __typename: "DeckVersion",
-      commander:  Array< {
-        __typename: "Card",
-        id: string,
-        name: string,
-        subtypes: Array< string >,
-        supertypes: Array< string >,
-        text: string | null,
-        thumbnailImageUrl: string | null,
-        types: Array< string >,
-      } > | null,
-      companion:  Array< {
-        __typename: "Card",
-        id: string,
-        name: string,
-        subtypes: Array< string >,
-        supertypes: Array< string >,
-        text: string | null,
-        thumbnailImageUrl: string | null,
-        types: Array< string >,
-      } > | null,
-      createdAt: number,
-      mainboard:  Array< {
-        __typename: "DeckCard",
-        card:  {
-          __typename: "Card",
-          id: string,
-          name: string,
-          subtypes: Array< string >,
-          supertypes: Array< string >,
-          text: string | null,
-          thumbnailImageUrl: string | null,
-          types: Array< string >,
-        },
-        count: number,
-      } >,
-      sideboard:  Array< {
-        __typename: "DeckCard",
-        card:  {
-          __typename: "Card",
-          id: string,
-          name: string,
-          subtypes: Array< string >,
-          supertypes: Array< string >,
-          text: string | null,
-          thumbnailImageUrl: string | null,
-          types: Array< string >,
-        },
-        count: number,
-      } >,
-    } | null,
-    memo: string | null,
-    name: string,
-    ownerUserId: string,
-    status: DeckStatus,
-    thumbnailImageUrl: string | null,
-    timestamp: number,
+    },
   } | null,
 };
 
@@ -512,9 +441,16 @@ export type GetDeckListQuery = {
       colors: Array< string >,
       createdAt: number,
       description: string | null,
-      format: string | null,
+      format: string,
       id: string,
-      latestVersion:  {
+      latestVersion: number,
+      memo: string | null,
+      name: string,
+      ownerUsername: string,
+      status: DeckStatus,
+      thumbnailImageUrl: string | null,
+      timestamp: number,
+      versionDetail:  {
         __typename: "DeckVersion",
         commander:  Array< {
           __typename: "Card",
@@ -545,13 +481,7 @@ export type GetDeckListQuery = {
           __typename: "DeckCard",
           count: number,
         } >,
-      } | null,
-      memo: string | null,
-      name: string,
-      ownerUserId: string,
-      status: DeckStatus,
-      thumbnailImageUrl: string | null,
-      timestamp: number,
+      },
     } >,
     nextToken: string | null,
     scannedCount: number | null,
@@ -572,9 +502,16 @@ export type GetDeckListByUsernameQuery = {
       colors: Array< string >,
       createdAt: number,
       description: string | null,
-      format: string | null,
+      format: string,
       id: string,
-      latestVersion:  {
+      latestVersion: number,
+      memo: string | null,
+      name: string,
+      ownerUsername: string,
+      status: DeckStatus,
+      thumbnailImageUrl: string | null,
+      timestamp: number,
+      versionDetail:  {
         __typename: "DeckVersion",
         commander:  Array< {
           __typename: "Card",
@@ -605,13 +542,7 @@ export type GetDeckListByUsernameQuery = {
           __typename: "DeckCard",
           count: number,
         } >,
-      } | null,
-      memo: string | null,
-      name: string,
-      ownerUserId: string,
-      status: DeckStatus,
-      thumbnailImageUrl: string | null,
-      timestamp: number,
+      },
     } >,
     nextToken: string | null,
     scannedCount: number | null,
@@ -743,9 +674,16 @@ export type SearchLimitedDeckListQuery = {
     colors: Array< string >,
     createdAt: number,
     description: string | null,
-    format: string | null,
+    format: string,
     id: string,
-    latestVersion:  {
+    latestVersion: number,
+    memo: string | null,
+    name: string,
+    ownerUsername: string,
+    status: DeckStatus,
+    thumbnailImageUrl: string | null,
+    timestamp: number,
+    versionDetail:  {
       __typename: "DeckVersion",
       commander:  Array< {
         __typename: "Card",
@@ -796,13 +734,7 @@ export type SearchLimitedDeckListQuery = {
         },
         count: number,
       } >,
-    } | null,
-    memo: string | null,
-    name: string,
-    ownerUserId: string,
-    status: DeckStatus,
-    thumbnailImageUrl: string | null,
-    timestamp: number,
+    },
   } >,
 };
 
@@ -816,9 +748,16 @@ export type SearchOwnDeckListQuery = {
     colors: Array< string >,
     createdAt: number,
     description: string | null,
-    format: string | null,
+    format: string,
     id: string,
-    latestVersion:  {
+    latestVersion: number,
+    memo: string | null,
+    name: string,
+    ownerUsername: string,
+    status: DeckStatus,
+    thumbnailImageUrl: string | null,
+    timestamp: number,
+    versionDetail:  {
       __typename: "DeckVersion",
       commander:  Array< {
         __typename: "Card",
@@ -869,13 +808,7 @@ export type SearchOwnDeckListQuery = {
         },
         count: number,
       } >,
-    } | null,
-    memo: string | null,
-    name: string,
-    ownerUserId: string,
-    status: DeckStatus,
-    thumbnailImageUrl: string | null,
-    timestamp: number,
+    },
   } >,
 };
 
@@ -889,9 +822,16 @@ export type SearchPublicDeckListQuery = {
     colors: Array< string >,
     createdAt: number,
     description: string | null,
-    format: string | null,
+    format: string,
     id: string,
-    latestVersion:  {
+    latestVersion: number,
+    memo: string | null,
+    name: string,
+    ownerUsername: string,
+    status: DeckStatus,
+    thumbnailImageUrl: string | null,
+    timestamp: number,
+    versionDetail:  {
       __typename: "DeckVersion",
       commander:  Array< {
         __typename: "Card",
@@ -942,12 +882,6 @@ export type SearchPublicDeckListQuery = {
         },
         count: number,
       } >,
-    } | null,
-    memo: string | null,
-    name: string,
-    ownerUserId: string,
-    status: DeckStatus,
-    thumbnailImageUrl: string | null,
-    timestamp: number,
+    },
   } >,
 };

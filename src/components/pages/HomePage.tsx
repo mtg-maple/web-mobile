@@ -43,6 +43,7 @@ const getDeckListGraphQL = /* GraphQL */ `
         description
         thumbnailImageUrl
         colors
+        ownerUsername
       }
       nextToken
       scannedCount
@@ -92,8 +93,8 @@ const HomePage: FC<HomePageProps> = ({ store, dispatch }) => {
     onClicks: store.decks.map((deck: IDeckListItem): (e: MouseEvent) => void => {
       return (e: MouseEvent) => {
         dispatch(initSubPage(Page.Deck, currentLocation));
-        dispatch(setDeck(Page.Deck, { ...deck, mainboard: undefined, sideboard: undefined }));
-        history.push(`/decks/${deck.id}`);
+        dispatch(setDeck(Page.Deck, { ...deck, versionDetail: undefined }));
+        history.push(`${deck.ownerUsername}/d/${deck.id}`);
       };
     }),
   };
