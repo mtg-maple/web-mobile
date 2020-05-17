@@ -5,4 +5,5 @@ export enum Page {
   User = 'USER',
   Deck = 'DECK',
   Card = 'CARD',
+  SignIn = 'SIGN_IN',
 }

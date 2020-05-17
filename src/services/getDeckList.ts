@@ -42,6 +42,7 @@ const getDeckList = async (userId: string): Promise<IResponse<IDeckListResult>> 
                 description: deck.description,
                 thumbnailImageUrl: deck.thumbnailImageUrl,
                 colors: deck.colors,
+                ownerUsername: 'dummy',
               })),
             }
           });

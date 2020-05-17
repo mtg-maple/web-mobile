@@ -1,0 +1,19 @@
+@import "../../../properties.scss";
+
+section.signInInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+section.signInInput > *:nth-child(n+2) {
+  margin-top: $space;
+}
+
+.inputRow {
+  display: flex;
+  flex-direction: row;
+}

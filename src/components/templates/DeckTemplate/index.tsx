@@ -58,24 +58,24 @@ const DeckTemplate: FC<DeckTemplateProps> = ({ deck, backButtonProps }) => {
 
               <TabPanel className={styles.tabPanel}>
                 {
-                  typeof deck.mainboard === 'undefined' || typeof deck.sideboard === 'undefined' ? 
+                  typeof deck.versionDetail?.mainboard === 'undefined' || typeof deck.versionDetail?.sideboard === 'undefined' ? 
                   'loading...' :
                   <>
                     <section>
-                      <Heading className={styles.heading} level="3">{`メインボード(${deck.mainboard.length})`}</Heading>
+                      <Heading className={styles.heading} level="3">{`メインボード(${deck.versionDetail.mainboard.length})`}</Heading>
                       <CardList 
-                        cards={deck.mainboard}
+                        cards={deck.versionDetail.mainboard}
                         onClicks={
-                          deck.mainboard.map((card: IDeckCard) => () => alert(`${card.name} clicked`))
+                          deck.versionDetail.mainboard.map((card: IDeckCard) => () => alert(`${card.name} clicked`))
                         }
                       />
                     </section>
                     <section>            
-                      <Heading className={styles.heading} level="3">{`サイドボード(${deck.sideboard.length})`}</Heading>
+                      <Heading className={styles.heading} level="3">{`サイドボード(${deck.versionDetail.sideboard.length})`}</Heading>
                       <CardList 
-                        cards={deck.sideboard}
+                        cards={deck.versionDetail?.sideboard}
                         onClicks={
-                          deck.sideboard.map((card: IDeckCard) => () => alert(`${card.name} clicked`))
+                          deck.versionDetail.sideboard.map((card: IDeckCard) => () => alert(`${card.name} clicked`))
                         }
                       />
                     </section>

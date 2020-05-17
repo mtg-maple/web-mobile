@@ -8,7 +8,7 @@ const Wrapper = (): ReactElement => {
   return (
     <div>
       <span>{value}</span>
-      <Input value={value} setValue={setValue}/>
+      <Input value={value} onChange={(e) => setValue(e.target.value)} initInput={() => setValue('initial')} />
     </div>
   );
 }

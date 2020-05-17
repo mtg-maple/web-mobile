@@ -1,5 +1,5 @@
 {
-  "name": "web-mobile",
+  "name": "@mtg-maple/web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,6 +17,8 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "5.1.3",
     "@types/react-tabs": "2.3.1",
+    "aws-amplify": "^3.0.8",
+    "aws-amplify-react": "^4.1.7",
     "mana-font": "1.6.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",

@@ -1,16 +1,19 @@
-import { IESLegalities } from './elasticsearch';
-
 export interface IDeckListItem {
   id: string;
   name: string;
   description: string;
   thumbnailImageUrl: string;
   colors: string[];
+  ownerUsername: string;
 }
 
 export interface IDeck extends IDeckListItem {
-  mainboard?: IDeckCard[];
-  sideboard?: IDeckCard[];
+  versionDetail?: {
+    mainboard: IDeckCard[];
+    sideboard: IDeckCard[];
+    commander?: ICard[];
+    companion?: ICard[];
+  }
 }
 
 export interface IDeckCard extends ICard {
@@ -39,7 +42,7 @@ export type ICardImage = {
 export type ICardText = {
   spells: ICardSpell[];
   meta: ICardMeta;
-  legalities: IESLegalities;
+  legalities: ICardLegalities;
 };
 
 export type ICardSpell = {
@@ -60,3 +63,19 @@ export type ICardMeta = {
   artist: string;
   sets: string[];
 };
+
+export interface ICardLegalities {
+  brawl?: string;
+  commander?: string;
+  duel?: string;
+  future?: string;
+  frontier?: string;
+  historic?: string;
+  legacy?: string;
+  modern?: string;
+  pauper?: string;
+  penny?: string;
+  pioneer?: string;
+  standard?: string;
+  vintage?: string;
+}

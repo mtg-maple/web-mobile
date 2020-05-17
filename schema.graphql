@@ -1,0 +1,203 @@
+﻿schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Card {
+  id: ID!
+  name: String!
+  subtypes: [String!]!
+  supertypes: [String!]!
+  text: String
+  thumbnailImageUrl: String
+  types: [String!]!
+}
+
+type Deck {
+  colors: [String!]!
+  createdAt: AWSTimestamp!
+  description: String
+  format: String!
+  id: ID!
+  latestVersion: Int!
+  memo: String
+  name: String!
+  ownerUsername: String!
+  status: DeckStatus!
+  thumbnailImageUrl: String
+  timestamp: AWSTimestamp!
+  versionDetail: DeckVersion!
+}
+
+type DeckCard {
+  card: Card!
+  count: Int!
+}
+
+type DeckList {
+  items: [Deck!]!
+  nextToken: String
+  scannedCount: Int
+}
+
+type DeckVersion {
+  commander: [Card!]
+  companion: [Card!]
+  createdAt: AWSTimestamp!
+  mainboard: [DeckCard!]!
+  sideboard: [DeckCard!]!
+}
+
+type DeckVersionList {
+  items: [DeckVersion!]!
+  nextToken: String
+  scannedCount: Int
+}
+
+type Mutation {
+  #  TODO: リソルバー実装
+  # DynamoDBのログインユーザーのLikeカードから指定されたIDのLikeを削除
+  cancelLikeCard(cardId: ID!): Boolean @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  #  TODO:リソルバー実装
+  # DynamoDBの指定されたデッキのLikeユーザーからログインユーザーを削除。ログインユーザーのLikeデッキから指定されたユーザーの指定されたデッキを削除
+  cancelLikeDeck(deckId: ID!): Boolean @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  #  DynamoDBのログインユーザーのデッキとして新しいデッキを追加（ID発行）
+  createDeck(input: CreateDeckInput): ID @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  createUser(input: UserProfileInput): User @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  #  TODO: リソルバー実装
+  # DynamoDBのログインユーザーのLikeカードに指定されたIDのカードを追加
+  likeCard(cardId: ID!): Boolean @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  #  TODO:リソルバー実装
+  # DynamoDBの指定されたデッキのLikeユーザーにログインユーザーを追加。ログインユーザーのLikeデッキに指定されたユーザーの指定されたデッキを追加
+  likeDeck(deckId: ID!): Boolean @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  #  DynamoDBのログインユーザーの指定されたデッキを削除
+  removeDeck(deckId: ID!): Boolean @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  #  TODO:リソルバー実装
+  # DynamoDBのログインユーザーの指定されたデッキを指定されたバージョンのデッキ内容で更新（ログインユーザーが所有しているもののみ）
+  restoreDeckVersion(deckId: ID!, version: AWSTimestamp!): Deck @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  updateDeckMeta(deckId: ID!, input: UpdateDeckMetaInput): Deck @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  updateDeckVersion(deckId: ID!, input: UpdateDeckVersionInput): AWSTimestamp @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  #  DynamoDBのログインユーザーのオプションを更新 
+  updateOption(input: UserOptionInput): UserOption @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  #  DynamoDBのログインユーザーのプロフィールを更新
+  updateProfile(input: UserProfileInput): UserProfile @aws_auth(cognito_groups : ["Admins", "Consumers"])
+}
+
+type Query {
+  #  TODO: リソルバー実装
+  # Elasticsearchから指定されたIDのカードを取得
+  getCard(cardId: ID!): Card
+  getDeck(deckId: ID!, username: ID!): Deck @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  getDeckList(filter: DeckListFilterInput, nextToken: String, userId: ID): DeckList @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  getDeckListByUsername(filter: DeckListFilterInput, nextToken: String, username: String!): DeckList @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  getDeckVersionList(deckId: ID!, nextToken: String): DeckVersionList @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  getProfile(userId: ID!): UserProfile @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  getUser: User @aws_auth(cognito_groups : ["Admins", "Consumers"])
+  #  TODO: リソルバー実装
+  # Elasticsearchからカードを検索
+  searchCardList(input: SearchCardInput): [Card!]!
+  #  TODO: リゾルバ―実装
+  # Elasticsearchから限定公開のデッキを検索（自分が見れるものだけ）
+  searchLimitedDeckList(input: SearchDeckInput): [Deck!]!
+  #  TODO: リゾルバ―実装
+  # Elasticsearchから自分のデッキを検索
+  searchOwnDeckList(input: SearchDeckInput): [Deck!]!
+  #  TODO: リゾルバ―実装
+  # Elasticsearchから公開されているデッキを検索
+  searchPublicDeckList(input: SearchDeckInput): [Deck!]!
+}
+
+type User {
+  createdAt: AWSTimestamp!
+  option: UserOption
+  profile: UserProfile
+  updatedAt: AWSTimestamp!
+  username: String!
+}
+
+type UserOption {
+  lang: String!
+  locale: String!
+}
+
+type UserProfile {
+  bio: String
+  displayName: String
+  iconImageUrl: String
+}
+
+enum DeckStatus {
+  DELETED
+  LIMITED_PUBLISHED
+  PRIVATE
+  PUBLISHED
+}
+
+input CardInput {
+  id: ID!
+  name: String!
+  subtypes: [String!]!
+  supertypes: [String!]!
+  text: String
+  thumbnailImageUrl: String
+  types: [String!]!
+}
+
+input CreateDeckInput {
+  colors: [String!]!
+  commander: [CardInput!]
+  companion: [CardInput!]
+  description: String!
+  format: String!
+  mainboard: [DeckCardInput!]!
+  memo: String!
+  name: String!
+  sideboard: [DeckCardInput!]!
+  thumbnailImageUrl: String!
+  versionDescription: String!
+}
+
+input DeckCardInput {
+  card: CardInput!
+  count: Int!
+}
+
+input DeckListFilterInput {
+  format: String
+}
+
+input SearchCardInput {
+  query: String
+}
+
+input SearchDeckInput {
+  query: String
+}
+
+input UpdateDeckMetaInput {
+  colors: [String!]
+  description: String
+  format: String
+  memo: String
+  name: String
+  thumbnailImageUrl: String
+}
+
+input UpdateDeckVersionInput {
+  commander: [CardInput!]
+  companion: [CardInput!]
+  description: String
+  mainboard: [DeckCardInput!]
+  sideboard: [DeckCardInput!]
+}
+
+input UserOptionInput {
+  lang: String!
+  locale: String!
+}
+
+input UserProfileInput {
+  bio: String
+  displayName: String
+  iconImageUrl: String
+}

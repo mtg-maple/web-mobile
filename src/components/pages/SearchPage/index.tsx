@@ -1,16 +1,18 @@
 import React, { FC, Dispatch, useState, useEffect } from 'react';
 
-import SearchTemplate from '../templates/SearchTemplate';
-import { ISearchPageStore, ISearchTag, ICard, Page } from '.././../models';
-import { IAction, setSearchBarQuery, setSearchBarTags } from '../../store';
+import SearchTemplate from 'src/components/templates/SearchTemplate';
+import { ISearchPageStore, ISearchTag, ICard, Page } from 'src/models';
+import { IAction, setSearchBarQuery, setSearchBarTags } from 'src/store';
 import {
   useScrollSaveOnUnmount,
   useScrollRestoreOnMount,
   useLocationSaveOnUnmount,
-} from '../../hooks';
+} from 'src/hooks';
 import {
-  searchCard,
-} from '../../services';
+  searchCards,
+} from 'src/services';
+
+import { refineServiceCards } from './refine';
 
 export type SearchPageProps = {
   store: ISearchPageStore,
@@ -24,15 +26,21 @@ const SearchPage: FC<SearchPageProps> = ({store, dispatch}) => {
   
   const [cards, setCards] = useState<ICard[]>([]);
   useEffect(() => {
-    searchCard(store.searchBar.query)
+    if (store.searchBar.query !== '') {
+      searchCards(store.searchBar.query)
       .then((res) => {
-        if (res.status === 200) {
-          setCards(res.result.data);
+        if (res.ok && res.cards) {
+          setCards(refineServiceCards(res.cards));
+        } else {
+          if (res.warning || res.error) {
+            alert(JSON.stringify(res));
+          }
         }
       })
       .catch((err: any) => {
         console.error(err);
       });
+    }
   }, [store.searchBar.query]);
 
   const searchBar = {
